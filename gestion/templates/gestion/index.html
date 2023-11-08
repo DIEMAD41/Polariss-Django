@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+
+    {% block titulo %}
+        Cava de Vinos Jiquilpan | {{ titulo }}
+    {% endblock titulo %}
+
+    {% block principal %}
+        <h1>Pagina principal</h1>
+        <hr>
+        <h3>Nombre: {{ nombre }}</h3>
+        <h3>Profesion: {{ profesion }}</h3>
+        <h3>Lenguajes:</h3>
+        {% for lenguaje in lenguajes %}
+            <li>{{ lenguaje }}</li>
+        {% endfor %}
+    {% endblock principal %}

@@ -1,0 +1,193 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href={% static 'assets/css/sidemenu.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'Fonts/fuentes.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'assets/css/topmenu.css' %} "">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="shortcut icon" href={% static 'Imgs/SVG/SS-LOGO.svg' %}/>
+    <title>POLARISS</title>
+  </head>
+  <body id="body-pd">
+    <nav class="top-navbar" id="navtop">
+        <span class="hide" id="pc-tittle">agencia de viajes</span>
+        <span class="hide" id="movil-tittle">Polariss</span>
+          <div class="wrapper">
+              <div class="search">
+                <div class="icons">
+                  <ion-icon name="search-outline" class="icon"></ion-icon>
+                </div>
+                <div class="input">
+                  <input type="text" placeholder="Buscar" id="busqueda">
+                </div>
+              </div>
+              <div class="button">
+                <div class="icon">
+                  <i class="fab fa-facebook-f"></i>
+                </div>
+                <span>Facebook</span>
+              </div>
+              <div class="button">
+                <div class="icon">
+                  <i class="fab fa-instagram"></i>
+                </div>
+                <span>Instagram</span>
+              </div>
+              <div class="button">
+                <div class="icon">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <span>Whatsapp</span>
+              </div>
+          </div>    
+          
+          <div class="logo-details movil2">
+            <svg class="polariss-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.22 151.71">
+              <title>Recurso 1</title>
+              <g id="Capa_2" data-name="Capa 2">
+              <g id="Capa_1-2" data-name="Capa 1">
+              <path d="M48.74,151.71a62.73,62.73,0,0,1-35.8-12.2,59.46,59.46,0,0,1-11.7-11.8c-1.6-2.1-1.7-3.4,0-5.5q5.25-6.6,10.8-12.9c2.7-3.1,5.8-5.9,8.7-8.8a10.63,10.63,0,0,1,1.1-.9c1.8-1.4,3-1.4,4.8,0,1.5,1.2,2.9,2.5,4.3,3.8a40.5,40.5,0,0,0,20.2,9.9c4.5.8,8.4-.3,11.5-3.8,2.1-2.4,2.1-4.3-.1-6.6a56.9,56.9,0,0,0-14.8-10.5c-7.2-3.7-14.4-7.4-21.1-12.1-7.2-5.1-13.3-11.1-17.2-19.1-8.2-16.5-5.3-34.5,7.6-47.7,5.8-5.9,12.5-10.3,20.8-11.9,12.8-2.4,25.6-2.5,37.9,2.4A60.45,60.45,0,0,1,88,11.11c1,.7,2,1.4,3,2.2a3,3,0,0,0,3.9.2c1.9-1.2,3.8-2.2,5.7-3.4a49.54,49.54,0,0,1,21.8-7.3c8.1-.7,16.1-.3,23.9,2.3,9,3.1,16.6,8.4,23.3,15.1a15.41,15.41,0,0,1,2.5,3.6,3,3,0,0,1-.3,3.6c-5.2,6.4-10.4,12.8-16.9,18-2.1,1.7-2.8,1.8-5.2.4-3.5-2.1-6.8-4.4-10.3-6.6-3.1-1.9-6.4-3.7-10.2-3.9a12.75,12.75,0,0,0-11.5,5.4c-1.3,1.7-1.1,3.1.7,5.3a29.65,29.65,0,0,0,7.8,6.2c5.6,3.3,11.4,6.2,17.2,9.3,6.6,3.5,13.1,7.2,18.7,12.1a40.47,40.47,0,0,1,14,28.9c1,17.8-7.1,30.7-21.6,40-5.2,3.4-11.2,4.7-17.3,5.6a70.67,70.67,0,0,1-10.2,1.1,60.65,60.65,0,0,1-20.2-2.9c-3.4-1.1-6.6-2.7-9.9-4.1-.1-.1-.3-.1-.4-.2-3-1.7-3.2-3.1-1.3-6s3.9-5.6,5.6-8.6a44.07,44.07,0,0,0,5.3-21.9c0-3.6-.1-7.2,0-10.8,0-2.6.5-3.1,3.1-3.5,1.9-.3,3.8-.6,5.6-.9a.89.89,0,0,0,.6-1.5,4.13,4.13,0,0,0-1.1-.7c-2.1-.9-4.2-1.8-6.2-2.8a11.06,11.06,0,0,1-5.1-4.7,84.06,84.06,0,0,1-7.5-15,1.85,1.85,0,0,1-.2-.7c-.3-.9-.1-1.4,1-1.6a196.73,196.73,0,0,1,20.2-3c1.9-.2,3.9-.5,5.8-.7a1.09,1.09,0,0,0,.7-1.8,4,4,0,0,0-1.6-1.3c-7.1-3-14.6-4.8-22-7q-4.95-1.5-9.9-2.7a14.94,14.94,0,0,1-8.9-6.4,50.88,50.88,0,0,1-3-5,28.31,28.31,0,0,0-7.6-8.2c-1.8-1.3-3.8-.7-4.2,1.5a19.53,19.53,0,0,0,0,5.4c.6,4.1,2.6,7.6,4.9,10.9s2.7,6.9,1.6,10.9c-3.1,10.8-5.9,21.7-8.9,32.5a7.49,7.49,0,0,0-.2,2.1c0,1.1.8,1.6,1.7,1.1a6.14,6.14,0,0,0,1.9-1.7c4.4-5.5,8.8-11,13.3-16.5a16.18,16.18,0,0,1,1.8-1.9c1.2-1.1,1.9-1.1,2.9.2a56.18,56.18,0,0,1,3.5,5c2.3,3.8,4.6,7.7,6.7,11.6a5,5,0,0,1,.2,3c-.5,3.3-1.2,6.6-1.8,9.9a1,1,0,0,0,.4.9c.2.1.7-.1.9-.3,1-1.1,1.8-2.2,2.8-3.2s2.2-2,3.8-1.4,1.6,2.2,1.7,3.6c.6,7.5,0,14.9-2.9,22-2.7,6.7-6.3,12.8-12,17.5-4.4,3.6-9.5,5.7-14.7,7.7A76.51,76.51,0,0,1,48.74,151.71Z"/>
+              </g></g>
+            </svg>
+          </div>
+    </nav> 
+
+    <div class="l-navbar" id="navbar">
+      <div class="logo-details">
+        <span class="logo_name">Polari</span>
+        <svg class="polariss-logo" id="LogoToggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.22 151.71">
+          <title>Recurso 1</title>
+          <g id="Capa_2" data-name="Capa 2">
+          <g id="Capa_1-2" data-name="Capa 1">
+          <path d="M48.74,151.71a62.73,62.73,0,0,1-35.8-12.2,59.46,59.46,0,0,1-11.7-11.8c-1.6-2.1-1.7-3.4,0-5.5q5.25-6.6,10.8-12.9c2.7-3.1,5.8-5.9,8.7-8.8a10.63,10.63,0,0,1,1.1-.9c1.8-1.4,3-1.4,4.8,0,1.5,1.2,2.9,2.5,4.3,3.8a40.5,40.5,0,0,0,20.2,9.9c4.5.8,8.4-.3,11.5-3.8,2.1-2.4,2.1-4.3-.1-6.6a56.9,56.9,0,0,0-14.8-10.5c-7.2-3.7-14.4-7.4-21.1-12.1-7.2-5.1-13.3-11.1-17.2-19.1-8.2-16.5-5.3-34.5,7.6-47.7,5.8-5.9,12.5-10.3,20.8-11.9,12.8-2.4,25.6-2.5,37.9,2.4A60.45,60.45,0,0,1,88,11.11c1,.7,2,1.4,3,2.2a3,3,0,0,0,3.9.2c1.9-1.2,3.8-2.2,5.7-3.4a49.54,49.54,0,0,1,21.8-7.3c8.1-.7,16.1-.3,23.9,2.3,9,3.1,16.6,8.4,23.3,15.1a15.41,15.41,0,0,1,2.5,3.6,3,3,0,0,1-.3,3.6c-5.2,6.4-10.4,12.8-16.9,18-2.1,1.7-2.8,1.8-5.2.4-3.5-2.1-6.8-4.4-10.3-6.6-3.1-1.9-6.4-3.7-10.2-3.9a12.75,12.75,0,0,0-11.5,5.4c-1.3,1.7-1.1,3.1.7,5.3a29.65,29.65,0,0,0,7.8,6.2c5.6,3.3,11.4,6.2,17.2,9.3,6.6,3.5,13.1,7.2,18.7,12.1a40.47,40.47,0,0,1,14,28.9c1,17.8-7.1,30.7-21.6,40-5.2,3.4-11.2,4.7-17.3,5.6a70.67,70.67,0,0,1-10.2,1.1,60.65,60.65,0,0,1-20.2-2.9c-3.4-1.1-6.6-2.7-9.9-4.1-.1-.1-.3-.1-.4-.2-3-1.7-3.2-3.1-1.3-6s3.9-5.6,5.6-8.6a44.07,44.07,0,0,0,5.3-21.9c0-3.6-.1-7.2,0-10.8,0-2.6.5-3.1,3.1-3.5,1.9-.3,3.8-.6,5.6-.9a.89.89,0,0,0,.6-1.5,4.13,4.13,0,0,0-1.1-.7c-2.1-.9-4.2-1.8-6.2-2.8a11.06,11.06,0,0,1-5.1-4.7,84.06,84.06,0,0,1-7.5-15,1.85,1.85,0,0,1-.2-.7c-.3-.9-.1-1.4,1-1.6a196.73,196.73,0,0,1,20.2-3c1.9-.2,3.9-.5,5.8-.7a1.09,1.09,0,0,0,.7-1.8,4,4,0,0,0-1.6-1.3c-7.1-3-14.6-4.8-22-7q-4.95-1.5-9.9-2.7a14.94,14.94,0,0,1-8.9-6.4,50.88,50.88,0,0,1-3-5,28.31,28.31,0,0,0-7.6-8.2c-1.8-1.3-3.8-.7-4.2,1.5a19.53,19.53,0,0,0,0,5.4c.6,4.1,2.6,7.6,4.9,10.9s2.7,6.9,1.6,10.9c-3.1,10.8-5.9,21.7-8.9,32.5a7.49,7.49,0,0,0-.2,2.1c0,1.1.8,1.6,1.7,1.1a6.14,6.14,0,0,0,1.9-1.7c4.4-5.5,8.8-11,13.3-16.5a16.18,16.18,0,0,1,1.8-1.9c1.2-1.1,1.9-1.1,2.9.2a56.18,56.18,0,0,1,3.5,5c2.3,3.8,4.6,7.7,6.7,11.6a5,5,0,0,1,.2,3c-.5,3.3-1.2,6.6-1.8,9.9a1,1,0,0,0,.4.9c.2.1.7-.1.9-.3,1-1.1,1.8-2.2,2.8-3.2s2.2-2,3.8-1.4,1.6,2.2,1.7,3.6c.6,7.5,0,14.9-2.9,22-2.7,6.7-6.3,12.8-12,17.5-4.4,3.6-9.5,5.7-14.7,7.7A76.51,76.51,0,0,1,48.74,151.71Z"/>
+          </g></g>
+        </svg>
+      </div>
+    <nav class="nav">
+        
+          <div class="nav__list">
+            <a href="{% url 'dashboard' %}" class="nav__link active" target="iframe" >
+              <ion-icon name="planet-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Principal</span>
+            </a>
+            <a href="Vuelos.html" class="nav__link" target="iframe">
+             <ion-icon name="airplane-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Vuelos</span>
+            </a>
+            <div class="nav__link collapse">
+              <ion-icon name="bed-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Hospedaje</span>
+
+              <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+              <ul class="collapse__menu">
+                <a href="#" class="collapse__sublink">Data</a>
+                <a href="#" class="collapse__sublink">Groups</a>
+                <a href="#" class="collapse__sublink">Members</a>
+              </ul>
+            </div>
+            <a href="#" class="nav__link">
+              <ion-icon name="boat-outline" class="nav__icon" ></ion-icon>
+              <span class="nav__name"> Cruceros</span>
+            </a>
+            <div class="nav__link collapse">
+              <ion-icon name="bus-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Terrestres</span>
+
+              <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+              <ul class="collapse__menu">
+                <a href="#" class="collapse__sublink">Data</a>
+                <a href="#" class="collapse__sublink">Groups</a>
+                <a href="#" class="collapse__sublink">Members</a>
+              </ul>
+            </div>
+
+            <div class="nav__link collapse">
+              <ion-icon name="ribbon-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Finanzas</span>
+
+              <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+              <ul class="collapse__menu">
+                <a href="#" class="collapse__sublink">Data</a>
+                <a href="#" class="collapse__sublink">Groups</a>
+                <a href="#" class="collapse__sublink">Members</a>
+              </ul>
+            </div>
+
+            <a href="#" class="nav__link">
+              <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Configuracion</span>
+            </a>
+          </div>
+        
+      
+
+            <!-- <a href="#" class="nav__link">
+              <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+              <span class="nav__name">Cerrar Sesion</span>
+            </a> -->
+
+      
+        <div class="profile-details">
+          <div class="profile-content">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2FZpmm1vvLCTYC3Wh7rbcwxB-Jmy5nUNTSw&usqp=CAU" alt="profileImg">
+          </div>
+          <div class="name-job">
+            <div class="profile_name">Artorias</div>
+            <div class="job">Agente de viajes</div>
+          </div>
+          <i class='bx bx-log-out'></i>
+        </div>
+    </nav>
+    </div>
+
+    <iframe src="{% url 'dashboard' %}" name="iframe" frameborder="0" id="principalF" scrolling="yes" class="frame"></iframe>
+    <embed src="{% url 'dashboard' %}" name="iframe" frameborder="0" id="principalF" scrolling="yes" class="frame">
+    <div class="movil-bar">
+        <a href="#" class="nav__link movil active">
+          <ion-icon name="planet-outline" class="nav__icon"></ion-icon>
+        </a>
+        <a href="#" class="nav__link movil">
+         <ion-icon name="airplane-outline" class="nav__icon"></ion-icon>
+        </a>
+        <div class="nav__link movil">
+          <ion-icon name="bed-outline" class="nav__icon"></ion-icon>
+        </div>
+        <a href="#" class="nav__link movil">
+          <ion-icon name="boat-outline" class="nav__icon" ></ion-icon>
+        </a>
+        <div class="nav__link movil">
+          <ion-icon name="bus-outline" class="nav__icon"></ion-icon>
+        </div>
+        <div class="nav__link movil">
+          <ion-icon name="ribbon-outline" class="nav__icon"></ion-icon>
+    </div>
+
+    
+
+
+    <!--IONICONS-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--Boxicons-->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!--Java Scrip-->
+    <script src={% static 'assets/js/main.js' %} ></script>
+    <script>
+        function srcChange(url) {
+    var oldEmbed = document.getElementById('embed1');
+    var newEmbed = oldEmbed.cloneNode(true);
+    newEmbed.src = url;
+    oldEmbed.parentNode.replaceChild(newEmbed, oldEmbed);
+    //location.reload();
+    //alert(document.getElementById('embed1').src);}
+    </script>
+  </body>
+</html>

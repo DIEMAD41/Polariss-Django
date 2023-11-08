@@ -1,0 +1,930 @@
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+iframe {height:93.1vh; }
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    background-color:#f0f0f0;
+}
+
+img,
+svg 
+{
+    max-width: 100%;/*Maximo del contenedor*/
+}
+
+.grid
+{
+    position: relative;
+    display: grid;
+    column-gap: 46px;
+
+    grid-template-columns: calc(50% - 23px) calc(50% - 23px);
+    grid-template-rows:  101px 210px 118px 86px;
+    grid-template-areas: 'V V' 'O D' 'Fs Fl' 'P B';
+
+    margin-left: 10%;
+    margin-top: 84px;
+    width: 80%;
+    height: max-content;
+
+}
+
+    .V
+    {
+        grid-area: V;
+        display: flex;
+
+        width: 100%;
+        height: calc(100% - 37px);
+    }
+
+    .cont
+    {
+        display: flex;
+        width: max-content;
+        height: 100%;
+
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        background: white;
+        border-top-left-radius: 30px;
+        
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    }
+
+        .V .t1
+        {
+            height: 100%;
+            width: max-content;
+            background: #F94144;
+
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .V .t2
+        {
+            height: 100%;
+            width: max-content;
+            background: white;
+
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .V a
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    .O
+    {
+        position: relative;
+        grid-area: O;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;/*Mega util*/
+        cursor: pointer;
+        background: white;
+
+        width: 100%;
+        height: calc(100% - 37px);
+
+        border-radius: 10px;
+        border: solid 1px #535353;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    }
+
+    .vacio1
+    {
+        display: none;
+    }
+
+    .vacio2
+    {
+        display: none;
+    }
+
+    .vacio3
+    {
+        display: none;
+    }
+
+    .Opciones
+    {
+        position: absolute;
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        cursor: auto;
+        
+        top: calc(100% + 25px);
+        left: 5%;
+        z-index: 1;
+
+        width: 90%;
+        height: 200px;
+        background: white;
+        
+        border-radius: 10px;
+        border: #535353 solid 1px;
+        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
+    }
+
+        .Opciones .Op
+        {
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 50px calc(100% - 50px);
+            grid-template-areas: 'Im Na';
+
+            width: 100%;
+            height: 50px;
+        }
+
+        .Op:hover
+        {
+            border: firebrick solid 1px;
+            box-shadow: 0px 2px 10px rgba(252, 0, 0, 0.50);
+        }
+
+            .Op ion-icon
+            {
+                grid-area: Im;
+
+                width: 100%;
+                height: 100%;
+            }
+
+            .Op img
+            {
+                grid-area: Im;
+
+                width: 100%;
+                height: 100%;
+            }
+
+            .Op a
+            {
+                grid-area: Na;
+                align-self: center;
+
+                font-size: 18px;
+                font-weight: 300px;
+                font-family: 'Poppins';
+
+                width: calc(100% - 10px);
+                height: max-content;
+                margin-left: 10px;
+            }
+
+            .Op:first-child
+            {
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .Op:last-child
+            {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+    .D
+    {
+        position: relative;
+        grid-area: D;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;/*Mega util*/
+        cursor: pointer;
+        background: white;
+
+        width: 100%;
+        height: calc(100% - 37px);
+
+        border-radius: 10px;
+        border: solid 1px #535353;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    }
+
+    .O:hover,
+    .D:hover,
+    .Fs:hover,
+    .Fl:hover,
+    .P:hover,
+    .cont:hover
+    {
+        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50); 
+    }
+
+    .D.active:before,
+    .O.active:before
+    {
+        content: "";
+        display: block;
+        height: 0;
+        width: 0;
+        border-top: 15px solid red;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid transparent;
+        position: absolute;
+        bottom: -35px;
+        left: calc(50% - 15px);
+    }
+        .t3
+        {
+            display: block;
+            width: 100%;
+            height: max-content;
+            text-align: center;
+            margin-top: 28px;
+
+            font-size: 24px;
+            font-weight: 300px;
+            font-family: 'Poppins';
+        }
+
+        .t4
+        {
+            display: none;
+            
+            width: 100%;
+            height: max-content;
+            text-align: center;
+            margin-top: 13px;
+
+            font-size: 36px;
+            font-weight: 700px;
+            font-family: 'Poppins';
+        }
+
+    .Fs
+    {
+        grid-area: Fs;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        cursor: pointer;
+        background: white;
+
+        width: 100%;
+        height: calc(100% - 32px);
+
+        border-radius: 10px;
+        border: solid 1px #535353;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    }
+
+        .t5
+        {
+            width: 100%;
+            height: max-content;
+
+            margin-left: 65px;
+            margin-top: 14px;
+
+            font-size: 18px;
+            font-weight: 300px;
+            font-family: 'Poppins';
+        }
+
+            .Fs .icon1,
+            .Fl .icon1
+            {
+                position:absolute;
+
+                top: 25%;
+                left: 80%;
+
+                width: 49px;
+                height: 43px;
+            }
+
+
+        .t5:nth-child(2)
+        {
+            margin-top: 7px;
+            margin-left: 69px;
+        }
+
+        .P .t5:nth-child(2)
+        {
+            margin-top: 4px;
+            font-weight: 500;
+            font-weight: bold;
+            margin-left: 26px;
+        }
+
+    .Fl
+    {
+        grid-area: Fl;
+        position: relative;
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        cursor: pointer;
+        background: white;
+
+        width: 100%;
+        height: calc(100% - 32px);
+
+        border-radius: 10px;
+        border: solid 1px #535353;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    }
+
+    .P
+    {
+        grid-area: P;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        align-content: flex-start;
+        cursor: pointer;
+        background: white;
+
+        width: 100%;
+        height: max-content;
+
+        border-radius: 10px;
+        border: solid 1px #535353;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+    }
+
+    .OpcionesP
+    {
+        position: absolute;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: 'Ad Niñ' 'Es Ma';
+        cursor: auto;
+
+        top: -10px;
+        left: calc(100% + 25px);
+        z-index: 1;
+
+        width: 100%;
+        height: 100px;
+        background: white;
+        
+        border-radius: 10px;
+        border: #535353 solid 1px;
+        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
+    }
+
+        .vacio3 .Ad
+        {
+            grid-area: Ad;
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .OpcionesP .Niñ
+        {
+            grid-area: Niñ;
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .OpcionesP .Es
+        {
+            grid-area: Es;
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .OpcionesP .Ma
+        {
+            grid-area: Ma;
+            display: flex;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .Ma .achingarasumadre,
+        .Es .achingarasumadre,
+        .Niñ .achingarasumadre,
+        .Ad .achingarasumadre
+        {
+            width: 50%;
+            height: max-content;
+
+            margin-left: 10px;
+
+            font-size: 18px;
+            font-weight: bold;
+            font-family: 'Poppins';
+        }
+
+        .Ma:hover,
+        .Es:hover,
+        .Niñ:hover,
+        .Ad:hover
+        {
+            border: firebrick solid 1px;
+            box-shadow: 0px 2px 10px rgba(252, 0, 0, 0.50);
+        }
+
+            .OpcionesP .der
+            {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                justify-content: right;
+
+                margin-right: 10px;
+
+
+                width: 100%;
+                height: 100%;
+            }
+
+                .der a
+                {
+                    width: max-content;
+                    height: max-content;
+
+                    margin-left: 10px;
+                    margin-right: 10px;
+    
+                    font-size: 30px;
+                    font-weight: 300px;
+                    font-family: 'Poppins';
+                }
+
+                .der ion-icon
+                {
+                    cursor: pointer;
+                    display: flex;
+                    width: 20px;
+                    height: 20px;
+                    color: white;
+                    background: black;
+                    border-radius: 50%;
+                }
+
+    .P .t5
+        {
+            width: 100%;
+            height: max-content;
+
+            margin-left: 22px;
+            margin-top: 17px;
+
+            font-size: 18px;
+            font-weight: 300px;
+            font-family: 'Poppins';
+        }
+    
+    .P .icon2
+    {
+        position: absolute;
+        color: #F94144;
+
+        top: 25%;
+        left: 80%;
+
+        width: 45px;
+        height: 40px;
+        transform: rotate(0deg);
+    }
+
+    .B
+    {
+        grid-area: B;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        width: 100%;
+        height: 100%;
+
+        border: solid 1px #535353;
+        border-radius: 100px;
+
+        background: #F54043;
+        color: white;
+
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);     
+    }
+    .B .t6
+    {
+        display: flex;
+        text-align: center;
+        
+        font-family: 'Poppins';
+        font-size: 30px;
+        font-weight: 300px;
+        text-transform: uppercase;
+        
+    }
+
+.grid2
+{
+    position: relative;
+    display: grid;
+    column-gap: 46px;
+
+    grid-template-columns: calc(50% - 23px) calc(50% - 23px);
+    grid-template-rows:  101px 210px 118px 86px;
+    grid-template-areas: 'V V' 'O D' 'Fs Fl' 'P B';
+
+    margin-left: 10%;
+    margin-top: 84px;
+    width: 80%;
+    height: max-content;
+}
+
+.frameC
+{
+    display: none;
+}
+.frameC.showC
+{
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+}
+
+.blur.show{
+    height: 650px;
+    transition: all 0.1s ease;
+}
+
+.blur
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px); 
+    transition: all 0.1s ease;
+}
+
+@media(max-width: 1140px)
+{
+    .OpcionesP
+    {
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-areas: 'Ad' 'Niñ' 'Es' 'Ma';
+        cursor: auto;
+
+        top: -10px;
+        left: calc(100% + 25px);
+        z-index: 1;
+
+        width: 100%;
+        height: 200px;
+        background: white;
+        
+        border-radius: 10px;
+        border: #535353 solid 1px;
+        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
+    }
+}
+
+@media(max-width: 895px)
+{
+    .grid2
+    {
+        position: relative;
+        display: grid;
+        column-gap: 46px;
+    
+        grid-template-columns: calc(50% - 23px) calc(50% - 23px);
+        grid-template-rows:  101px 210px 210px 118px 86px;
+        grid-template-areas: 'V V' 'O O' 'D D' 'Fs Fl' 'P B';
+    
+        margin-left: 10%;
+        margin-top: 84px;
+        width: 80%;
+        height: max-content;
+    }
+}
+
+@media(max-width: 745px)
+{
+    .Opciones
+    {
+        width: 220%;
+
+        left: -120%;
+    }
+
+    .O .Opciones
+    {
+        width: 220%;
+
+        left: 0%;
+    }
+
+    .grid2 .D .Opciones
+    {
+        width: 100%;
+
+        left: 0%;
+    }
+
+    .grid2 .O .Opciones
+    {
+        width: 100%;
+
+        left: 0%;
+    }
+}
+
+@media(max-width: 722px)
+{
+    .V
+    {
+        justify-content: center;
+    }
+
+    .t5
+    {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .t5:nth-child(2)
+    {
+        margin-left: 0;
+    }
+
+    .icon1
+    {
+        display: none;
+    }
+
+    .icon2
+    {
+        display: none;
+    }
+
+    .P .t5
+    {
+        margin-left: 0;
+    }
+
+    .P .t5:nth-child(2)
+    {
+        margin-left: 0;
+    }
+
+    .O
+    {
+        align-content: center;
+        justify-content: center;
+    }
+
+    .D
+    {
+        align-content: center;
+        justify-content: center;
+    }
+
+    .t3
+    {
+        margin-top: 0;
+        width: min-content; 
+        height: max-content;
+    }  
+
+    .P.active:before
+    {
+        content: "";
+        display: block;
+        height: 0;
+        width: 0;
+        border-top: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid red;
+        position: absolute;
+        top: calc(50% - 12px);
+        left: calc(100% + 5px);
+    }
+}
+
+@media(max-width: 610px)
+{
+    .OpcionesP
+    {
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns: 100%;
+        grid-template-areas: 'Ad' 'Niñ' 'Es' 'Ma';
+        cursor: auto;
+
+        left: -20px;
+        top: calc(100% + 25px);
+        z-index: 1;
+
+        width: 250px;
+        height: 200px;
+        background: white;
+        
+        border-radius: 10px;
+        border: #535353 solid 1px;
+        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
+    }
+
+    .P.active:before
+    {
+        content: "";
+        display: block;
+        height: 0;
+        width: 0;
+        border-top: 15px solid red;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid transparent;
+        position: absolute;
+        top:calc(100% + 5px);
+        left: calc(50% - 15px);
+    }
+}
+
+@media(max-width: 440px)
+{
+    .grid
+    {
+        grid-template-columns: 100%;
+        grid-template-rows:  101px 150px 150px 70px 70px max-content 86px;
+        grid-template-areas: 'V' 'O' 'D' 'Fs'  'Fl' 'P' 'B';
+    
+        margin-left: 10%;
+        margin-top: 20px;
+        width: 80%;
+        height: max-content;
+    }
+
+    .P
+    {
+        height: max-content;
+        margin-bottom: 22px;
+        align-items: center;
+    }
+
+    .Fs,
+    .Fl
+    {
+        align-content: center;   
+    }
+
+    .t5
+    {
+        margin-top: 0;
+
+        width: 50%;
+        height: max-content;
+    }
+
+    .t5:nth-child(2)
+    {
+        margin-top: 0;
+    }
+
+    .P
+    {
+        align-content: center;
+    }
+
+    .P .t5
+    {
+        margin-top: 0;
+
+        width: 50%;
+        height: max-content;
+    }
+
+    .P .t5:nth-child(2)
+    {
+        margin-top: 0;
+    }
+
+    .OpcionesP
+    {
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-columns: 100%;
+        grid-template-areas: 'Ad' 'Niñ' 'Es' 'Ma';
+        cursor: auto;
+
+        left: 0px;
+        top: calc(100% + 25px);
+        z-index: 1;
+
+        width: 100%;
+        height: 200px;
+        background: white;
+        
+        border-radius: 10px;
+        border: #535353 solid 1px;
+        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
+    }
+
+    .P.active:before
+    {
+        content: "";
+        display: block;
+        height: 0;
+        width: 0;
+        border-top: 15px solid red;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 15px solid transparent;
+        position: absolute;
+        top:calc(100% + 5px);
+        left: calc(50% - 15px);
+    }
+
+    .Opciones
+    {
+        width: 100%;
+
+        left: 0%;
+    }
+
+    .O .Opciones
+    {
+        width: 100%;
+
+        left: 0%;
+    }
+
+    .grid2
+    {
+        position: relative;
+        display: grid;
+        column-gap: 46px;
+    
+        grid-template-columns: 100%;
+        grid-template-rows:  101px 200px 200px 70px 70px max-content 86px;
+        grid-template-areas: 'V' 'O' 'D' 'Fs' 'Fl' 'P' 'B';
+    
+        margin-left: 10%;
+        margin-top: 20px;
+        width: 80%;
+        height: max-content;
+    }
+}
+

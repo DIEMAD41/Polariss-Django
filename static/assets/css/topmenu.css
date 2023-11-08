@@ -1,0 +1,257 @@
+@import url("sidemenu.css");
+
+/* Variables globales */
+:root{
+    --bgnav-color: #24252A;
+    --font-color: white;
+    --font2-color: whitesmoke;
+    --bt-color: #018BA8;
+    --body-font: "Poppins", sans-serif;
+    --primer-color: #f94144;
+
+}
+
+.top-navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--bgnav-color);
+    padding: 10.8px;/* editado */
+    height: 49.2px;/* editado */
+    align-items: center;
+}
+
+.top-navbar .hide {
+    font-family: "Poppins", sans-serif;
+    font-size: 17.28px;/* editado */
+    letter-spacing: 4.5px;/* editado */
+    text-transform: uppercase;
+    font-weight: bold;
+    transition:0.5s ease-in-out;
+    color: var(--font-color);
+}
+
+.top-navbar.hide-name .hide{
+    font-size: 0px;
+    transition:0.5s ease-in-out;
+}
+
+
+/* MEDIAS SOCIAL ICONS */
+
+.wrapper{
+  display: flex;
+}
+
+.wrapper .button{
+    display: inline-block;
+    height: 36px;/* editado */
+    width: 36px ;/* editado */
+    overflow: hidden;
+    margin: 0 4.5px;/* editado */
+    background-color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease-out;
+  }
+  .wrapper .button:hover
+  {
+      width: 135px;/* editado */
+  }
+  
+  .wrapper .button .icon{
+    display: inline-block;
+    text-align: center;
+    height: 36px;/* editado */
+    width: 36px;/* editado */
+    border-radius: 50%;
+    box-sizing: border-box;
+    line-height: 36px;/* editado */
+    vertical-align:sub;
+    transition: all .3s ease-out;
+  }
+  .wrapper .button:hover .icon{
+    transform: scale(1.05);
+  }
+  .wrapper .button:nth-child(2):hover .icon{
+    background-color: #4267b2;
+  }
+
+  .wrapper .button:nth-child(3):hover .icon{
+    background-color: #c32aa3;
+  }
+  .wrapper .button:nth-child(4):hover .icon{
+    background-color: #25d366;
+  }
+
+  .wrapper .button .icon i{
+      font-size: 28.8px;/* editado */
+      line-height: 36px;/* editado */
+  }
+  .wrapper .button:nth-child(2) .icon i{
+    font-size: 22.5px;/* editado */
+  }
+  .wrapper .button:hover .icon i{
+      color: white;
+      transition: all .3s ease-out;
+  }
+
+  .wrapper .button span{
+      font-size: 15.3px;/* editado */
+      font-weight: 500;
+  }
+
+  .wrapper .button:nth-child(2) span{
+  color: #4267b2;
+  }
+  .wrapper .button:nth-child(3) span
+  {
+    color: #c32aa3;
+  }
+  .wrapper .button:nth-child(4) span
+  {
+    color: #25d366;;
+  }
+
+
+  /* Boton de busqueda */
+  .wrapper .search{
+    display: inline-block;
+    height: 36px;/* editado */
+    width: 36px ;/* editado */
+    float: left;
+    overflow: hidden;
+    margin: 0 4.5px;/* editado */
+    background-color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all .5s ease-out;
+    text-align: center;
+    padding-top: 3.6px;/* editado */
+  }
+
+  .search.activate{
+      display: flex;
+      width: 225px;/* editado */
+      text-align: left;
+      padding-left: 9px;/* editado */
+      transition: all .5s ease-out;
+  }
+
+  .wrapper .search .icon{
+    display: inline-block;
+    text-align: center;
+    height: 26.1px;/* editado */
+    width: 26.1px;/* editado */
+    vertical-align:sub;
+    transition: all .3s ease-out;
+  }
+
+  .wrapper .search ion-icon{
+    --ionicon-stroke-width: 50px;
+  }
+  .wrapper .search.activate ion-icon{
+    --ionicon-stroke-width: 60px;
+    color: var(--primer-color);
+  }
+
+  .search .input{
+      display: flex;
+    width: 171px;/* editado */
+    justify-content: left;
+    align-items: center;
+    padding-left: 9px;/* editado */
+    padding-bottom: 2.7px;/* editado */
+  }
+
+  .search .input input{
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 15.3px;/* editado */
+  }
+
+  #movil-tittle{
+    display: none;
+  }
+  .logo-details.movil2{
+    display: none;
+  }
+
+  .movil{
+    display: none;
+  }
+
+  @media (max-width: 660px) {
+    #movil-tittle{
+      display: inline;
+    }
+
+    #pc-tittle{
+      display: none;
+    }
+  }
+
+  /* Moviles */
+  @media (max-width: 600px) {
+    .top-navbar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo-details.movil2{
+      display: flex;
+    }
+
+      .movil-bar{
+    display: none;  
+  }
+
+    .wrapper{
+      display: none;
+    }
+
+    /* menu inferior de movil */
+  .movil-bar{
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    height: 60px;
+    background: var(--bgnav-color);
+  }
+
+  .nav__link {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    column-gap: 0;/* editado */
+    padding: 0;/* editado */
+    justify-items: center;
+    margin-bottom: 0;/* editado */
+    border-radius: 0;background: var(--bgnav-color);
+    color: #fff;
+  }
+  .nav__link:hover{
+    color: #f94144;
+    background: var(--bgnav-color);
+  }
+  .active {
+    background: var(--bgnav-color);
+    border-bottom: 5px solid #f94144;
+    color: #f94144;
+  }
+
+  .movil ion-icon {
+    font-size: 27px;
+  }
+  }
+  

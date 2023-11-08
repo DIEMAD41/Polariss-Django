@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/reservas.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/scrollbar.css">
+    
+    <title>Reservas</title>
+</head>
+<body>
+    <div class="opsM">
+        <div class="dropdown">
+            <input type="text" class="textBox" placeholder="Operacion" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar('Agregar')"><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
+                <div onclick="mostrar('Modificar')"><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+                <div onclick="mostrar('Eliminar')"><ion-icon name="trash-outline"></ion-icon>Eliminar</div>
+                <div onclick="mostrar('Buscar')"><ion-icon name="search-circle-outline"></ion-icon>Buscar</div>
+                <div onclick="mostrar('Consulta')"><ion-icon name="help-circle-outline"></ion-icon>Consulta</div>
+            </div>
+        </div>
+        <div class="dropdown" id="d2">
+            <input type="text" class="textBox" id="tb2" placeholder="Servicio" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar2('Vuelo')"><ion-icon name="airplane-outline"></ion-icon>Vuelo</div>
+                <div onclick="mostrar2('Hotel')"><ion-icon name="bed-outline"></ion-icon>Hotel</div>
+                <div onclick="mostrar2('Transporte')"><ion-icon name="bus-outline"></ion-icon>Terrestre</div>
+                <div onclick="mostrar2('Maritimo')"><ion-icon name="boat-outline"></ion-icon>Maritimo</div>
+                <div onclick="mostrar2('Tour')"><ion-icon name="camera-outline"></ion-icon>Tour</div>
+            </div>
+        </div>
+        <button class="goB">GO</button>
+    </div>
+
+    <div class="reservas">
+        <!-- Lista de reservaciones -->
+        <div class="recientes">
+            <div class="titulo">
+                <h2>Reservas recientes </h2>
+                <a href="#" class="btn">Ver todas</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Cliente</td>
+                        <td>Fecha</td>
+                        <td>Importe</td>
+                        <td>Tipo</td>
+                        <td>Estado</td>
+                    </tr>
+                </thead>
+                <tbody class="TableClientes">
+                    <tr>
+                        <td>Diego Manzo</td>
+                        <td>16/11/21</td>
+                        <td>12,560</td>
+                        <td>Hotel</td>
+                        <td><span class="status apago">En pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>Saul Vasquez</td>
+                        <td>06/11/21</td>
+                        <td>1,560</td>
+                        <td>Vuelo</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Alberto Torres</td>
+                        <td>04/11/21</td>
+                        <td>32,560</td>
+                        <td>Paquete</td>
+                        <td><span class="status apago">En pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>Juan Dominguez</td>
+                        <td>29/10/21</td>
+                        <td>560</td>
+                        <td>Camion</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sofia Nieto</td>
+                        <td>27/10/21</td>
+                        <td>11,560</td>
+                        <td>Vuelo</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Carolina Buenrostro</td>
+                        <td>22/10/21</td>
+                        <td>2,560</td>
+                        <td>Vuelo</td>
+                        <td><span class="status apago">En pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jaqueline Melgoza</td>
+                        <td>16/10/21</td>
+                        <td>12,560</td>
+                        <td>Hotel</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Alberto Param</td>
+                        <td>09/10/21</td>
+                        <td>11,360</td>
+                        <td>Hotel</td>
+                        <td><span class="status apago">En pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>Carlos Salcedo</td>
+                        <td>05/10/21</td>
+                        <td>32,560</td>
+                        <td>Paquete</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jesus Diaz</td>
+                        <td>12/09/21</td>
+                        <td>2,560</td>
+                        <td>Vuelo</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Diego Manzo</td>
+                        <td>09/10/21</td>
+                        <td>5,780</td>
+                        <td>Hotel</td>
+                        <td><span class="status pago">Pagado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Opciones de reservaciones -->
+        <div class="ops mini">
+            <div class="minimizar-ops">
+                <ion-icon name="close-outline"></ion-icon>
+            </div>
+            <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
+                <h2>Operaciones de Reservaciones </h2>
+            <div class="opciones">
+                <ul>
+                    <li class="list active">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                            </span>
+                            <span class="text">Agregar</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            <span class="text">Modificar</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </span>
+                            <span class="text">Eliminar</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="search-circle-outline"></ion-icon>
+                            </span>
+                            <span class="text">Buscar</span>
+                        </a>
+                    </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon">
+                                    <ion-icon name="help-circle-outline"></ion-icon>
+                                </span>
+                                <span class="text">Consulta</span>
+                            </a>
+                        </li>
+                    <div class="indicador"></div>
+                </ul>
+            </div>
+            <h2>Tipo de servicio</h2>
+            <div class="opciones2">
+                <ul>
+                    <li class="list2 active">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="airplane-outline"></ion-icon>
+                            </span>
+                            <span class="text">Vuelo</span>
+                        </a>
+                    </li>
+                    <li class="list2">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="bed-outline"></ion-icon>
+                            </span>
+                            <span class="text">Hotel</span>
+                        </a>
+                    </li>
+                    <li class="list2">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="car-sport-outline"></ion-icon>
+                            </span>
+                            <span class="text">Transporte</span>
+                        </a>
+                    </li>
+                    <li class="list2">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="boat-outline"></ion-icon>
+                            </span>
+                            <span class="text">Maritimo</span>
+                        </a>
+                    </li>
+                    <li class="list2">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="camera-outline"></ion-icon>
+                            </span>
+                            <span class="text">Tour</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn">Realizar operacion</a>
+        </div>
+
+       
+    </div>
+
+  
+     <!--IONICONS-->
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+     <!--Boxicons-->
+     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <script src="assets/js/reservas.js"></script>
+</body>
+</html>

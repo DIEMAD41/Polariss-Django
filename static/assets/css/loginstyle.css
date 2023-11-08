@@ -1,0 +1,1023 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,800');
+/* Imagen de fondo */
+:root{
+    --element-size: 495px;/* editado */
+}
+
+html{
+    font-size: 75%;
+}
+
+body{
+    margin: 0;
+}
+
+.main-contain
+{
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+span,h3,h2,h1,p{
+    cursor: default;
+}
+
+.svg-logo{
+    display: none;
+}
+
+/* Articulo display con las secciones */
+.arti,.artd{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: soft-light;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+
+#art-izq{
+    background-image: url(../../Imgs/cliente.jpg);
+    background-position: bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#art-der{
+    background-image: url(../../Imgs/agente.jpg);
+    background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+  #plane{
+    width: 20%;
+    transition: 0.7s ease-in-out;
+  }
+  #rocket{
+    width: 13%;
+    transition: 0.7s ease-in-out;
+  }
+  #plane:hover{
+    transform: rotate(-225deg);
+    transition: 0.7s ease-in-out;
+  }
+  #rocket:hover{
+    transform: rotate(225deg);
+    transition: 0.7s ease-in-out;
+  }
+
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  .deploit{
+    animation: shake 1s cubic-bezier(.36,.07,.19,.97) infinite;
+    transform: translate3d(0, 0, 0);
+  }
+
+
+span{
+    font-weight:300;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+.subt{
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1.8rem;/* editado */
+    margin-top: 4.5px;/* editado */
+}
+.subt-big  {
+    text-transform: uppercase;
+    font-size: 2.7rem;/* editado */
+    font-weight:600;
+    line-height : 2.812rem;/* editado */
+}
+
+.btna{
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.675rem 2.02rem;/* editado */
+    margin: 0.562rem 0;/* editado */
+    font-size: 1.012rem;/* editado */
+    letter-spacing: 0.1125rem;/* editado */
+    border-radius: 30px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #0162c8, #55e7fc);
+    transition: all 0.5s ease;
+    font-weight: 500;
+
+}
+a:nth-child(6)
+{
+    background: linear-gradient(90deg, crimson, #FF7A98);
+}
+a:nth-child(7)
+{
+    background: crimson;
+}
+
+.btna span{
+    position: absolute;
+    background: white;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        width: 0px;
+        height: 0px;
+        opacity: 0.5;
+    }
+    100%{
+        width: 450px;/* editado */
+        height: 450px;/* editado */
+        opacity: 0;
+    }
+
+}
+
+.svg-logo {
+    display: flex;
+    position: absolute;
+    width: 72px;/* editado */
+    padding-top: 10.8px;/* editado */
+    transition: all 0.5s ease-in-out;
+    left: calc(50% - 36px);/* editado */
+    top: calc(50% - 49.5px);/* editado */
+    z-index: 2000;
+    transition: 0.7s ease-in-out;
+  }
+  
+.svg-logo:hover{
+    transform: scale(103%);
+    transition: 0.7s ease-in-out;
+}
+
+.btn-flotante {
+    padding: 0.18rem .72rem 0.18rem .72rem; /* editado */
+    position: fixed;
+    bottom: 93%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0.5rem 0.9375rem rgba(0, 0, 0, 0.1);
+    font-size: .72rem;/* editado */
+    display: flex;
+    gap: 4.5px;/* editado */
+    text-align: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.polariss-name  {
+    display: none;
+}
+
+.btn-flotante:hover {
+    background-color: #0162c8; 
+    box-shadow: 0px 0.9375rem 1.25rem rgba(0, 0, 0, 0.3);
+    transition: 0.5s ease-in-out;
+}
+
+.btn-flotante span{
+    font-weight: normal;
+}
+
+.ghest  {
+    font-size: 1.8rem;/* editado */
+}
+
+.black{
+    display: none;
+}
+
+.bievenida{
+    display: none;
+}
+.login-data
+{
+    display: none;
+}
+
+/* Clases para la animacion */
+/* AGENTE */
+.main-contract{
+    display: flex;
+   flex-direction: column;
+}
+
+.main-contract .a  {
+    font-family: 'Roboto',sans-serif;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    background-color: white;
+    width: 85%;
+    height: 85%;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.main-contract .a .login-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-contract .a .login-data .outline-logo{
+    width: 60%;
+}
+
+.main-contract .a .login-data h3{
+    font-size: 0;
+}
+.main-contract .a .login-data span{
+    color:black;
+    font-weight:normal;
+    font-size: 10.8px;/* editado */
+}
+
+.main-contract .a .login-data .formulario{
+   display: flex;
+   flex-direction: column;
+   width: 90%;
+}
+
+.main-contract .a .login-data .iconos-login{
+    display: flex;
+    gap: 10.8px;/* editado */
+    margin: 4.5px 0 13.5px 0;/* editado */
+    cursor: pointer;
+}
+
+.main-contract .a .login-data .social-media-icons{
+    font-size: 40.5px;/* editado */
+    transition: 0.5s ease-in-out;
+}
+.main-contract .a .login-data .social-media-icons:hover{
+    transform: scale(120%);
+    color: crimson;
+    transition: 0.5s ease-in-out;
+}
+
+.main-contract .a .login-data .forgot{
+    font-family: 'Roboto', sans-serif;
+    padding:9px 0;/* editado */
+    font-size: 11.7px;/* editado */
+    font-weight: 600;
+}
+.main-contract .a .login-data .main-btn{
+    font-family: 'Roboto', sans-serif;
+    padding:9px 0 ;/* editado */
+    font-size: 12.6px;/* editado */
+    color: white;
+    background: linear-gradient(90deg, #FF464C, #FF416C);
+    width: 162px;/* editado */
+    border-radius: 45px;/* editado */
+    border: none;
+    font-weight: bold;
+    margin: auto;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.main-contract .a .login-data .main-btn:hover{
+    box-shadow: 0 0 10px 0 crimson;
+    transition: 0.5s ease-in-out;
+}
+.main-contract .a .bievenida{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, #FF464C, #FF416C);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bievenida img{
+    display: none;
+}
+.bievenida h2{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 19.8px;/* editado */
+    padding-top: 0;
+    margin: 0;
+    font-weight: bold;
+}
+.bievenida span{
+   margin-top: 9px;/* editado */
+   font-size: 13.5px;/* editado */
+}
+
+.main-contract .icon_set{
+    display: none;
+}
+.main-contract .btna{
+    display: none;
+}
+.main-contract .subt{
+    display: none;
+}
+.main-contract .subt-big{
+    display: none;
+}
+.main-contract .artd{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main-contract .arti{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main-contract .black{
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+.main-contract .svg-logo{
+    opacity: 0;
+    width: 0;
+    transition: .5s ease-in-out;
+}
+.main-contract .polariss-name{
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+.hidden-art
+{
+    height: 0;
+}
+
+.iconos-mov img{
+    width: 0px;
+    transition: 0.7s ease-in-out;
+}
+
+.main-contract .a .iconos-mov{
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 18px;/* editado */
+    left: calc(50% - 106.2px);/* editado */
+    top: calc(60%);
+    transition: 0.7s ease-in-out;
+}
+
+.main-contract .a .iconos-mov img{
+    width: 57.6px;/* editado */
+    transition: 0.7s ease-in-out;
+}
+
+/* CLIENTE */
+.main-contractcl{
+    display: flex;
+   flex-direction: column;
+}
+
+.main-contractcl .l {
+    font-family: 'Roboto',sans-serif;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    background-color: white;
+    width: 85%;
+    height: 85%;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.main-contractcl .l .login-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-contractcl .l .login-data .outline-logo{
+    width: 60%;
+}
+
+.main-contractcl .l .login-data h3{
+    font-size: 0;
+}
+.main-contractcl .l .login-data span{
+    color:black;
+    font-weight:normal;
+    font-size: 10.8px;/* editado */
+}
+
+.main-contractcl .l .login-data .formulario{
+   display: flex;
+   flex-direction: column;
+   width: 90%;
+}
+
+.main-contractcl .l .login-data .iconos-login{
+    display: flex;
+    gap: 10.8px;/* editado */
+    margin: 4.5px 0 13.5px 0;/* editado */
+    cursor: pointer;
+}
+
+.main-contractcl .l .login-data .social-media-icons{
+    font-size: 40.5px;/* editado */
+    transition: 0.5s ease-in-out;
+}
+.main-contractcl .l .login-data .social-media-icons:hover{
+    transform: scale(120%);
+    color: #130CB7;
+    transition: 0.5s ease-in-out;
+}
+
+.main-contractcl .l .login-data .forgot{
+    font-family: 'Roboto', sans-serif;
+    padding:9px 0;/* editado */
+    font-size: 11.7px;/* editado */
+    font-weight: 600;
+}
+.main-contractcl .l .login-data .main-btn{
+    font-family: 'Roboto', sans-serif;
+    padding:9px 0 ;/* editado */
+    font-size: 12.6px;/* editado */
+    color: white;
+    background: linear-gradient(70deg, #52E5E7, #130CB7);
+    width: 162px;/* editado */
+    border-radius: 45px;/* editado */
+    border: none;
+    font-weight: bold;
+    margin: auto;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.main-contractcl .l .login-data .main-btn:hover{
+    box-shadow: 0 0 10px 0 #130CB7;
+    transition: 0.5s ease-in-out;
+}
+.main-contractcl .l .bievenida{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(-90deg, #52E5E7, #130CB7);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.l .bievenida img{
+    display: none;
+}
+.l .bievenida h2{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 19.8px;/* editado */
+    padding-top: 0;
+    margin: 0;
+    font-weight: bold;
+}
+.l .bievenida span{
+   margin-top: 9px;/* editado */
+   font-size: 13.5px;/* editado */
+}
+
+.main-contractcl .icon_set{
+    display: none;
+}
+.main-contractcl .btna{
+    display: none;
+}
+.main-contractcl .subt{
+    display: none;
+}
+.main-contractcl .subt-big{
+    display: none;
+}
+.main-contractcl .artd{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main-contractcl .arti{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.main-contractcl .black{
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+.main-contractcl .svg-logo{
+    opacity: 0;
+    width: 0;
+    transition: .5s ease-in-out;
+}
+.main-contractcl  .polariss-name{
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+.hidden-art
+{
+    height: 0;
+}
+
+.l .iconos-mov img{
+    width: 0px;
+    transition: 0.7s ease-in-out;
+}
+
+.main-contractcl .l .iconos-mov{
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 18px;/* editado */
+    left: calc(50% - 106.2px);/* editado */
+    top: calc(60%);
+    transition: 0.7s ease-in-out;
+}
+
+.main-contractcl .l .iconos-mov img{
+    width: 57.6px;/* editado */
+    transition: 0.7s ease-in-out;
+}
+
+
+@media (min-width: 768px) {
+    html{
+        font-size: 90%;
+    }
+
+    #plane{
+        width: 18%;
+        transition: 0.7s ease-in-out;
+      }
+      #rocket{
+        width: 11.7%;
+        transition: 0.7s ease-in-out;
+      }
+      
+
+    .logo-details{
+        display: none;
+    }
+    .main-contain{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Clases para la animacion */
+    /* AGENTE */
+    .main-contract{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .main-contract .a  {
+        font-family: 'Roboto',sans-serif;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        background-color: white;
+        width: 80%;
+        height: 80%;
+        border-radius: 22px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .main-contract .a .login-data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-contract .a .login-data .outline-logo{
+        width: 60%;
+    }
+
+    .main-contract .a .login-data h3{
+        font-size: 2.25rem;/* editado */
+        font-weight: 600;
+        margin: 0;
+        cursor: default;
+    }
+    .main-contract .a .login-data span{
+        color:black;
+        font-weight:normal;
+        font-size: 0.84375rem;/* editado */
+    }
+
+    .main-contract .a .login-data .formulario{
+       display: flex;
+       flex-direction: column;
+       width: 70%;
+    }
+  
+    .main-contract .a .login-data .iconos-login{
+        display: flex;
+        gap: 10.8px;/* editado */
+        margin: 18px 0 18px 0;/* editado */
+        cursor: pointer;
+    }
+
+    .main-contract .a .login-data .social-media-icons{
+        font-size: 2.8125rem;/* editado */
+        transition: 0.5s ease-in-out;
+    }
+    .main-contract .a .login-data .social-media-icons:hover{
+        transform: scale(120%);
+        color: crimson;
+        transition: 0.5s ease-in-out;
+    }
+
+    .main-contract .a .login-data .forgot{
+        font-family: 'Roboto', sans-serif;
+        padding:13.5px 0;/* editado */
+        font-size: 0.84375rem;/* editado */
+        font-weight: 600;
+    }
+    .main-contract .a .login-data .main-btn{
+        font-family: 'Roboto', sans-serif;
+        padding:13.5px 0 ;/* editado */
+        font-size: 1rem;
+        color: white;
+        background: linear-gradient(90deg, #FF464C, #FF416C);
+        width: 11.25rem;/* editado */
+        border-radius: 45px;/* editado */
+        border: none;
+        font-weight: bold;
+        margin: auto;
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .main-contract .a .login-data .main-btn:hover{
+        box-shadow: 0 0 10px 0 crimson;
+        transition: 0.5s ease-in-out;
+    }
+    .main-contract .a .bievenida{
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(90deg, #FF464C, #FF416C);
+        border-top-right-radius: 22px;
+        border-bottom-right-radius: 22px;
+        border-bottom-left-radius: 0px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .bievenida img{
+        display: initial;
+        width: 12.7125rem;/* editado */
+        height: 12.7125rem;/* editado */
+        margin-bottom: 27px;/* editado */
+    }
+    .bievenida h2{
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        font-size: 27px;/* editado */
+        padding-top: 0;
+        margin: 0;
+        font-weight: bold;
+    }
+    .bievenida span{
+       margin-top: 18px;/* editado */
+       font-size: 0.9rem;/* editado */
+    }
+    
+  
+
+    .main-contract .icon_set{
+        display: none;
+    }
+    
+    .main-contract .subt{
+        display: none;
+    }
+    .main-contract .subt-big{
+        display: none;
+    }
+    .main-contract .artd{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .main-contract .arti{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .main-contract .black{
+        display: none;
+    }
+
+    .hidden-art
+    {
+        width: 0;
+        height: 100%;
+    }
+
+    /* CLIENTE */
+    .main-contractcl{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .main-contractcl .l  {
+        font-family: 'Roboto',sans-serif;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+        background-color: white;
+        width: 80%;
+        height: 80%;
+        border-radius: 22px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .main-contractcl .l .login-data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-contractcl .l .login-data .outline-logo{
+        width: 60%;
+    }
+
+    .main-contractcl .l .login-data h3{
+        font-size: 2.25rem;/* editado */
+        font-weight: 600;
+        margin: 0;
+        cursor: default;
+    }
+    .main-contractcl .l .login-data span{
+        color:black;
+        font-weight:normal;
+        font-size: 0.837rem;/* editado */
+    }
+
+    .main-contractcl .l .login-data .formulario{
+       display: flex;
+       flex-direction: column;
+       width: 70%;
+    }
+  
+    .main-contractcl .l .login-data .iconos-login{
+        display: flex;
+        gap: 10.8px;/* editado */
+        margin: 18px 0 18px 0;/* editado */
+        cursor: pointer;
+    }
+
+    .main-contractcl .l .login-data .social-media-icons{
+        font-size: 2.8125rem;/* editado */
+        transition: 0.5s ease-in-out;
+    }
+    .main-contractcl .l .login-data .social-media-icons:hover{
+        transform: scale(120%);
+        transition: 0.5s ease-in-out;
+    }
+
+    .main-contractcl .l .login-data .forgot{
+        font-family: 'Roboto', sans-serif;
+        padding:13.5px 0;/* editado */
+        font-size: 0.84375rem;/* editado */
+        font-weight: 600;
+    }
+    .main-contractcl .l .login-data .main-btn{
+        font-family: 'Roboto', sans-serif;
+        padding:13.5px 0 ;/* editado */
+        font-size: 0.9rem;/* editado */
+        color: white;
+        width: 11.25rem;/* editado */
+        border-radius: 45px;/* editado */
+        border: none;
+        font-weight: bold;
+        margin: auto;
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .main-contractcl .l .login-data .main-btn:hover{
+        transition: 0.5s ease-in-out;
+    }
+    .main-contractcl .l .bievenida{
+        display: flex;
+        flex-direction: column;
+        border-top-right-radius: 22px;
+        border-bottom-right-radius: 22px;
+        border-bottom-left-radius: 0px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .main-contractcl .bievenida img{
+        display: initial;
+        width: 12.7125rem;/* editado */
+        height: 12.7125rem;/* editado */
+        margin-bottom: 27px;/* editado */
+    }
+    .main-contractcl .bievenida h2{
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        font-size: 27px;/* editado */
+        padding-top: 0;
+        margin: 0;
+        font-weight: bold;
+    }
+    .main-contractcl .bievenida span{
+       margin-top: 18px;/* editado */
+       font-size: 0.9rem;/* editado */
+    }
+    
+  
+
+    .main-contractcl .icon_set{
+        display: none;
+    }
+    
+    .main-contractcl .subt{
+        display: none;
+    }
+    .main-contractcl .subt-big{
+        display: none;
+    }
+    .main-contractcl .artd{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .main-contractcl .arti{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .main-contractcl .black{
+        display: none;
+    }
+
+    .hidden-art
+    {
+        width: 0;
+        height: 100%;
+    }
+
+    /* FIN DE ANIMACION */
+
+ 
+
+    .svg-logo {
+        width: 126px;/* editado */
+        left: calc(50% - 63px);/* editado */
+        top: 5.625rem;/* editado */
+      }
+      
+    .svg-logo:hover{
+        transform: scale(103%);
+        transition: 0.7s ease-in-out;
+    }
+
+    .btn-flotante {
+       
+        padding: 0.09rem 0.9rem 0.09rem 0.9rem; /* editado */
+        bottom: .45rem;/* editado */
+        left: calc(50% - 70.02px);/* editado */
+        transition: all .5s ease;
+        box-shadow: 0px 0.5rem 0.9375rem rgba(0, 0, 0, 0.1);
+        font-size: 0.81rem;/* editado */
+        transform: translateX(0);
+    }
+
+    
+    .btn-flotante span{
+        font-weight: normal;
+    }
+    
+    .ghest  {
+        display: initial;
+        font-size: 1.96884rem;/* editado */
+    }
+
+    .polariss-name  {
+        display: initial;
+        position: fixed;
+        top:1.8px;/* editado */
+        left: 50%;
+        width: 14.34375rem;/* editado */
+        transform: translateX(-50%);
+        z-index: 100;
+    }
+
+    .black{
+        display: initial;
+        position: fixed;
+        left: calc(50% - 9.28125rem);/* editado */
+        top: 0;
+        width: 17.775rem;/* editado */
+        height: 5.0625rem; /* editado */
+        z-index: 1;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        background-color: rgba(255, 255, 255, .15);
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.6);
+        transition: all .5s ease;
+        
+    }
+
+    .black:hover{
+        backdrop-filter: blur(1 px);
+        box-shadow: 0px 8px 55px rgba(0, 0, 0, 0.6);
+        transition: all .5s ease;
+    }
+    
+}
+
+@media (max-width: 360px)
+{
+    html{
+        font-size: 62%;
+    }
+
+    .main-contract .a .iconos-mov{
+        display: none;
+    }
+    .main-contractcl .l .iconos-mov{
+        display: none;
+    }
+
+}
+
+@media (min-width: 500px) {
+    .main-contract .a .iconos-mov{
+        display: none;
+    }
+    .main-contractcl .l .iconos-mov{
+        display: none;
+    }
+}
+
+@media (min-width: 910px)
+{
+    html{
+        font-size: 105%;
+    }
+}
+
+
+@media (min-width: 1200px)
+{
+    html{
+        font-size: 115%;
+    }
+
+    .btn-flotante{
+        left: calc(50% - 72.3555px);/* editado */
+    }
+
+    .main-contract .login  {
+        width: 70%;
+    }
+    .main-contractcl .login  {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1300px) {
+    .main-contract .a  {
+        width: 60%;
+    }
+    .main-contractcl .l  {
+        width: 60%;
+    }
+}
+

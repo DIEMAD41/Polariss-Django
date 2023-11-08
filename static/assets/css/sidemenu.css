@@ -1,0 +1,316 @@
+/*Api de fuentes de Google*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+  --nav-width: 67.5px;/* editado */
+  /*===== Colores =====*/
+  --primer-color: #f94144; /*0C5DF4*/
+  --bg-color: whitesmoke/* #12192C */ /* #11101d */; 
+  --sub-color: gray/* #b6cefc */;
+  --f-color: black;
+  --subcolor-text:whitesmoke;
+  /*===== Fuente y tipografia =====*/
+  --body-font: "Poppins", sans-serif;
+  --normal-font-size: 16px;
+  --small-font-size: 14.04px;/* editado */
+  /*===== posicion z =====*/
+  --z-fixed: 100;
+}
+
+html,body{height: 100%; overflow-y:hidden}
+iframe {height:93.1vh; }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/*Estilos del HTML (CSS)*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  padding-left: var(--nav-width);
+  transition: 0.5s;
+}
+h1 {
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+/*Configuracion Lateral*/
+.l-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav-width);
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--f-color);
+  transition: all 0.5s ease-in-out;
+  z-index: var(--z-fixed);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/*Navegacion lateral*/
+.nav {
+  height: 72%;/* editado */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: scroll;
+  margin: 18px 11.7px;/* editado */
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
+}
+
+.logo-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15.84px;/* editado */
+  padding-bottom: 11.7px;/* editado */
+  max-height: 49.5px;/* editado */
+  background-color: var(--bgnav-color);
+  transition: all 0.5s ease-in-out;
+ 
+}
+.logo-details svg {
+  padding: 0;
+  width: 27px;/* editado */
+  fill: white;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.l-navbar .logo-details .logo_name {
+  font-size: 0;
+  font-family: "Arista 2.0 Alternate Light";
+  transition: all 0.5s ease-in-out;
+}
+
+.l-navbar.expander .logo-details
+{
+  max-height: 50.4px;
+  background-color: var(--bg-color);
+  transition: all 0.5s ease-in-out;
+}
+
+.l-navbar.expander .logo-details .polariss-logo {
+  fill: red;
+  width: 31.5px;/* editado */
+  transition: all 0.5s ease-in-out;
+}
+
+.l-navbar.expander .logo-details .logo_name {
+  display: block;
+  padding-bottom: 2.7px;/* editado */
+  letter-spacing: 3.6px;/* editado */
+  font-size: 40.5px;/* editado */
+  -webkit-text-stroke: 0.1px var(--f-color);
+  font-weight: bold;
+  color: var(--f-color);
+  transition: all 0.5s ease-in-out;
+  animation-name: slidein;
+}
+
+.nav__link {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: 12.24px;/* editado */
+  padding: 10.8px;/* editado */
+  color: var(--f-color);
+  border-radius: 0.5rem;
+  margin-bottom: 13.5px;/* editado */
+  transition: 0.3s;
+  cursor: pointer;
+}
+.nav__link:hover {
+  background-color: var(--primer-color);
+}
+.nav__icon {
+  font-size: 23px;/* editado */
+  --ionicon-stroke-width: 35px;
+}
+.nav__name {
+  font-size: var(--small-font-size);
+  padding-left: 4.5px;/* editado */
+}
+
+/*Expandir menu*/
+.expander {
+  width: calc(var(--nav-width) + 133.2px);/* editado */
+}
+
+/*Padding del body cuando se expande el menu*/
+.body-pd {
+  
+}
+
+/*Activar opcion*/
+.active {
+  background-color: var(--primer-color);
+  color: #fff;
+}
+
+/*Colapsar submenu*/
+.collapse {
+  grid-template-columns: 18px/* editado */ max-content 1fr;
+}
+.collapse__link {
+  justify-self: flex-end;
+  transition: 0.5s ease-in-out;
+}
+
+.collapse__menu {
+  display: none;
+  padding: 10.8px 32.4px;/* editado */
+  transition: 0.5s ease-in-out;
+}
+
+.collapse__sublink {
+  color: var(--sub-color);
+  font-size: var(--small-font-size);
+}
+
+.active .collapse__sublink{
+  color: var(--subtext-color);
+}
+
+.collapse__sublink:hover {
+  color: var(--f-color);
+}
+
+/*Mostrar submenu*/
+.showCollapse {
+  display: block;
+  transition: 0.5s ease-in-out;
+}
+
+/*Rotar flecha*/
+.rotate {
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+
+/*Seccion del usuario*/
+.l-navbar.expander .profile-details {
+  width: calc(var(--nav-width) + 133.2px);/* editado */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--primer-color)/* #1d1b31 */;
+  transition: all 1.5s ease-in-out;
+}
+.l-navbar .profile-details {
+  background: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  padding: 9px 0;/* editado */
+}
+
+.l-navbar.expander .profile-details .profile-content {
+  display: flex;
+  align-items: center;
+}
+.l-navbar .profile-details .profile-content {
+  display: flex;
+}
+.l-navbar .profile-details img {
+  padding: 9px;/* editado */
+  height: 46.8px;/* editado */
+  width: 46.8px;/* editado */
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 12.6px 0 10.8px;/* editado */
+  background: var(--primer-color)/* #1d1b31 */;
+  transition: all 0.5s ease-in-out;
+}
+.l-navbar.expander .profile-details img {
+  padding: 0;
+}
+
+.l-navbar.expander .profile-details .profile_name,
+.l-navbar.expander .profile-details .job {
+  color: #fff;
+  font-size: 14.4px;/* editado */
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.l-navbar.expander .profile-details .name-job {
+  min-width: 81.49px;/* editado */
+  min-height: 34.56px;/* editado */
+  max-width: 81.49px;/* editado */
+  max-height: 34.56px;/* editado */
+}
+
+.l-navbar.expander .profile-details i {
+  height: 45px; /* editado */
+  min-width: 45px; /* editado */
+  text-align: center;
+  line-height: 45px; /* editado */
+  color: #fff;
+  font-size: 18px; /* editado */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.l-navbar .profile-details i,
+.l-navbar .profile-details .profile_name,
+.l-navbar .profile-details .job {
+  display: none;
+}
+
+.l-navbar.expander .profile-details i,
+.l-navbar.expander .profile-details .profile_name,
+.l-navbar.expander .profile-details .job {
+  display: block;
+}
+
+.l-navbar.expander .profile-details .job {
+  font-size: 9px;
+}
+
+.frame{
+  width: 100%;
+}
+
+  @media (max-width: 600px) {
+
+  .l-navbar {
+    width: 0;
+    display: none;
+  }
+
+  .frame{
+    position: absolute;
+    left: 0;
+    top: 45px;
+  }
+  iframe {height: 85.424vh; }
+
+  .profile-details{
+    display: none;
+  }
+}

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/clientes.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/tarjeta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+    <title>Reservas</title>
+</head>
+<body>
+    <div class="blur"></div>
+
+    <div class="RegCli hiddenRC">
+        <ion-icon name="close-outline" class="closeRC"></ion-icon>
+        <span class="titulo-regcli">REGISTRAR UN CLIENTE</span>
+        <div class="img-div">
+            <div class="img-borde">
+                <img src="Imgs/art.jpg" alt="Cliente" id="img1">
+            </div>
+            <form name="subida-imagenes" type="POST" enctype="multipart/formdata" class="form-img">
+                <input type="file" name="imagensubida" id="imagensubida" class="input-file dataC" accept="image/png, .jpeg, .jpg, image/gif">
+                <label for="imagensubida"><i class="fas fa-upload input-ico"></i></label>
+            </form>
+            <form action="#" class="form-edad">
+                <label for="dia">FECHA DE NACIMIENTO</label>
+                <div class="fecha-naci">
+                    <div class="Campo fecha">
+                        <input class="input dataC" type="number" name="dia" placeholder="Dia" id="dia">
+                        <span class="sombra-focus"></span>
+                    </div>
+                    <div class="Campo fecha">
+                        <input class="input dataC" type="number" name="mes" placeholder="Mes"  id="mes">
+                        <span class="sombra-focus"></span>
+                    </div>
+                    <div class="Campo fecha">
+                        <input class="input dataC" type="number" name="año" placeholder="Año"  id="año">
+                        <span class="sombra-focus"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
+        <form action="#" class="forma">
+            <span>DATOS DEL CLIENTE</span>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="nombre" placeholder="Nombre">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-user iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="nombre" placeholder="Telefono">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-phone-alt iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="nombre" placeholder="E-Mail">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-envelope iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="nombre" placeholder="Localidad">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+
+            <div class="btn-div">
+                <button class="btn-reg" type="button" onclick="AgregarCliente()">
+                    Registrar
+                </button>
+            </div>
+        </form>
+
+
+        <!-- Seccion Eliminar -->
+        <div class="recientes">
+            <div class="titulo">
+                <h2>Clientes registrados</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Telefono</td>
+                        <td>Saldo</td>
+                        <td>Localidad</td>
+                    </tr>
+                </thead>
+                <tbody class="TableClientes2">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <img src="Imgs/delete.png" alt="Borrar un cliente" class="img-delete">
+    </div>
+
+    <div class="opsM">
+        <div class="dropdown">
+            <input type="text" class="textBox" placeholder="Operacion" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar('Agregar')"><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
+                <div onclick="mostrar('Modificar')"><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+                <div onclick="mostrar('Eliminar')"><ion-icon name="trash-outline"></ion-icon>Eliminar</div>
+                <div onclick="mostrar('Buscar')"><ion-icon name="search-circle-outline"></ion-icon>Buscar</div>
+                <div onclick="mostrar('Consulta')"><ion-icon name="help-circle-outline"></ion-icon>Consulta</div>
+            </div>
+        </div>
+        <div class="dropdown" id="d2">
+            <input type="text" class="textBox" id="tb2" placeholder="Servicio" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar2('Vuelo')"><ion-icon name="airplane-outline"></ion-icon>Vuelo</div>
+                <div onclick="mostrar2('Hotel')"><ion-icon name="bed-outline"></ion-icon>Hotel</div>
+                <div onclick="mostrar2('Transporte')"><ion-icon name="bus-outline"></ion-icon>Terrestre</div>
+                <div onclick="mostrar2('Maritimo')"><ion-icon name="boat-outline"></ion-icon>Maritimo</div>
+                <div onclick="mostrar2('Tour')"><ion-icon name="camera-outline"></ion-icon>Tour</div>
+            </div>
+        </div>
+        <button class="goB">GO</button>
+    </div>
+
+
+    <!-- ventana emergente de perfil clientes -->
+    <div class="card hide">
+        <ion-icon name="close-outline" class="close"></ion-icon>
+        <ion-icon name="ellipsis-horizontal-outline" class="submenuCard"></ion-icon>
+        <div class="submenuC">
+            <div class="opccionesC">
+                <div><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
+                <div><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+            </div>
+        </div>
+        <div class="card-header">
+            <img src="Imgs/us1.jpg" alt="Profile Image" class="profile-img">
+        </div>
+        <div class="card-body">
+            <p class="name">Marisol Sanchez</p>
+            <a href="#" class="mail">marisolsnz@gmail.com</a>
+            <div class="content">
+                <p class="texto"><span class="municipio">Sahuayo</span></p>
+                <ion-icon name="remove-outline"></ion-icon>
+                <p class="texto"><span class="edad">24 años</span></p>
+                <ion-icon name="remove-outline"></ion-icon>
+                <p class="texto"><span class="telefono">3531216500</span></p>
+            </div>
+            <p class="saldo">Saldo: 12,560</p>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="fas fa-phone-alt social-icon"></a>
+            <a href="#" class="far fa-envelope social-icon"></a>
+            <a href="#" class="fab fa-google social-icon"></a>
+            <a href="#" class="fab fa-facebook social-icon"></a>
+        </div>
+
+        <div class="card-footer">
+            <p class="count">CLIENTE POLARISS</p>
+        </div>
+    </div>
+
+    <!-- Ventana emergente de registro de clientes -->
+
+    <div class="reservas">
+        <!-- Lista de reservaciones -->
+        <div class="recientes">
+            <div class="titulo">
+                <h2>Clientes Frecuentes </h2>
+                <a href="#" class="btn">Ver todos</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Telefono</td>
+                        <td>Saldo</td>
+                        <td>Localidad</td>
+                        <td>Edad</td>
+                    </tr>
+                </thead>
+                <tbody class="TableClientes">
+                    <tr>
+                        <td>Diego Manzo</td>
+                        <td>3531215434</td>
+                        <td>12,560</td>
+                        <td>Sahuayo</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Saul Vasquez</td>
+                        <td>0635312134</td>
+                        <td>1,560</td>
+                        <td>Jiquilpan</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>Alberto Torres</td>
+                        <td>043456785</td>
+                        <td>32,560</td>
+                        <td>Sahuayo</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>Juan Dominguez</td>
+                        <td>3534346759</td>
+                        <td>560</td>
+                        <td>Jiquilpan</td>
+                        <td>44</td>
+                    </tr>
+                    <tr>
+                        <td>Sofia Nieto</td>
+                        <td>3531216500</td>
+                        <td>11,560</td>
+                        <td>Jiquilpan</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Carolina Buenrostro</td>
+                        <td>3531124043</td>
+                        <td>2,560</td>
+                        <td>Jiquilpan</td>
+                        <td>33</td>
+                    </tr>
+                    <tr>
+                        <td>Jaqueline Melgoza</td>
+                        <td>3451234342</td>
+                        <td>12,560</td>
+                        <td>Sahuayo</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td>Alberto Param</td>
+                        <td>4567894534</td>
+                        <td>11,360</td>
+                        <td>Jiquilpan</td>
+                        <td>31</td>
+                    </tr>
+                    <tr>
+                        <td>Carlos Salcedo</td>
+                        <td>3531234990</td>
+                        <td>32,560</td>
+                        <td>San Pedro</td>
+                        <td>54</td>
+                    </tr>
+                    <tr>
+                        <td>Jesus Diaz</td>
+                        <td>3534567765</td>
+                        <td>2,560</td>
+                        <td>Sahuayo</td>
+                        <td>34</td>
+                    </tr>
+                    <tr>
+                        <td>Diego Manzo</td>
+                        <td>3534113031</td>
+                        <td>5,780</td>
+                        <td>La Piedad</td>
+                        <td>24</td>
+                    </tr>
+                    <tr>
+                        <td>Alberto Torres</td>
+                        <td>043456785</td>
+                        <td>32,560</td>
+                        <td>Sahuayo</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>Pedro Quiñones</td>
+                        <td>3534657874</td>
+                        <td>2,760</td>
+                        <td>Sahuayo</td>
+                        <td>50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Opciones de reservaciones -->
+        <div class="sidecontent">
+            <div class="ops mini">
+                <div class="minimizar-ops">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
+                <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
+                    <h2>Operaciones de Clientes </h2>
+                <div class="opciones">
+                    <ul>
+                        <li class="list active">
+                            <a href="#">
+                                <span class="icon">
+                                    <ion-icon name="person-add-outline"></ion-icon>
+                                </span>
+                                <span class="text">Agregar</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon">
+                                    <ion-icon name="create-outline"></ion-icon>
+                                </span>
+                                <span class="text">Modificar</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon">
+                                    <ion-icon name="search-circle-outline"></ion-icon>
+                                </span>
+                                <span class="text">Buscar</span>
+                            </a>
+                        </li>
+                            <li class="list">
+                                <a href="#">
+                                    <span class="icon">
+                                        <ion-icon name="help-circle-outline"></ion-icon>
+                                    </span>
+                                    <span class="text">Consulta</span>
+                                </a>
+                            </li>
+                        <div class="indicador"></div>
+                    </ul>
+                </div>
+            </div>
+            <!-- CLIENTES RECIENTES -->
+            <div class="ops-right">
+                <div class="header">
+                    <h2>Clientes Recientes</h2>
+                </div>
+                <table>
+                    <tbody class="clientesRC">
+                        <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us1.jpg"></td>
+                            <td><h4>Marisol</h4>ID: &nbsp<span class="idT">1251301</span>
+                                <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>  
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us2.jpg"></td>
+                            <td><h4>Dario</h4>ID: &nbsp<span class="idT">1251302</span>
+                            <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us3.jpg"></td>
+                            <td><h4>Marcelo</h4>ID: &nbsp<span class="idT">1251303</span>
+                            <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us4.jpg"></td>
+                            <td><h4>Juan</h4>ID: &nbsp<span class="idT">1251304</span>
+                            <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us5.jpeg"></td>
+                            <td><h4>Rosa</h4>ID: &nbsp<span class="idT">1251305</span>
+                            <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us6.jpeg"></td>
+                            <td><h4>Julieta</h4>ID: &nbsp<span class="idT">1251306</span>
+                                <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div></td>
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us7.png"></td>
+                            <td><h4>Simon</h4>ID: &nbsp<span class="idT">1251307</span>
+                            <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us8.jpeg"></td>
+                            <td><h4>Andres</h4>ID: &nbsp<span class="idT">1251308</span>
+                            <div class="iconos">
+                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+                            </td>
+                         </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div> 
+
+     
+    </div>
+
+  
+     <!--IONICONS-->
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+     <!--Boxicons-->
+     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <script src="assets/js/clientes.js"></script>
+</body>
+</html>
