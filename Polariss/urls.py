@@ -24,6 +24,7 @@ from gestion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('gestion.urls')),
+    path('',include('clientes.urls')),
 
 ]
 
