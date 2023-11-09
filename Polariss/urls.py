@@ -24,7 +24,8 @@ from gestion import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('gestion.urls')),
-
+    path('operadoras/',include(('operadoras.urls','operadoras'),namespace='operadoras')),
+    
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
