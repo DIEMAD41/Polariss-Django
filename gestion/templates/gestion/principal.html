@@ -1,17 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href={% static 'assets/css/principal.css' %}>
-    <link rel="stylesheet" type="text/css" href={% static 'assets/css/scrollbar.css' %}>
+{% extends 'base/base.html' %}
 
-
-    <title>Principal</title>
-</head>
-<body>
+{% block content %}
     <div class="estadisticas">
         <div class="est-art">
             <div class="texto-est">
@@ -40,7 +29,7 @@
                 <ion-icon name="chatbubbles-outline"></ion-icon>
             </div>
         </div>
-        
+
         <div class="est-art">
             <div class="texto-est">
                 <span class="num-est">134</span>
@@ -59,7 +48,7 @@
                     <ion-icon name="calendar-number-outline"></ion-icon>
                     <span>RESERVACIONES</span>
                 </div>
-                <div class="content">
+                <div class="content2">
                     <h2>Reservaciones</h2>
                     <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
@@ -74,7 +63,7 @@
                     <ion-icon name="people-circle-outline"></ion-icon>
                     <span>CLIENTES</span>
                 </div>
-                <div class="content">
+                <div class="content2">
                     <h2>Clientes</h2>
                     <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
@@ -89,11 +78,11 @@
                     <ion-icon name="rocket-outline"></ion-icon>
                     <span>AGENTES</span>
                 </div>
-                <div class="content">
+                <div class="content2">
                     <h2>Agentes</h2>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut 
-                        perspiciatis, unde esse obcaecati 
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                        perspiciatis, unde esse obcaecati
                     </p>
                 </div>
             </a>
@@ -104,11 +93,11 @@
                     <ion-icon name="cube-outline"></ion-icon>
                     <span>PAQUETES</span>
                 </div>
-                <div class="content">
+                <div class="content2">
                     <h2>Paquetes</h2>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut 
-                        perspiciatis, unde esse obcaecati 
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                        perspiciatis, unde esse obcaecati
                     </p>
                 </div>
             </a>
@@ -119,11 +108,11 @@
                 <ion-icon name="earth-outline"></ion-icon>
                 <span>OPERADORAS</span>
             </div>
-            <div class="content">
+            <div class="content2">
                 <h2>Operadoras</h2>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut 
-                    perspiciatis, unde esse obcaecati 
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                    perspiciatis, unde esse obcaecati
                 </p>
             </div>
            </a>
@@ -134,11 +123,11 @@
                     <ion-icon name="paper-plane-outline"></ion-icon>
                     <span>PROVEEDORES</span>
                 </div>
-                <div class="content">
+                <div class="content2">
                     <h2>Proveedores</h2>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut 
-                        perspiciatis, unde esse obcaecati 
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                        perspiciatis, unde esse obcaecati
                     </p>
                 </div>
             </a>
@@ -148,11 +137,11 @@
                 <ion-icon name="cellular-outline"></ion-icon>
                 <span>ESTADISTICAS</span>
             </div>
-            <div class="content">
+            <div class="content2">
                 <h2>Estadisticas</h2>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut 
-                    perspiciatis, unde esse obcaecati 
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                    perspiciatis, unde esse obcaecati
                 </p>
             </div>
         </div>
@@ -161,21 +150,14 @@
                 <ion-icon name="construct-outline"></ion-icon>
                 <span>HERRAMIENTAS</span>
             </div>
-            <div class="content">
+            <div class="content2">
                 <h2>Herramientas</h2>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut 
-                    perspiciatis, unde esse obcaecati 
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+                    perspiciatis, unde esse obcaecati
                 </p>
             </div>
         </div>
-        
-    </div>
 
-    <!--IONICONS-->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!--Boxicons-->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-</body>
-</html>
+    </div>
+{% endblock %}

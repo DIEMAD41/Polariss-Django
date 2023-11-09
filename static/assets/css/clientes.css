@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 body{
     font-family: "Poppins", sans-serif;
-    display: flex;
-    justify-content: center;  
-    padding-left: 10px;  
-    box-sizing: border-box;
 }
 
 :root{
@@ -38,6 +34,7 @@ iframe {height:93.1vh; }
     padding-top: 10px;
     display: grid;
     grid-template-columns: 63% 34.2%;
+    padding-left: 10px;
     /* margin-top: 10px; */
 }
 
@@ -220,11 +217,11 @@ iframe {height:93.1vh; }
     font-size: 60px;
 }
 
-.opciones ul li.active a .icon
+.opciones ul li.active2 a .icon
 {
     font-size: 45px;
     transform: translateY(-6px);
-    color: white;   
+    color: white;
 }
 
 .opciones ul li a .text
@@ -239,7 +236,7 @@ iframe {height:93.1vh; }
     transform: scale(0);
 }
 
-.opciones ul li.active a .text
+.opciones ul li.active2 a .text
 {
     transform: scale(1);
     color: white;
@@ -254,35 +251,35 @@ iframe {height:93.1vh; }
     border-radius: 10px;
 }
 
-.opciones ul li:nth-child(1).active ~ .indicador
+.opciones ul li:nth-child(1).active2 ~ .indicador
 {
     background: var(--color);
     box-shadow: 0 15px 25px var(--color2);
     transform: translateX(calc(var(--tamañoOps) * 0));
     transition: 0.5s;
 }
-.opciones ul li:nth-child(2).active ~ .indicador
+.opciones ul li:nth-child(2).active2 ~ .indicador
 {
     background: var(--color);
     box-shadow: 0 15px 25px var(--color2);
     transform: translateX(calc(var(--tamañoOps) * 1));
     transition: 0.5s;
 }
-.opciones ul li:nth-child(3).active ~ .indicador
+.opciones ul li:nth-child(3).active2 ~ .indicador
 {
     background: var(--color);
     box-shadow: 0 15px 25px var(--color2);
     transform: translateX(calc(var(--tamañoOps) * 2));
     transition: 0.5s;
 }
-.opciones ul li:nth-child(4).active ~ .indicador
+.opciones ul li:nth-child(4).active2 ~ .indicador
 {
     background: var(--color);
     box-shadow: 0 15px 25px var(--color2);
     transform: translateX(calc(var(--tamañoOps) * 3));
     transition: 0.5s;
 }
-.opciones ul li:nth-child(5).active ~ .indicador
+.opciones ul li:nth-child(5).active2 ~ .indicador
 {
     background: var(--color);
     box-shadow: 0 15px 25px var(--color2);
@@ -313,7 +310,7 @@ iframe {height:93.1vh; }
     border-radius: 20px;
     z-index: 1;
 }
-.opciones2 ul li.active
+.opciones2 ul li.active2
 {
     background: var(--color);
     box-shadow: 0 15px 25px var(--color2);
@@ -339,11 +336,11 @@ iframe {height:93.1vh; }
     font-size: 100px;
 }
 
-.opciones2 ul li.active a .icon
+.opciones2 ul li.active2 a .icon
 {
     font-size: 80px;
     transform: translateY(10px);
-    color: white;   
+    color: white;
 }
 
 .opciones2 ul li a .text
@@ -359,7 +356,7 @@ iframe {height:93.1vh; }
     color: white;
 }
 
-.opciones2 ul li.active a .text
+.opciones2 ul li.active2 a .text
 {
     transform: scale(1);
 }
@@ -507,8 +504,8 @@ iframe {height:93.1vh; }
     position: absolute;
     background-color: var(--white);
     top: calc(50% - 92%/2);
-    left: calc(50% - 1163px/2);
-    width: 1163px;
+    left: calc(50% - 1263px/2);
+    width: 1263px;
     height: 92%;
     z-index: 1000;
     border-radius: 10px;
@@ -724,7 +721,7 @@ iframe {height:93.1vh; }
     transform: scale(1.01);
     transition: all 0.4s;
   }
-  
+
   @keyframes ani-sombra {
     to {
       box-shadow: 0px 0px 60px 25px;
@@ -741,10 +738,16 @@ iframe {height:93.1vh; }
       display: none;
   }
 
+.removeC.hide{
+    display: none;
+}
+.addC.hide{
+    display: none;
+}
 
   /* Diseño de tablas para eliminar */
         .RegCli.eliminar{
-            
+
         }
 
         .recientes{
@@ -807,7 +810,7 @@ iframe {height:93.1vh; }
         {
             text-align: center;
         }
-        
+
         .img-delete{
             display: flex;
             margin-bottom: 70px;
@@ -815,11 +818,11 @@ iframe {height:93.1vh; }
         .img-delete.hide{
          display: none;
         }
-        
+
 
 @media (max-width: 1312px) {
     body{
-        padding-left: 0px; 
+        padding-left: 0px;
     }
 
     .btn-expand  {
@@ -911,7 +914,7 @@ iframe {height:93.1vh; }
 /* Aqui voy */
 /* Resize del ops */
 @media (max-width: 842px) {
-   
+
     .opciones2 ul li
 {
     width: 90px;
@@ -924,7 +927,7 @@ iframe {height:93.1vh; }
     font-size: 80px;
 }
 
-.opciones2 ul li.active a .icon
+.opciones2 ul li.active2 a .icon
 {
     font-size: 60px;
 }
@@ -999,7 +1002,7 @@ iframe {height:93.1vh; }
         font-size: 30px;
         transition: all .5s ease-in-out;
     }
-    .dropdown.active .icon{
+    .dropdown.active2 .icon{
         transform: rotate(180deg);
         transition: all .5s ease-in-out;
     }
@@ -1037,7 +1040,7 @@ iframe {height:93.1vh; }
         z-index: 1000;
         transition: .5s ease-in-out;
     }
-    .dropdown.active .opcciones
+    .dropdown.active2 .opcciones
     {
         height: 252px;
         transition: .5s ease-in-out;

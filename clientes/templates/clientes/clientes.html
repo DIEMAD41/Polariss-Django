@@ -1,24 +1,9 @@
+{% extends 'base/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/clientes.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/scrollbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/tarjeta.css' %}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    
-    <title>Reservas</title>
-</head>
-<body>
+{% block content %}
     <div class="blur"></div>
-
     <div class="RegCli hiddenRC">
         <ion-icon name="close-outline" class="closeRC"></ion-icon>
         <span class="titulo-regcli">REGISTRAR UN CLIENTE</span>
@@ -49,6 +34,7 @@
             </form>
         </div>
         <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
+
         <form action="{% url 'agregar_cliente' %}" method="post" class="forma">
             {% csrf_token %}
             <span>DATOS DEL CLIENTE</span>
@@ -84,7 +70,7 @@
             </div>
 
             <div class="btn-div">
-                <button class="btn-reg" type="submit">
+                <button class="btn-reg btn-modificar" type="submit">
                     Registrar
                 </button>
             </div>
@@ -102,12 +88,28 @@
                         <td>ID</td>
                         <td>Nombre</td>
                         <td>Telefono</td>
-                        <td>Saldo</td>
-                        <td>Localidad</td>
+                        <td>Usuario</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes2">
-                    
+                        {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.idcliente }}</td>
+                            <td>{{ cliente.nombrec }}</td>
+                            <td>{{ cliente.telefenoc }}</td>
+                            <td>{{ cliente.usuarioc }}</td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-cliente-id="{{ cliente.idcliente }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-cliente-id="{{ cliente.idcliente }}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -158,7 +160,7 @@
         <div class="card-body">
             <p class="name">Marisol Sanchez</p>
             <a href="#" class="mail">marisolsnz@gmail.com</a>
-            <div class="content">
+            <div class="content2">
                 <p class="texto"><span class="municipio">Sahuayo</span></p>
                 <ion-icon name="remove-outline"></ion-icon>
                 <p class="texto"><span class="edad">24 años</span></p>
@@ -238,7 +240,7 @@
                     <h2>Operaciones de Clientes </h2>
                 <div class="opciones">
                     <ul>
-                        <li class="list active">
+                        <li class="list active2">
                             <a href="#">
                                 <span class="icon">
                                     <ion-icon name="person-add-outline"></ion-icon>
@@ -290,17 +292,17 @@
                 <table>
                     <tbody class="clientesRC">
                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
                             <td><h4>Marisol</h4>ID: &nbsp<span class="idT">1251301</span>
                                 <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
                                     <ion-icon name="mail-outline"></ion-icon>
                                     <ion-icon name="call-outline"></ion-icon>
                                 </div>
-                            </td>  
+                            </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us2.jpg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us2.jpg' %}"></div></td>
                             <td><h4>Dario</h4>ID: &nbsp<span class="idT">1251302</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -310,7 +312,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us3.jpg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us3.jpg' %}"></div></td>
                             <td><h4>Marcelo</h4>ID: &nbsp<span class="idT">1251303</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -320,7 +322,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us4.jpg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us4.jpg' %}"></div></td>
                             <td><h4>Juan</h4>ID: &nbsp<span class="idT">1251304</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -330,7 +332,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us5.jpeg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us5.jpeg' %}"></div></td>
                             <td><h4>Rosa</h4>ID: &nbsp<span class="idT">1251305</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -340,7 +342,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us6.jpeg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us6.jpeg' %}"></div></td>
                             <td><h4>Julieta</h4>ID: &nbsp<span class="idT">1251306</span>
                                 <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -349,7 +351,7 @@
                                 </div></td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us7.png' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us7.png' %}"></div></td>
                             <td><h4>Simon</h4>ID: &nbsp<span class="idT">1251307</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -359,7 +361,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></div></td>
                             <td><h4>Andres</h4>ID: &nbsp<span class="idT">1251308</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -372,17 +374,117 @@
                 </table>
                 </div>
             </div>
-        </div> 
+        </div>
 
-     
-    </div>
+    <form action="{% url 'eliminar_cliente' %}" method="post" id="eliminarClienteForm">
+            {% csrf_token %}
+            <input type="hidden" name="cliente_id" id="clienteIdInput">
+        </form>
 
-  
-     <!--IONICONS-->
-     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-     <!--Boxicons-->
-     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <script src="{% static 'assets/js/clientes.js' %}"></script>
-</body>
-</html>
+{% endblock %}
+
+{% block java %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.forma');
+    const nombreInput = form.querySelector('[name="nombrec"]');
+    const telefonoInput = form.querySelector('[name="telefenoc"]');
+    const usuarioInput = form.querySelector('[name="usuarioc"]');
+    const passwordInput = form.querySelector('[name="passwordc"]');
+    const edadInput = form.querySelector('[name="edadc"]');
+    const localidadInput = form.querySelector('[name="localidad"]');
+    let clienteSeleccionadoId = null;
+
+    const editButtons = document.querySelectorAll('.addC');
+    editButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            clienteSeleccionadoId = button.getAttribute('data-cliente-id');
+
+            // Hacer una solicitud AJAX a la vista obtener_datos_cliente
+            fetch(`/obtener_datos_cliente/${clienteSeleccionadoId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    // Llenar los campos del formulario con los datos obtenidos
+                    nombreInput.value = data.nombrec;
+                    telefonoInput.value = data.telefenoc;
+                    usuarioInput.value = data.usuarioc;
+                    passwordInput.value = data.passwordc;
+                    edadInput.value = data.edadc;
+                    localidadInput.value = data.localidad;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+
+    const modificarButton = document.querySelector('.btn-modificar');
+    modificarButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        // Verificar si se ha seleccionado un cliente
+        if (clienteSeleccionadoId) {
+            // Crear un objeto con los datos del formulario
+            const data = {
+                'nombrec': nombreInput.value,
+                'telefenoc': telefonoInput.value,
+                'usuarioc': usuarioInput.value,
+                'passwordc': passwordInput.value,
+                'edadc': edadInput.value,
+                'localidad': localidadInput.value,
+            };
+
+            // Hacer una solicitud AJAX para modificar el cliente
+            fetch(`/modificar_cliente/${clienteSeleccionadoId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
+                    console.log(data);
+                    window.location.reload();
+                })
+                .catch(error => console.error('Error:', error));
+        } else {
+            console.error('No se ha seleccionado un cliente para modificar.');
+        }
+    });
+
+
+   const removeButtons = document.querySelectorAll('.removeC');
+
+    removeButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const clienteId = button.getAttribute('data-cliente-id');
+
+            // Mostrar la confirmación con SweetAlert
+            Swal.fire({
+                title: 'Polariss: Agencia de Viajes',
+                text: 'Esta acción no se puede deshacer',
+                icon: 'question',
+                showCancelButton: true,
+                cancelButtonText: 'No, Cancelar',
+                confirmButtonText: 'Sí, Eliminar',
+                reverseButtons: true,
+                confirmButtonColor: '#E74A3B'
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    // Configurar el valor del campo de entrada del formulario
+                    clienteIdInput.value = clienteId;
+
+                    // Enviar el formulario para eliminar el cliente
+                    eliminarClienteForm.submit();
+                }
+            });
+        });
+    });
+
+});
+</script>
+{% endblock %}
+

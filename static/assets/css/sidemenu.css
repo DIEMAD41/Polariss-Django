@@ -40,6 +40,8 @@ body {
   padding-left: var(--nav-width);
   transition: 0.5s;
 }
+
+
 h1 {
   margin: 0;
 }

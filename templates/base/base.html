@@ -6,6 +6,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Estilos para principal -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/principal.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/scrollbar.css' %}">
+
+    <!-- Estilos para clientes -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/tarjeta.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/clientes.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <!-- Estilos para base -->
     <link rel="stylesheet" type="text/css" href={% static 'assets/css/sidemenu.css' %}>
     <link rel="stylesheet" type="text/css" href={% static 'Fonts/fuentes.css' %}>
     <link rel="stylesheet" type="text/css" href={% static 'assets/css/topmenu.css' %}>
@@ -44,8 +55,8 @@
                 </div>
                 <span>Whatsapp</span>
               </div>
-          </div>    
-          
+          </div>
+
           <div class="logo-details movil2">
             <svg class="polariss-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176.22 151.71">
               <title>Recurso 1</title>
@@ -55,7 +66,7 @@
               </g></g>
             </svg>
           </div>
-    </nav> 
+    </nav>
 
     <div class="l-navbar" id="navbar">
       <div class="logo-details">
@@ -69,7 +80,7 @@
         </svg>
       </div>
     <nav class="nav">
-        
+
           <div class="nav__list">
             <a href="{% url 'dashboard' %}" class="nav__link active" target="iframe" >
               <ion-icon name="planet-outline" class="nav__icon"></ion-icon>
@@ -126,15 +137,15 @@
               <span class="nav__name">Configuracion</span>
             </a>
           </div>
-        
-      
+
+
 
             <!-- <a href="#" class="nav__link">
               <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
               <span class="nav__name">Cerrar Sesion</span>
             </a> -->
 
-      
+
         <div class="profile-details">
           <div class="profile-content">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2FZpmm1vvLCTYC3Wh7rbcwxB-Jmy5nUNTSw&usqp=CAU" alt="profileImg">
@@ -148,8 +159,10 @@
     </nav>
     </div>
 
-    <iframe src="{% url 'dashboard' %}" name="iframe" frameborder="0" id="principalF" scrolling="yes" class="frame"></iframe>
-    <embed src="{% url 'dashboard' %}" name="iframe" frameborder="0" id="principalF" scrolling="yes" class="frame">
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
     <div class="movil-bar">
         <a href="#" class="nav__link movil active">
           <ion-icon name="planet-outline" class="nav__icon"></ion-icon>
@@ -170,7 +183,10 @@
           <ion-icon name="ribbon-outline" class="nav__icon"></ion-icon>
     </div>
 
-    
+
+
+    <!--Scripts para clientes-->
+    <script src="{% static 'assets/js/clientes.js' %}"></script>
 
 
     <!--IONICONS-->
@@ -190,5 +206,23 @@
     //alert(document.getElementById('embed1').src);}
   }
     </script>
+
+        <!-- Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                  title: "Bien hecho!",
+                  text: "{{ m }}",
+                  icon: "success"
+                });
+            </script>
+        {% endfor %}
+    {% endif %}
+
+    {% block java %}
+
+    {% endblock %}
   </body>
 </html>

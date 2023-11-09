@@ -32,8 +32,8 @@ function cargarEventListeners() {
 let list=document.querySelectorAll(".list");
 function ActivarClase(){
     list.forEach((item) =>
-        item.classList.remove("active"));
-        this.classList.add('active');
+        item.classList.remove("active2"));
+        this.classList.add('active2');
 }
 list.forEach((item) =>
 item.addEventListener('mouseover', ActivarClase));
@@ -158,6 +158,15 @@ openRC[2].addEventListener('click',() => {
     ventanaRC.classList.add('eliminar')
     profiles.classList.add('show')
 
+        var elementos = document.querySelectorAll('.addC');
+    elementos.forEach(function(elemento) {
+        elemento.classList.add('hide');
+    });
+        var elementos = document.querySelectorAll('.removeC');
+    elementos.forEach(function(elemento) {
+        elemento.classList.remove('hide');
+    });
+
     RellenarTabla2()
 
     let clienteT= document.querySelectorAll('.cliente-select')
@@ -185,6 +194,8 @@ openRC[2].addEventListener('click',() => {
     });
 })
 
+
+/*
 function RellenarTabla2(){
     let table=document.querySelector('.TableClientes2')
     while (table.firstChild) {
@@ -203,12 +214,24 @@ function RellenarTabla2(){
         `)
     }); 
 }
+*/
 
 openRC[1].addEventListener('click',() => {
     document.querySelector('.titulo-regcli').textContent = "Agregar Cliente"
     document.querySelector('.forma').classList.remove('hide')
     document.querySelector('.img-delete').classList.add('hide')
     document.querySelector('.img-div').classList.add('hide')
+
+    var elementos = document.querySelectorAll('.removeC');
+    elementos.forEach(function(elemento) {
+        elemento.classList.add('hide');
+    });
+        var elementos = document.querySelectorAll('.addC');
+    elementos.forEach(function(elemento) {
+        elemento.classList.remove('hide');
+    });
+
+
 
     document.querySelector('.btn-reg').textContent="MODIFICAR"
      
@@ -485,7 +508,7 @@ function AbrirPerfilCliente()
     });
 }
   
-
+/*
 //Mostrar todo en clientes frecuentes
 let ban=0
 const btnVerTodo=document.querySelector('.btn')
@@ -497,7 +520,7 @@ btnVerTodo.addEventListener('click', () =>
     else
         btnVerTodo.innerHTML="Ocultar"
 })
-
+*/
 
 function MostrarTodo()
 {

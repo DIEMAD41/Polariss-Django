@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-r2*m#z6k%41_vf-j#m)bl)=t@xvro*6q-sxwc2bdd6#)s-27%q
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#Activar el sistema de mensajeria de django entre ventanas
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Application definition
 
