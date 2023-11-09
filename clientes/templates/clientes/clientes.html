@@ -49,31 +49,42 @@
             </form>
         </div>
         <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
-        <form action="#" class="forma">
+        <form action="{% url 'agregar_cliente' %}" method="post" class="forma">
+            {% csrf_token %}
             <span>DATOS DEL CLIENTE</span>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombre" placeholder="Nombre">
+                <input class="input dataC" type="text" name="nombrec" placeholder="Nombre">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-user iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombre" placeholder="Telefono">
+                <input class="input dataC" type="text" name="telefenoc" placeholder="Teléfono">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-phone-alt iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombre" placeholder="E-Mail">
+                <input class="input dataC" type="text" name="usuarioc" placeholder="Usuario">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-envelope iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombre" placeholder="Localidad">
+                <input class="input dataC" type="password" name="passwordc" placeholder="Contraseña">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="number" name="edadc" placeholder="Edad">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="localidad" placeholder="Localidad">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-globe-americas iconoRG"></i>
             </div>
 
             <div class="btn-div">
-                <button class="btn-reg" type="button" onclick="AgregarCliente()">
+                <button class="btn-reg" type="submit">
                     Registrar
                 </button>
             </div>

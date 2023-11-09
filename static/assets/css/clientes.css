@@ -43,14 +43,12 @@ iframe {height:93.1vh; }
 
 .reservas .recientes{
     position: relative;
-    display: grid;
-    background-color: red;
+    display: inline;
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     max-height: 720px;
     overflow: scroll;
-    align-items: start;
 
 }
 .reservas .recientes::-webkit-scrollbar {
@@ -81,7 +79,7 @@ iframe {height:93.1vh; }
 .reservas table{
     border-collapse: collapse;
     margin-top: 10px;
-    align-items: start;
+    width: 100%;
 }
 
 .reservas table thead td{

@@ -5,5 +5,9 @@
 5.Vamos a admin de nuestra aplicacion importamos los modelos from .models import Cliente y los registras admin.site.register(Cliente)
 6.Creamos la view que retorne el obj de la BD
 7. En url.py de nuestra app agregamos nuestra view  path('categorias/', views.listar_categoria, name='categoria_list')
-8. Creamos el namespace en urls.py de nuestra root     path('',include('clientes.urls')),path('clientes/',include(('clientes.urls','clientes'),namespace='clientes')),
-9. 
+8. Creamos el namespace en urls.py de nuestra root  path('',include('clientes.urls')),path('clientes/',include(('clientes.urls','clientes'),namespace='clientes')),
+9. Editamos la template de la aplicacion para que muestre el listado
+
+Agregar
+1.Creamos forms.py en la app y agregamos nuestro form
+2.Creamos la vista agregar
