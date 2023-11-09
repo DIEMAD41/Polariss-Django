@@ -3,6 +3,7 @@ from clientes.models import Cliente
 
 # Create your views here.
 def clientes(request):
+    clientes = Cliente.objects.all()
     data = {
         'clientes': clientes
     }
