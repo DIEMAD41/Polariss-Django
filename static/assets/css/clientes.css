@@ -44,12 +44,14 @@ iframe {height:93.1vh; }
 .reservas .recientes{
     position: relative;
     display: grid;
-    background-color: var(--white);
+    background-color: red;
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     max-height: 720px;
     overflow: scroll;
+    align-items: start;
+
 }
 .reservas .recientes::-webkit-scrollbar {
     display: none;
@@ -79,6 +81,7 @@ iframe {height:93.1vh; }
 .reservas table{
     border-collapse: collapse;
     margin-top: 10px;
+    align-items: start;
 }
 
 .reservas table thead td{
@@ -251,7 +254,6 @@ iframe {height:93.1vh; }
     width: var(--tamañoOps);
     height: var(--tamañoOps);
     border-radius: 10px;
-    transition: 0.5px;
 }
 
 .opciones ul li:nth-child(1).active ~ .indicador
