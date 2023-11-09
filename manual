@@ -1,0 +1,9 @@
+1. Crear el modelo en el models-py de la aplicacion
+2. Crear las migraciones con python manage.py makemigrations y python manage.py migrate
+3. Puede probar el servidor de sqlite descargando la extension en visual ctrl+P > sqlite opendatabase
+4. Creamos un superuser para entrar a admin con: python manage.py createsuperuser
+5.Vamos a admin de nuestra aplicacion importamos los modelos from .models import Cliente y los registras admin.site.register(Cliente)
+6.Creamos la view que retorne el obj de la BD
+7. En url.py de nuestra app agregamos nuestra view  path('categorias/', views.listar_categoria, name='categoria_list')
+8. Creamos el namespace en urls.py de nuestra root     path('',include('clientes.urls')),path('clientes/',include(('clientes.urls','clientes'),namespace='clientes')),
+9. 

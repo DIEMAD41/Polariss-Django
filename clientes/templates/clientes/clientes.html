@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
         <span class="titulo-regcli">REGISTRAR UN CLIENTE</span>
         <div class="img-div">
             <div class="img-borde">
-                <img src="Imgs/art.jpg" alt="Cliente" id="img1">
+                <img src="{% static 'Imgs/art.jpg' %}" alt="Cliente" id="img1">
             </div>
             <form name="subida-imagenes" type="POST" enctype="multipart/formdata" class="form-img">
                 <input type="file" name="imagensubida" id="imagensubida" class="input-file dataC" accept="image/png, .jpeg, .jpg, image/gif">
@@ -100,7 +101,7 @@
             </table>
         </div>
 
-        <img src="Imgs/delete.png" alt="Borrar un cliente" class="img-delete">
+        <img src="{% static 'Imgs/delete.png' %}" alt="Borrar un cliente" class="img-delete">
     </div>
 
     <div class="opsM">
@@ -141,7 +142,7 @@
             </div>
         </div>
         <div class="card-header">
-            <img src="Imgs/us1.jpg" alt="Profile Image" class="profile-img">
+            <img src="{% static 'Imgs/us1.jpg' %}" alt="Profile Image" class="profile-img">
         </div>
         <div class="card-body">
             <p class="name">Marisol Sanchez</p>
@@ -180,105 +181,38 @@
             <table>
                 <thead>
                     <tr>
+                        <td>ID</td>
                         <td>Nombre</td>
                         <td>Telefono</td>
-                        <td>Saldo</td>
-                        <td>Localidad</td>
+                        <td>Usuario</td>
+                        <td>Contraseña</td>
                         <td>Edad</td>
+                        <td>Localidad</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes">
-                    <tr>
-                        <td>Diego Manzo</td>
-                        <td>3531215434</td>
-                        <td>12,560</td>
-                        <td>Sahuayo</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>Saul Vasquez</td>
-                        <td>0635312134</td>
-                        <td>1,560</td>
-                        <td>Jiquilpan</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>Alberto Torres</td>
-                        <td>043456785</td>
-                        <td>32,560</td>
-                        <td>Sahuayo</td>
-                        <td>35</td>
-                    </tr>
-                    <tr>
-                        <td>Juan Dominguez</td>
-                        <td>3534346759</td>
-                        <td>560</td>
-                        <td>Jiquilpan</td>
-                        <td>44</td>
-                    </tr>
-                    <tr>
-                        <td>Sofia Nieto</td>
-                        <td>3531216500</td>
-                        <td>11,560</td>
-                        <td>Jiquilpan</td>
-                        <td>20</td>
-                    </tr>
-                    <tr>
-                        <td>Carolina Buenrostro</td>
-                        <td>3531124043</td>
-                        <td>2,560</td>
-                        <td>Jiquilpan</td>
-                        <td>33</td>
-                    </tr>
-                    <tr>
-                        <td>Jaqueline Melgoza</td>
-                        <td>3451234342</td>
-                        <td>12,560</td>
-                        <td>Sahuayo</td>
-                        <td>22</td>
-                    </tr>
-                    <tr>
-                        <td>Alberto Param</td>
-                        <td>4567894534</td>
-                        <td>11,360</td>
-                        <td>Jiquilpan</td>
-                        <td>31</td>
-                    </tr>
-                    <tr>
-                        <td>Carlos Salcedo</td>
-                        <td>3531234990</td>
-                        <td>32,560</td>
-                        <td>San Pedro</td>
-                        <td>54</td>
-                    </tr>
-                    <tr>
-                        <td>Jesus Diaz</td>
-                        <td>3534567765</td>
-                        <td>2,560</td>
-                        <td>Sahuayo</td>
-                        <td>34</td>
-                    </tr>
-                    <tr>
-                        <td>Diego Manzo</td>
-                        <td>3534113031</td>
-                        <td>5,780</td>
-                        <td>La Piedad</td>
-                        <td>24</td>
-                    </tr>
-                    <tr>
-                        <td>Alberto Torres</td>
-                        <td>043456785</td>
-                        <td>32,560</td>
-                        <td>Sahuayo</td>
-                        <td>35</td>
-                    </tr>
-                    <tr>
-                        <td>Pedro Quiñones</td>
-                        <td>3534657874</td>
-                        <td>2,760</td>
-                        <td>Sahuayo</td>
-                        <td>50</td>
-                    </tr>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.idcliente }}</td>
+                            <td>{{ cliente.nombrec }}</td>
+                            <td>{{ cliente.telefenoc }}</td>
+                            <td>{{ cliente.usuarioc }}</td>
+                            <td>{{ cliente.passwordc }}</td>
+                            <td>{{ cliente.edadc }}</td>
+                            <td>{{ cliente.localidad }}</td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-circle btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -345,7 +279,7 @@
                 <table>
                     <tbody class="clientesRC">
                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us1.jpg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></td>
                             <td><h4>Marisol</h4>ID: &nbsp<span class="idT">1251301</span>
                                 <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -355,7 +289,7 @@
                             </td>  
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us2.jpg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us2.jpg' %}"></td>
                             <td><h4>Dario</h4>ID: &nbsp<span class="idT">1251302</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -365,7 +299,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us3.jpg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us3.jpg' %}"></td>
                             <td><h4>Marcelo</h4>ID: &nbsp<span class="idT">1251303</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -375,7 +309,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us4.jpg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us4.jpg' %}"></td>
                             <td><h4>Juan</h4>ID: &nbsp<span class="idT">1251304</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -385,7 +319,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us5.jpeg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us5.jpeg' %}"></td>
                             <td><h4>Rosa</h4>ID: &nbsp<span class="idT">1251305</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -395,7 +329,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us6.jpeg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us6.jpeg' %}"></td>
                             <td><h4>Julieta</h4>ID: &nbsp<span class="idT">1251306</span>
                                 <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -404,7 +338,7 @@
                                 </div></td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us7.png"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us7.png' %}"></td>
                             <td><h4>Simon</h4>ID: &nbsp<span class="idT">1251307</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -414,7 +348,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="Imgs/us8.jpeg"></td>
+                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></td>
                             <td><h4>Andres</h4>ID: &nbsp<span class="idT">1251308</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
