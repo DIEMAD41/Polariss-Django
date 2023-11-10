@@ -25,8 +25,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('gestion.urls')),
     path('',include('clientes.urls')),
+    path('',include('proveedores.urls')),
+    path('',include('operadoras.urls')),
+    path('',include('agentes.urls')),
     path('clientes/',include(('clientes.urls','clientes'),namespace='clientes')),
-
+    path('agentes/', include(('agentes.urls', 'agentes'), namespace='agentes')),
+    path('proveedores/',include(('proveedores.urls','proveedores'),namespace='proveedores')),
+    path('operadoras/',include(('operadoras.urls','operadoras'),namespace='operadoras')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

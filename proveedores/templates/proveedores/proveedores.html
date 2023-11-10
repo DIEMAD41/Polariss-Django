@@ -1,12 +1,34 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
+{% block style %}
+    <style>
+        :root{
+    --white: white;
+    --color: #36B47F;
+    --color2: #36B47F99;
+    --black1: #24252A;
+    --tamañoOps: 90px;
+    }
+            table {
+        width: 100%;
+        text-align: center; /* Centrar el texto dentro de las celdas de la tabla */
+    }
+            .tablaRecientes{
+                text-align: left;
+            }
+
+    th, td {
+        padding: 10px; /* Añade un poco de espacio alrededor del contenido de las celdas */
+    }
+    </style>
+{% endblock %}
 
 {% block content %}
     <div class="blur"></div>
     <div class="RegCli hiddenRC">
         <ion-icon name="close-outline" class="closeRC"></ion-icon>
-        <span class="titulo-regcli">REGISTRAR UN CLIENTE</span>
+        <span class="titulo-regcli">REGISTRAR UN PROVEEDOR</span>
         <div class="img-div">
             <div class="img-borde">
                 <img src="{% static 'Imgs/art.jpg' %}" alt="Cliente" id="img1">
@@ -35,47 +57,38 @@
         </div>
         <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
 
-        <form action="{% url 'agregar_cliente' %}" method="post" class="forma">
+
+        <form action="{% url 'agregar_proveedor' %}" method="post" class="forma">
             {% csrf_token %}
-            <span>DATOS DEL CLIENTE</span>
+            <span>DATOS DEL PROVEEDOR</span>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombrec" placeholder="Nombre">
+                <input class="input dataC" type="text" name="nombreprov" placeholder="Nombre">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-user iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="telefenoc" placeholder="Teléfono">
+                <input class="input dataC" type="text" name="telefenoprov" placeholder="Teléfono">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-phone-alt iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="usuarioc" placeholder="Usuario">
+                <input class="input dataC" type="text" name="correoprov" placeholder="Correo">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-envelope iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="password" name="passwordc" placeholder="Contraseña">
-                <span class="sombra-focus"></span>
-                <i class="fas fa-globe-americas iconoRG"></i>
-            </div>
-            <div class="Campo">
-                <input class="input dataC" type="number" name="edadc" placeholder="Edad">
-                <span class="sombra-focus"></span>
-                <i class="fas fa-globe-americas iconoRG"></i>
-            </div>
-            <div class="Campo">
-                <input class="input dataC" type="text" name="localidad" placeholder="Localidad">
+                <input class="input dataC" type="text" name="nombreop" placeholder="Operadora">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-globe-americas iconoRG"></i>
             </div>
 
             <div class="btn-div">
                 <button class="btn-reg btn-modificar" type="submit">
-                    Editar
+                    Modificar
                 </button>
             </div>
 
-             <div class="btn-div">
+            <div class="btn-div">
                 <button class="btn-reg btn-agregar" type="submit">
                      Registrar
                 </button>
@@ -83,10 +96,12 @@
         </form>
 
 
+
+
         <!-- Seccion Eliminar -->
         <div class="recientes">
             <div class="titulo">
-                <h2>Clientes registrados</h2>
+                <h2>Proveedores registrados</h2>
             </div>
             <table>
                 <thead>
@@ -94,23 +109,23 @@
                         <td>ID</td>
                         <td>Nombre</td>
                         <td>Telefono</td>
-                        <td>Usuario</td>
+                        <td>Operadora</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes2">
-                        {% for cliente in clientes %}
+                    {% for proveedor in proveedores %}
                         <tr>
-                            <td>{{ cliente.idcliente }}</td>
-                            <td>{{ cliente.nombrec }}</td>
-                            <td>{{ cliente.telefenoc }}</td>
-                            <td>{{ cliente.usuarioc }}</td>
+                            <td>{{ proveedor.idprov }}</td>
+                            <td>{{ proveedor.nombreprov }}</td>
+                            <td>{{ proveedor.telefenoprov }}</td>
+                            <td>{{ proveedor.nombreop }}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-cliente-id="{{ cliente.idcliente }}">
+                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-proveedor-id="{{ proveedor.idprov }}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-cliente-id="{{ cliente.idcliente }}">
+                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-proveedor-id="{{ proveedor.idprov }}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
@@ -194,31 +209,27 @@
         <!-- Lista de reservaciones -->
         <div class="recientes">
             <div class="titulo">
-                <h2>Lista de clientes </h2>
+                <h2>Proveedores Frecuentes </h2>
                 <a href="#" class="btn">Ver todos</a>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <td>ID</td>
-                        <td>Nombre</td>
-                        <td>Telefono</td>
-                        <td>Usuario</td>
-                        <td>Contraseña</td>
-                        <td>Edad</td>
-                        <td>Localidad</td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Operadora</th>
                     </tr>
                 </thead>
                 <tbody class="TableClientes">
-                    {% for cliente in clientes %}
+                    {% for proveedor in proveedores %}
                         <tr>
-                            <td>{{ cliente.idcliente }}</td>
-                            <td>{{ cliente.nombrec }}</td>
-                            <td>{{ cliente.telefenoc }}</td>
-                            <td>{{ cliente.usuarioc }}</td>
-                            <td>{{ cliente.passwordc }}</td>
-                            <td>{{ cliente.edadc }}</td>
-                            <td>{{ cliente.localidad }}</td>
+                            <td>{{ proveedor.idprov }}</td>
+                            <td>{{ proveedor.nombreprov }}</td>
+                            <td>{{ proveedor.telefenoprov }}</td>
+                            <td>{{ proveedor.correoprov }}</td>
+                            <td>{{ proveedor.nombreop }}</td>
                             <!--
                             <td>
                                 <a href="#" class="btn btn-info btn-circle btn-sm">
@@ -230,6 +241,7 @@
                     {% endfor %}
                 </tbody>
             </table>
+            
         </div>
 
         <!-- Opciones de reservaciones -->
@@ -239,7 +251,7 @@
                     <ion-icon name="close-outline"></ion-icon>
                 </div>
                 <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
-                    <h2>Operaciones de Clientes </h2>
+                    <h2>Operaciones de Proveedores </h2>
                 <div class="opciones">
                     <ul>
                         <li class="list active2">
@@ -286,12 +298,12 @@
                     </ul>
                 </div>
             </div>
-            <!-- CLIENTES RECIENTES -->
+            <!-- PROVEEDORES RECIENTES -->
             <div class="ops-right">
                 <div class="header">
-                    <h2>Clientes Recientes</h2>
+                    <h2>Proveedores Recientes</h2>
                 </div>
-                <table>
+                <table class="tablaRecientes">
                     <tbody class="clientesRC">
                         <tr>
                             <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
@@ -301,7 +313,7 @@
                                     <ion-icon name="mail-outline"></ion-icon>
                                     <ion-icon name="call-outline"></ion-icon>
                                 </div>
-                            </td>
+                            </td>  
                          </tr>
                          <tr>
                             <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us2.jpg' %}"></div></td>
@@ -363,7 +375,7 @@
                             </td>
                          </tr>
                          <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></div></td>
+                             <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></div>
                             <td><h4>Andres</h4>ID: &nbsp<span class="idT">1251308</span>
                             <div class="iconos">
                                     <ion-icon class="profile" name="person-circle-outline"></ion-icon>
@@ -376,11 +388,12 @@
                 </table>
                 </div>
             </div>
-        </div>
+        </div> 
 
-    <form action="{% url 'eliminar_cliente' %}" method="post" id="eliminarClienteForm">
+
+     <form action="{% url 'eliminar_proveedor' %}" method="post" id="eliminarProveedorForm">
             {% csrf_token %}
-            <input type="hidden" name="cliente_id" id="clienteIdInput">
+           <input type="hidden" name="proveedor_id" id="proveedorIdInput">
     </form>
 
 {% endblock %}
@@ -389,33 +402,29 @@
     <script>
     document.addEventListener('DOMContentLoaded', function () {
 
-    //Llenado de form al dar click a un elemnto de la tabla
+     //Llenado de form al dar click a un elemnto de la tabla
     const form = document.querySelector('.forma');
-    const nombreInput = form.querySelector('[name="nombrec"]');
-    const telefonoInput = form.querySelector('[name="telefenoc"]');
-    const usuarioInput = form.querySelector('[name="usuarioc"]');
-    const passwordInput = form.querySelector('[name="passwordc"]');
-    const edadInput = form.querySelector('[name="edadc"]');
-    const localidadInput = form.querySelector('[name="localidad"]');
+    const nombreInput = form.querySelector('[name="nombreprov"]');
+    const telefonoInput = form.querySelector('[name="telefenoprov"]');
+    const correoInput = form.querySelector('[name="correoprov"]');
+    const nombreopInput = form.querySelector('[name="nombreop"]');
     let clienteSeleccionadoId = null;
 
     const editButtons = document.querySelectorAll('.addC');
     editButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            clienteSeleccionadoId = button.getAttribute('data-cliente-id');
+            clienteSeleccionadoId = button.getAttribute('data-proveedor-id');
 
             // Hacer una solicitud AJAX a la vista obtener_datos_cliente
-            fetch(`/obtener_datos_cliente/${clienteSeleccionadoId}/`)
+            fetch(`/obtener_datos_proveedor/${clienteSeleccionadoId}/`)
                 .then(response => response.json())
                 .then(data => {
                     // Llenar los campos del formulario con los datos obtenidos
-                    nombreInput.value = data.nombrec;
-                    telefonoInput.value = data.telefenoc;
-                    usuarioInput.value = data.usuarioc;
-                    passwordInput.value = data.passwordc;
-                    edadInput.value = data.edadc;
-                    localidadInput.value = data.localidad;
+                    nombreInput.value = data.nombreprov;
+                    telefonoInput.value = data.telefenoprov;
+                    correoInput.value = data.correoprov
+                    nombreopInput.value = data.nombreop;
                 })
                 .catch(error => console.error('Error:', error));
         });
@@ -426,23 +435,18 @@
     modificarButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-        if(clienteSeleccionadoId)
-        {
-
             // Verificar si se ha seleccionado un cliente
             if (clienteSeleccionadoId) {
                 // Crear un objeto con los datos del formulario
                 const data = {
-                    'nombrec': nombreInput.value,
-                    'telefenoc': telefonoInput.value,
-                    'usuarioc': usuarioInput.value,
-                    'passwordc': passwordInput.value,
-                    'edadc': edadInput.value,
-                    'localidad': localidadInput.value,
+                    'nombreprov': nombreInput.value,
+                    'telefenoprov': telefonoInput.value,
+                    'correoprov': correoInput.value,
+                    'nombreop': nombreopInput.value,
                 };
 
                 // Hacer una solicitud AJAX para modificar el cliente
-                fetch(`/modificar_cliente/${clienteSeleccionadoId}/`, {
+                fetch(`/modificar_proveedor/${clienteSeleccionadoId}/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -451,19 +455,15 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
+                        // Enviar la respuesta del servidor en la consola
                         console.log(data);
                         window.location.reload();
                     })
                     .catch(error => console.error('Error:', error));
             } else {
-                console.error('No se ha seleccionado un cliente para modificar 2.');
-            }
-        }
-         else{
-            console.error('No se ha seleccionado un cliente para modificar.')
-        }
+                console.error('No se ha seleccionado un proveedor para modificar 2.');}
     });
+
 
     //Procedimineto para borrado
    const removeButtons = document.querySelectorAll('.removeC');
@@ -471,7 +471,7 @@
         button.addEventListener('click', function (event) {
             event.preventDefault();
 
-            const clienteId = button.getAttribute('data-cliente-id');
+            const proveedorId = button.getAttribute('data-proveedor-id');
 
             // Mostrar la confirmación con SweetAlert
             Swal.fire({
@@ -486,16 +486,14 @@
             }).then(function (result) {
                 if (result.isConfirmed) {
                     // Configurar el valor del campo de entrada del formulario
-                    clienteIdInput.value = clienteId;
+                    proveedorIdInput.value = proveedorId;
 
                     // Enviar el formulario para eliminar el cliente
-                    eliminarClienteForm.submit();
+                    eliminarProveedorForm.submit();
                 }
             });
         });
     });
-
 });
 </script>
 {% endblock %}
-

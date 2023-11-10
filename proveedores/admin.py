@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import Agentes
-
+from .models import Proveedor
 # Register your models here.
-admin.site.register(Agentes)
+admin.site.register(Proveedor)

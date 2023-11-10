@@ -137,6 +137,10 @@ go.innerHTML='GO';
 const openRC=document.querySelectorAll('.list')
 const ventanaRC=document.querySelector('.RegCli');
 openRC[0].addEventListener('click',() => {
+
+    document.querySelector('.btn-modificar').classList.add('hide');
+    document.querySelector('.btn-agregar').classList.remove('hide');
+
     document.querySelector('.titulo-regcli').textContent = "Agregar Cliente"
     document.querySelector('.forma').classList.remove('hide')
     document.querySelector('.img-div').classList.remove('hide')
@@ -217,7 +221,9 @@ function RellenarTabla2(){
 */
 
 openRC[1].addEventListener('click',() => {
-    document.querySelector('.titulo-regcli').textContent = "Agregar Cliente"
+    document.querySelector('.btn-agregar').classList.add('hide');
+    document.querySelector('.btn-modificar').classList.remove('hide');
+    document.querySelector('.titulo-regcli').textContent = "Modificar Cliente"
     document.querySelector('.forma').classList.remove('hide')
     document.querySelector('.img-delete').classList.add('hide')
     document.querySelector('.img-div').classList.add('hide')

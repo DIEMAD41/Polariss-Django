@@ -1,11 +1,9 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-
 from clientes.models import Cliente
 from django.contrib import messages
 import json
-
 from .forms import ClienteForm
 # Create your views here.
 def clientes(request):
@@ -53,7 +51,7 @@ def obtener_datos_cliente(request, cliente_id):
     except Cliente.DoesNotExist:
         return JsonResponse({'error': 'Cliente no encontrado'}, status=404)
 
-@csrf_exempt  # Desactivar CSRF para simplificar el ejemplo (Considera la seguridad en un entorno de producción)
+@csrf_exempt  # Desactivar CSRF para simplificar el ejemplo
 def modificar_cliente(request, cliente_id):
     if request.method == 'POST':
         try:

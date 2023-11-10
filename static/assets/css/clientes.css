@@ -578,7 +578,12 @@ iframe {height:93.1vh; }
     justify-content: center;
     margin: 20px;
 }
-
+.btn-reg.btn-modificar.hide{
+    display: none;
+}
+.btn-reg.btn-agregar.hide{
+    display: none;
+}
 .RegCli .btn-reg{
     font-family: "Poppins",sans-serif;
     font-weight: bold;
@@ -605,7 +610,7 @@ iframe {height:93.1vh; }
     height: 360px;
     border-radius: 50%;
     background: rgb(253,100,149);
-    background: linear-gradient(0deg, rgba(253,100,149,1) 61%, rgba(254,195,214,1) 100%);
+    background: linear-gradient(0deg, var(--color2) 61%, var(--color) 100%);
     justify-content: center;
     align-items: center;
     position: relative;
