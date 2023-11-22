@@ -437,11 +437,25 @@ function AgregarCliente()
         )}
         AbrirPerfilCliente()
     }
-    
-    
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        //Abir el perfil de cliente al dar click
+        var elementosTR = document.querySelectorAll('.trC');
+        console.log(elementosTR);
+
+        // Agrega un evento de clic a cada elemento td
+        elementosTR.forEach(function (elemento) {
+            elemento.addEventListener('click', function () {
+                // Llama a la función AbrirPerfilCliente() cuando se hace clic
+                AbrirPerfilCliente();
+            });
+        });
+    });
 
 function AbrirPerfilCliente()
 {
+     console.log('Perfil del cliente abierto');
     //Abrir el perfil de los clientes
     const profile=document.querySelectorAll(".ops-right tr");
     console.log(profile);
@@ -449,7 +463,7 @@ function AbrirPerfilCliente()
     const profiles=document.querySelector(".blur");
     profile.forEach(element => {
         element.addEventListener('click',() =>{
-            
+
             clientes.find(function(value, index) {
                 if (value.id == parseInt(element.querySelector('.idT').textContent))
                 {
@@ -472,11 +486,9 @@ function AbrirPerfilCliente()
                         <div class="card-body">
                             <p class="name">${value.nombre}</p>
                             <a href="#" class="mail">${value.correo}</a>
-                            <div class="content">
+                            <div class="content">   
                                 <p class="texto"><span class="municipio">${value.localidad}</span></p>
-                                <ion-icon name="remove-outline"></ion-icon>
                                 <p class="texto"><span class="edad">${value.edad} años</span></p>
-                                <ion-icon name="remove-outline"></ion-icon>
                                 <p class="texto"><span class="telefono">${value.telefono}</span></p>
                             </div>
                             <p class="saldo">Saldo: ${value.saldo}</p>
@@ -494,7 +506,7 @@ function AbrirPerfilCliente()
                         </div>`
                     )
                 }
-            });                
+            });
             card.classList.remove('hide');
             profiles.classList.add('show');
 
@@ -504,7 +516,8 @@ function AbrirPerfilCliente()
             profiles.classList.remove('show');
             })
 
-            const submenuC=document.querySelector(".submenu");
+            //Abrir el submenu de la tarjeta de clientes
+            const submenuC=document.querySelector(".submenuCard");
             const submenuC2=document.querySelector(".submenuC");
             submenuC.addEventListener('click',() =>{
                 submenuC2.classList.toggle('showC');
@@ -571,5 +584,4 @@ fechaEdad.forEach(element => {
         profiles.classList.add('show')
     })
 });
-
 
