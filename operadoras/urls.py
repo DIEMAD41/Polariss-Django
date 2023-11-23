@@ -2,8 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('lista_operadoras/',views.listar_operadoras,name='operadoras_list'),
-    path('agregar_operadora/',views.agregar_operadora,name='operadoras_new'),
-    path('actualizar_operadora/<id>/', views.actualizar_operadora, name='operadoras_update'),
-    path('eliminar_operadora/<id>/', views.elimar_operadora, name='operadora_delete'),
+    path('operadoras/', views.operadoras, name='operadoras'),  # http://127.0.01:8000/dashboard
+    path('agregar_operadora/', views.agregar_operadora, name='agregar_operadora'),
+    path('obtener_datos_operadora/<int:clave>/', views.obtener_datos_operadora, name='obtener_datos_operadora'),
+    path('modificar_operadora/<int:clave>/', views.modificar_operadora, name='modificar_operadora'),
+    path('eliminar_operadora/', views.eliminar_operadora, name='eliminar_operadora'),
+
 ]

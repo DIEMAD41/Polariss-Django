@@ -1,53 +1,81 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from operadoras.models import Operadoras
-from operadoras.forms import OperadoraForm
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
+import json
+
+from operadoras.forms import OperadoraForm
+from operadoras.models import Operadoras
+
 
 # Create your views here.
-def listar_operadoras(request):
+def operadoras(request):
     operadoras = Operadoras.objects.all()
-    data  = {
+    data = {
         'operadoras': operadoras
     }
-    #Consulta a la BD seria como un SELECT * FROM Operadoras
-    return render(request,'operadoras_list.html',data)
+    response = render(request, 'operadoras/operadoras.html', context=data)
+    response['X-Frame-Options'] = 'ALLOW-FROM *'
+    return response
 
 def agregar_operadora(request):
-    data = {
-        'form': OperadoraForm()
-    }
-    # Verificar si el usuario ya presiono el boton de envio POST
-    if request.method == 'POST':
-        # Formulario con los datos eviados
-        formulario = OperadoraForm(data=request.POST)
-        if formulario.is_valid(): # Solo con esto verifica si son coreectos
-            formulario.save()
-            messages.success(request, "Operadora Agregada")
-            data['mensaje'] = 'Operadora Agregada'
-            return redirect(to='operadoras:operadoras_list')
-        else:
-            data['form'] = formulario # Regresa el formulario con los errores
+    mensaje_error = None
 
-    return render(request, 'operadoras_new.html', data)
-
-def actualizar_operadora(request, id):
-    operadora = get_object_or_404(Operadoras, id=id)
-    data ={
-            'form':OperadoraForm(instance=operadora)
-    }
-        # Si el usuario ya dijo que si, POST
     if request.method == 'POST':
-        formulario = OperadoraForm(data=request.POST, instance=operadora)
+        formulario = OperadoraForm(request.POST)
         if formulario.is_valid():
-            formulario.save()
-            messages.success(request,"Operadora Actualizada")
-            return redirect(to='operadoras:operadoras_list')
-            # Si no es valido
-        data['form'] = formulario
-    return render(request, 'operadoras_update.html',data)
+            operadora = formulario.save()
+            messages.success(request, "Operadora Agregada")
+            if operadora.clave:
+                return redirect('operadoras')
+            else:
+                mensaje_error = 'Error al guardar la operadora'
+        else:
+            mensaje_error = 'Formulario no válido'
+        print("HOLA",formulario.errors,mensaje_error)
+    else:
+        formulario = OperadoraForm()
+        print("HOLA2",formulario.errors)
 
-def elimar_operadora(request,id):
-    operadora = get_object_or_404(Operadoras, id=id)
-    operadora.delete()
-    messages.success(request, "Operadora Eliminada")
-    return redirect(to='operadoras:operadoras_list')
+    return render(request, 'operadoras/operadoras.html', {'formulario': formulario, 'mensaje_error': mensaje_error})
+
+
+def obtener_datos_operadora(request, clave):
+    try:
+        operadora = Operadoras.objects.get(clave=clave)
+        data = {
+            'clave': operadora.clave,
+            'nombre': operadora.nombre,
+            'email': operadora.email,
+
+        }
+        return JsonResponse(data)
+    except Operadoras.DoesNotExist:
+        return JsonResponse({'error': 'Operadora no encontrad'}, status=404)
+
+
+@csrf_exempt
+def modificar_operadora(request, clave):
+    if request.method == 'POST':
+        try:
+            operadora = Operadoras.objects.get(clave=clave)
+            data = json.loads(request.body)
+            operadora.nombre = data.get('nombre', operadora.nombre)
+            operadora.email = data.get('email', operadora.email)
+            operadora.save()
+            messages.success(request, "Operadora Modificada")
+            return JsonResponse({'success': True})
+        except Operadoras.DoesNotExist:
+            return JsonResponse({'error': 'Operadora no encontrada'}, status=404)
+
+    return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+
+def eliminar_operadora(request):
+    if request.method == 'POST':
+        clave = request.POST.get('clave')
+        print("Clave recibida:", clave)
+        clave = get_object_or_404(Operadoras, clave=clave)
+        clave.delete()
+        messages.success(request, "Operadora Eliminada")
+        return redirect('operadoras')

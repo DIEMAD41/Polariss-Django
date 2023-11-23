@@ -5,10 +5,13 @@
     <style>
         :root{
     --white: white;
-    --color: #36B47F;
-    --color2: #36B47F99;
+    --color: #FF464F;
+    --color2: #FF464F99;
     --black1: #24252A;
     --tamañoOps: 90px;
+    }
+         h4{
+        font-size: 15px;
     }
     </style>
 {% endblock %}
@@ -17,7 +20,7 @@
     <div class="blur"></div>
     <div class="RegCli hiddenRC">
         <ion-icon name="close-outline" class="closeRC"></ion-icon>
-        <span class="titulo-regcli">REGISTRAR UN PROVEEDOR</span>
+        <span class="titulo-regcli">REGISTRAR UN AGENTE</span>
         <div class="img-div">
             <div class="img-borde">
                 <img src="{% static 'Imgs/art.jpg' %}" alt="Cliente" id="img1">
@@ -26,58 +29,55 @@
                 <input type="file" name="imagensubida" id="imagensubida" class="input-file dataC" accept="image/png, .jpeg, .jpg, image/gif">
                 <label for="imagensubida"><i class="fas fa-upload input-ico"></i></label>
             </form>
-            <form action="#" class="form-edad">
-                <label for="dia">FECHA DE NACIMIENTO</label>
-                <div class="fecha-naci">
-                    <div class="Campo fecha">
-                        <input class="input dataC" type="number" name="dia" placeholder="Dia" id="dia">
-                        <span class="sombra-focus"></span>
-                    </div>
-                    <div class="Campo fecha">
-                        <input class="input dataC" type="number" name="mes" placeholder="Mes"  id="mes">
-                        <span class="sombra-focus"></span>
-                    </div>
-                    <div class="Campo fecha">
-                        <input class="input dataC" type="number" name="año" placeholder="Año"  id="año">
-                        <span class="sombra-focus"></span>
-                    </div>
-                </div>
-            </form>
         </div>
         <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
 
-
-        <form action="{% url 'agregar_proveedor' %}" method="post" class="forma">
+        <form action="{% url 'agregar_agente' %}" method="post" class="forma">
             {% csrf_token %}
-            <span>DATOS DEL PROVEEDOR</span>
+            <span>DATOS DEL AGENTE</span>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombreprov" placeholder="Nombre">
+                <input class="input dataC" type="text" name="nombreg" placeholder="Nombre">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-user iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="telefenoprov" placeholder="Teléfono">
+                <input class="input dataC" type="text" name="telefenog" placeholder="Teléfono">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-phone-alt iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="correoprov" placeholder="Correo">
+                <input class="input dataC" type="text" name="usuariog" placeholder="Usuario">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-envelope iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombreop" placeholder="Operadora">
+                <input class="input dataC" type="password" name="passwordg" placeholder="Contraseña">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="number" name="saldo" placeholder="Saldo">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="number" name="edadg" placeholder="Edad">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="localidadg" placeholder="Localidad">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-globe-americas iconoRG"></i>
             </div>
 
-            <div class="btn-div">
+              <div class="btn-div">
                 <button class="btn-reg btn-modificar" type="submit">
-                    Modificar
+                    Editar
                 </button>
             </div>
 
-            <div class="btn-div">
+             <div class="btn-div">
                 <button class="btn-reg btn-agregar" type="submit">
                      Registrar
                 </button>
@@ -85,12 +85,10 @@
         </form>
 
 
-
-
         <!-- Seccion Eliminar -->
         <div class="recientes">
             <div class="titulo">
-                <h2>Proveedores registrados</h2>
+                <h2>Agentes registrados</h2>
             </div>
             <table>
                 <thead>
@@ -98,23 +96,23 @@
                         <td>ID</td>
                         <td>Nombre</td>
                         <td>Telefono</td>
-                        <td>Operadora</td>
+                        <td>Usuario</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes2">
-                    {% for proveedor in proveedores %}
+                        {% for agente in agentes %}
                         <tr>
-                            <td>{{ proveedor.idprov }}</td>
-                            <td>{{ proveedor.nombreprov }}</td>
-                            <td>{{ proveedor.telefenoprov }}</td>
-                            <td>{{ proveedor.nombreop }}</td>
+                            <td>{{ agente.idagente }}</td>
+                            <td>{{ agente.nombreg }}</td>
+                            <td>{{ agente.telefenog }}</td>
+                            <td>{{ agente.usuariog }}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-proveedor-id="{{ proveedor.idprov }}">
+                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-agente-id="{{ agente.idagente }}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-proveedor-id="{{ proveedor.idprov }}">
+                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-agente-id="{{ agente.idagente }}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
@@ -188,7 +186,7 @@
         </div>
 
         <div class="card-footer">
-            <p class="count">CLIENTE POLARISS</p>
+            <p class="count">AGENTES POLARISS</p>
         </div>
     </div>
 
@@ -198,39 +196,36 @@
         <!-- Lista de reservaciones -->
         <div class="recientes">
             <div class="titulo">
-                <h2>Proveedores Frecuentes </h2>
+                <h2>Lista de agentes </h2>
                 <a href="#" class="btn">Ver todos</a>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Operadora</th>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Telefono</td>
+                        <td>Usuario</td>
+                        <td>Contraseña</td>
+                        <td>Edad</td>
+                        <td>Localidad</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes">
-                    {% for proveedor in proveedores %}
+                    {% for agente in agentes %}
                         <tr>
-                            <td>{{ proveedor.idprov }}</td>
-                            <td>{{ proveedor.nombreprov }}</td>
-                            <td>{{ proveedor.telefenoprov }}</td>
-                            <td>{{ proveedor.correoprov }}</td>
-                            <td>{{ proveedor.nombreop }}</td>
-                            <!--
-                            <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </td>
-                            -->
+                            <td>{{ agente.idagente }}</td>
+                            <td>{{ agente.nombreg }}</td>
+                            <td>{{ agente.telefenog }}</td>
+                            <td>{{ agente.usuariog }}</td>
+                            <td>{{ agente.passwordg }}</td>
+                            <td>{{ agente.edadg }}</td>
+                            <td>{{ agente.localidadg }}</td>
+
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            
         </div>
 
         <!-- Opciones de reservaciones -->
@@ -240,7 +235,7 @@
                     <ion-icon name="close-outline"></ion-icon>
                 </div>
                 <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
-                    <h2>Operaciones de Proveedores </h2>
+                    <h2>Operaciones de Agentes </h2>
                 <div class="opciones">
                     <ul>
                         <li class="list active2">
@@ -287,180 +282,121 @@
                     </ul>
                 </div>
             </div>
-            <!-- PROVEEDORES RECIENTES -->
+            <!-- CLIENTES RECIENTES -->
             <div class="ops-right">
                 <div class="header">
-                    <h2>Proveedores Recientes</h2>
+                    <h2>Clientes Recientes</h2>
                 </div>
-                <table class="tablaRecientes">
+                <table>
                     <tbody class="clientesRC">
-                        <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
-                            <td><h4>Marisol</h4>ID: &nbsp<span class="idT">1251301</span>
-                                <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>  
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us2.jpg' %}"></div></td>
-                            <td><h4>Dario</h4>ID: &nbsp<span class="idT">1251302</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us3.jpg' %}"></div></td>
-                            <td><h4>Marcelo</h4>ID: &nbsp<span class="idT">1251303</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us4.jpg' %}"></div></td>
-                            <td><h4>Juan</h4>ID: &nbsp<span class="idT">1251304</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us5.jpeg' %}"></div></td>
-                            <td><h4>Rosa</h4>ID: &nbsp<span class="idT">1251305</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us6.jpeg' %}"></div></td>
-                            <td><h4>Julieta</h4>ID: &nbsp<span class="idT">1251306</span>
-                                <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div></td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us7.png' %}"></div></td>
-                            <td><h4>Simon</h4>ID: &nbsp<span class="idT">1251307</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                             <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></div>
-                            <td><h4>Andres</h4>ID: &nbsp<span class="idT">1251308</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
+                         {% for agente in agentes %}
+
+                            <tr class="trC">
+                                <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
+                                <td><h4>{{ agente.nombreg }}</h4>ID: &nbsp<span class="idT">{{ agente.idagente }}</span>
+                                    <div class="iconos">
+                                        <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <ion-icon name="call-outline"></ion-icon>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
                     </tbody>
                 </table>
                 </div>
             </div>
-        </div> 
+        </div>
 
-
-     <form action="{% url 'eliminar_proveedor' %}" method="post" id="eliminarProveedorForm">
+    <form action="{% url 'eliminar_agente' %}" method="post" id="eliminarAgenteForm">
             {% csrf_token %}
-           <input type="hidden" name="proveedor_id" id="proveedorIdInput">
-    </form>
+            <input type="hidden" name="agente_id" id="agenteIdInput">
+        </form>
 
 {% endblock %}
 
 {% block java %}
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-
-     //Llenado de form al dar click a un elemnto de la tabla
     const form = document.querySelector('.forma');
-    const nombreInput = form.querySelector('[name="nombreprov"]');
-    const telefonoInput = form.querySelector('[name="telefenoprov"]');
-    const correoInput = form.querySelector('[name="correoprov"]');
-    const nombreopInput = form.querySelector('[name="nombreop"]');
-    let clienteSeleccionadoId = null;
+    const nombreInput = form.querySelector('[name="nombreg"]');
+    const telefonoInput = form.querySelector('[name="telefenog"]');
+    const usuarioInput = form.querySelector('[name="usuariog"]');
+    const passwordInput = form.querySelector('[name="passwordg"]');
+    const edadInput = form.querySelector('[name="edadg"]');
+    const saldoInput = form.querySelector('[name="saldo"]');
+    const localidadInput = form.querySelector('[name="localidadg"]');
+    let agenteSeleccionadoId = null;
 
     const editButtons = document.querySelectorAll('.addC');
     editButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            clienteSeleccionadoId = button.getAttribute('data-proveedor-id');
+            agenteSeleccionadoId = button.getAttribute('data-agente-id');
 
             // Hacer una solicitud AJAX a la vista obtener_datos_cliente
-            fetch(`/obtener_datos_proveedor/${clienteSeleccionadoId}/`)
+            fetch(`/obtener_datos_agente/${agenteSeleccionadoId}/`)
                 .then(response => response.json())
                 .then(data => {
                     // Llenar los campos del formulario con los datos obtenidos
-                    nombreInput.value = data.nombreprov;
-                    telefonoInput.value = data.telefenoprov;
-                    correoInput.value = data.correoprov
-                    nombreopInput.value = data.nombreop;
+                    nombreInput.value = data.nombreg;
+                    telefonoInput.value = data.telefenog;
+                    usuarioInput.value = data.usuariog;
+                    passwordInput.value = data.passwordg;
+                    edadInput.value = data.edadg;
+                    saldoInput.value = data.saldo;
+                    localidadInput.value = data.localidadg;
                 })
                 .catch(error => console.error('Error:', error));
         });
     });
 
-    //Procedimineto para modificar sin recargar(AJAX) al hacer click
     const modificarButton = document.querySelector('.btn-modificar');
     modificarButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-            // Verificar si se ha seleccionado un cliente
-            if (clienteSeleccionadoId) {
-                // Crear un objeto con los datos del formulario
-                const data = {
-                    'nombreprov': nombreInput.value,
-                    'telefenoprov': telefonoInput.value,
-                    'correoprov': correoInput.value,
-                    'nombreop': nombreopInput.value,
-                };
+        // Verificar si se ha seleccionado un cliente
+        if (agenteSeleccionadoId) {
+            // Crear un objeto con los datos del formulario
+            const data = {
+                'nombreg': nombreInput.value,
+                'telefenog': telefonoInput.value,
+                'usuariog': usuarioInput.value,
+                'passwordg': passwordInput.value,
+                'edadg': edadInput.value,
+                'saldo': saldoInput.value,
+                'localidadg': localidadInput.value,
+            };
 
-                // Hacer una solicitud AJAX para modificar el cliente
-                fetch(`/modificar_proveedor/${clienteSeleccionadoId}/`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
+            // Hacer una solicitud AJAX para modificar el cliente
+            fetch(`/modificar_agente/${agenteSeleccionadoId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
+                    console.log(data);
+                    window.location.reload();
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Enviar la respuesta del servidor en la consola
-                        console.log(data);
-                        window.location.reload();
-                    })
-                    .catch(error => console.error('Error:', error));
-            } else {
-                console.error('No se ha seleccionado un proveedor para modificar 2.');}
+                .catch(error => console.error('Error:', error));
+        } else {
+            console.error('No se ha seleccionado un agente para modificar.');
+        }
     });
 
 
-    //Procedimineto para borrado
    const removeButtons = document.querySelectorAll('.removeC');
+
     removeButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
 
-            const proveedorId = button.getAttribute('data-proveedor-id');
+            const agenteId = button.getAttribute('data-agente-id');
 
             // Mostrar la confirmación con SweetAlert
             Swal.fire({
@@ -471,18 +407,19 @@
                 cancelButtonText: 'No, Cancelar',
                 confirmButtonText: 'Sí, Eliminar',
                 reverseButtons: true,
-                confirmButtonColor: '#F94144'
+                confirmButtonColor: '#E74A3B'
             }).then(function (result) {
                 if (result.isConfirmed) {
                     // Configurar el valor del campo de entrada del formulario
-                    proveedorIdInput.value = proveedorId;
+                    agenteIdInput.value = agenteId;
 
                     // Enviar el formulario para eliminar el cliente
-                    eliminarProveedorForm.submit();
+                    eliminarAgenteForm.submit();
                 }
             });
         });
     });
+
 });
 </script>
 {% endblock %}

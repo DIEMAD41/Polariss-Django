@@ -5,10 +5,12 @@
     <style>
         :root{
     --white: white;
-    --color: #36B47F;
-    --color2: #36B47F99;
+    --color: #540d6e;
+    --color2: #540d6e99;
     --black1: #24252A;
-    --tamañoOps: 90px;
+    }
+    h4{
+        font-size: 15px;
     }
     </style>
 {% endblock %}
@@ -17,67 +19,39 @@
     <div class="blur"></div>
     <div class="RegCli hiddenRC">
         <ion-icon name="close-outline" class="closeRC"></ion-icon>
-        <span class="titulo-regcli">REGISTRAR UN PROVEEDOR</span>
+        <span class="titulo-regcli">REGISTRAR UNA OPERADORA</span>
         <div class="img-div">
             <div class="img-borde">
-                <img src="{% static 'Imgs/art.jpg' %}" alt="Cliente" id="img1">
+                <img src="{% static 'Imgs/art.jpg' %}" alt="Operadora" id="img1">
             </div>
             <form name="subida-imagenes" type="POST" enctype="multipart/formdata" class="form-img">
                 <input type="file" name="imagensubida" id="imagensubida" class="input-file dataC" accept="image/png, .jpeg, .jpg, image/gif">
                 <label for="imagensubida"><i class="fas fa-upload input-ico"></i></label>
             </form>
-            <form action="#" class="form-edad">
-                <label for="dia">FECHA DE NACIMIENTO</label>
-                <div class="fecha-naci">
-                    <div class="Campo fecha">
-                        <input class="input dataC" type="number" name="dia" placeholder="Dia" id="dia">
-                        <span class="sombra-focus"></span>
-                    </div>
-                    <div class="Campo fecha">
-                        <input class="input dataC" type="number" name="mes" placeholder="Mes"  id="mes">
-                        <span class="sombra-focus"></span>
-                    </div>
-                    <div class="Campo fecha">
-                        <input class="input dataC" type="number" name="año" placeholder="Año"  id="año">
-                        <span class="sombra-focus"></span>
-                    </div>
-                </div>
-            </form>
         </div>
         <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
 
-
-        <form action="{% url 'agregar_proveedor' %}" method="post" class="forma">
+        <form action="{% url 'agregar_operadora' %}" method="post" class="forma">
             {% csrf_token %}
-            <span>DATOS DEL PROVEEDOR</span>
+            <span>DATOS DE LA OPERADORA</span>
             <div class="Campo">
-                <input class="input dataC" type="text" name="nombreprov" placeholder="Nombre">
+                <input class="input dataC" type="text" name="nombre" placeholder="Nombre">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-user iconoRG"></i>
             </div>
             <div class="Campo">
-                <input class="input dataC" type="text" name="telefenoprov" placeholder="Teléfono">
+                <input class="input dataC" type="text" name="email" placeholder="Email">
                 <span class="sombra-focus"></span>
                 <i class="fas fa-phone-alt iconoRG"></i>
-            </div>
-            <div class="Campo">
-                <input class="input dataC" type="text" name="correoprov" placeholder="Correo">
-                <span class="sombra-focus"></span>
-                <i class="fas fa-envelope iconoRG"></i>
-            </div>
-            <div class="Campo">
-                <input class="input dataC" type="text" name="nombreop" placeholder="Operadora">
-                <span class="sombra-focus"></span>
-                <i class="fas fa-globe-americas iconoRG"></i>
             </div>
 
             <div class="btn-div">
                 <button class="btn-reg btn-modificar" type="submit">
-                    Modificar
+                    Editar
                 </button>
             </div>
 
-            <div class="btn-div">
+             <div class="btn-div">
                 <button class="btn-reg btn-agregar" type="submit">
                      Registrar
                 </button>
@@ -85,36 +59,32 @@
         </form>
 
 
-
-
-        <!-- Seccion Eliminar -->
+        <!-- Seccion CRUDS -->
         <div class="recientes">
             <div class="titulo">
-                <h2>Proveedores registrados</h2>
+                <h2>Operadoras registrados</h2>
             </div>
             <table>
                 <thead>
                     <tr>
                         <td>ID</td>
                         <td>Nombre</td>
-                        <td>Telefono</td>
-                        <td>Operadora</td>
+                        <td>Email</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes2">
-                    {% for proveedor in proveedores %}
+                        {% for operadora in operadoras %}
                         <tr>
-                            <td>{{ proveedor.idprov }}</td>
-                            <td>{{ proveedor.nombreprov }}</td>
-                            <td>{{ proveedor.telefenoprov }}</td>
-                            <td>{{ proveedor.nombreop }}</td>
+                            <td>{{ operadora.clave }}</td>
+                            <td>{{ operadora.nombre }}</td>
+                            <td>{{ operadora.email }}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-proveedor-id="{{ proveedor.idprov }}">
+                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-cliente-id="{{ operadora.clave }}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-proveedor-id="{{ proveedor.idprov }}">
+                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-cliente-id="{{ operadora.clave }}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
@@ -123,8 +93,7 @@
                 </tbody>
             </table>
         </div>
-
-        <img src="{% static 'Imgs/delete.png' %}" alt="Borrar un cliente" class="img-delete">
+        <img src="{% static 'Imgs/delete.png' %}" alt="Borrar una operadora" class="img-delete">
     </div>
 
     <div class="opsM">
@@ -154,14 +123,15 @@
     </div>
 
 
-    <!-- ventana emergente de perfil clientes -->
+    <!-- ventana emergente de perfil Operadoras -->
     <div class="card hide">
         <ion-icon name="close-outline" class="close"></ion-icon>
         <ion-icon name="ellipsis-horizontal-outline" class="submenuCard"></ion-icon>
         <div class="submenuC">
             <div class="opccionesC">
-                <div><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
-                <div><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+                <div><ion-icon name="add-circle-outline"></ion-icon>Modificar</div>
+                <div><ion-icon name="trash-outline"></ion-icon>Eliminar</div>
+
             </div>
         </div>
         <div class="card-header">
@@ -172,9 +142,7 @@
             <a href="#" class="mail">marisolsnz@gmail.com</a>
             <div class="content2">
                 <p class="texto"><span class="municipio">Sahuayo</span></p>
-                <ion-icon name="remove-outline"></ion-icon>
                 <p class="texto"><span class="edad">24 años</span></p>
-                <ion-icon name="remove-outline"></ion-icon>
                 <p class="texto"><span class="telefono">3531216500</span></p>
             </div>
             <p class="saldo">Saldo: 12,560</p>
@@ -188,37 +156,33 @@
         </div>
 
         <div class="card-footer">
-            <p class="count">CLIENTE POLARISS</p>
+            <p class="count">OPERADORAS</p>
         </div>
     </div>
 
-    <!-- Ventana emergente de registro de clientes -->
+    <!-- Ventana emergente de registro de Operadoras -->
 
     <div class="reservas">
         <!-- Lista de reservaciones -->
         <div class="recientes">
             <div class="titulo">
-                <h2>Proveedores Frecuentes </h2>
+                <h2>Lista de Operadoras </h2>
                 <a href="#" class="btn">Ver todos</a>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Operadora</th>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Email</td>
                     </tr>
                 </thead>
                 <tbody class="TableClientes">
-                    {% for proveedor in proveedores %}
+                    {% for operadora in operadoras %}
                         <tr>
-                            <td>{{ proveedor.idprov }}</td>
-                            <td>{{ proveedor.nombreprov }}</td>
-                            <td>{{ proveedor.telefenoprov }}</td>
-                            <td>{{ proveedor.correoprov }}</td>
-                            <td>{{ proveedor.nombreop }}</td>
+                            <td>{{ operadora.clave }}</td>
+                            <td>{{ operadora.nombre }}</td>
+                            <td>{{ operadora.email }}</td>
                             <!--
                             <td>
                                 <a href="#" class="btn btn-info btn-circle btn-sm">
@@ -230,7 +194,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-            
         </div>
 
         <!-- Opciones de reservaciones -->
@@ -240,7 +203,7 @@
                     <ion-icon name="close-outline"></ion-icon>
                 </div>
                 <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
-                    <h2>Operaciones de Proveedores </h2>
+                    <h2>Operaciones de Operadoras </h2>
                 <div class="opciones">
                     <ul>
                         <li class="list active2">
@@ -287,133 +250,67 @@
                     </ul>
                 </div>
             </div>
-            <!-- PROVEEDORES RECIENTES -->
+
+
+            <!-- Operadoras RECIENTES -->
             <div class="ops-right">
                 <div class="header">
-                    <h2>Proveedores Recientes</h2>
+                    <h2>Operadoras Recientes</h2>
                 </div>
-                <table class="tablaRecientes">
+                <table>
                     <tbody class="clientesRC">
-                        <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
-                            <td><h4>Marisol</h4>ID: &nbsp<span class="idT">1251301</span>
-                                <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>  
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us2.jpg' %}"></div></td>
-                            <td><h4>Dario</h4>ID: &nbsp<span class="idT">1251302</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us3.jpg' %}"></div></td>
-                            <td><h4>Marcelo</h4>ID: &nbsp<span class="idT">1251303</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us4.jpg' %}"></div></td>
-                            <td><h4>Juan</h4>ID: &nbsp<span class="idT">1251304</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us5.jpeg' %}"></div></td>
-                            <td><h4>Rosa</h4>ID: &nbsp<span class="idT">1251305</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us6.jpeg' %}"></div></td>
-                            <td><h4>Julieta</h4>ID: &nbsp<span class="idT">1251306</span>
-                                <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div></td>
-                         </tr>
-                         <tr>
-                            <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us7.png' %}"></div></td>
-                            <td><h4>Simon</h4>ID: &nbsp<span class="idT">1251307</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
-                         <tr>
-                             <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us8.jpeg' %}"></div>
-                            <td><h4>Andres</h4>ID: &nbsp<span class="idT">1251308</span>
-                            <div class="iconos">
-                                    <ion-icon class="profile" name="person-circle-outline"></ion-icon>
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-                            </td>
-                         </tr>
+
+                        {% for operadora in operadoras %}
+
+                            <tr class="trC">
+                                <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
+                                <td><h4>{{ operadora.nombre }}</h4>ID: &nbsp<span class="idT">{{ operadora.clave }}</span>
+                                    <div class="iconos">
+                                        <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <ion-icon name="call-outline"></ion-icon>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
                     </tbody>
                 </table>
                 </div>
             </div>
-        </div> 
+        </div>
 
-
-     <form action="{% url 'eliminar_proveedor' %}" method="post" id="eliminarProveedorForm">
+    <form action="{% url 'eliminar_operadora' %}" method="post" id="eliminarOperadoraForm">
             {% csrf_token %}
-           <input type="hidden" name="proveedor_id" id="proveedorIdInput">
+            <input type="hidden" name="clave" id="operadoraClaveInput">
     </form>
 
 {% endblock %}
 
 {% block java %}
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
 
-     //Llenado de form al dar click a un elemnto de la tabla
+    //Llenado de form al dar click a un elemnto de la tabla
     const form = document.querySelector('.forma');
-    const nombreInput = form.querySelector('[name="nombreprov"]');
-    const telefonoInput = form.querySelector('[name="telefenoprov"]');
-    const correoInput = form.querySelector('[name="correoprov"]');
-    const nombreopInput = form.querySelector('[name="nombreop"]');
+    const nombreInput = form.querySelector('[name="nombre"]');
+    const emailInput = form.querySelector('[name="email"]');
     let clienteSeleccionadoId = null;
 
     const editButtons = document.querySelectorAll('.addC');
     editButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            clienteSeleccionadoId = button.getAttribute('data-proveedor-id');
+            clienteSeleccionadoId = button.getAttribute('data-cliente-id');
 
             // Hacer una solicitud AJAX a la vista obtener_datos_cliente
-            fetch(`/obtener_datos_proveedor/${clienteSeleccionadoId}/`)
+            fetch(`/obtener_datos_operadora/${clienteSeleccionadoId}/`)
                 .then(response => response.json())
                 .then(data => {
                     // Llenar los campos del formulario con los datos obtenidos
-                    nombreInput.value = data.nombreprov;
-                    telefonoInput.value = data.telefenoprov;
-                    correoInput.value = data.correoprov
-                    nombreopInput.value = data.nombreop;
+                    nombreInput.value = data.nombre;
+                    emailInput.value = data.email;
                 })
                 .catch(error => console.error('Error:', error));
         });
@@ -424,18 +321,18 @@
     modificarButton.addEventListener('click', function (event) {
         event.preventDefault();
 
-            // Verificar si se ha seleccionado un cliente
+        if(clienteSeleccionadoId)
+        {
+            // Verificar si se ha seleccionado una operadora
             if (clienteSeleccionadoId) {
                 // Crear un objeto con los datos del formulario
                 const data = {
-                    'nombreprov': nombreInput.value,
-                    'telefenoprov': telefonoInput.value,
-                    'correoprov': correoInput.value,
-                    'nombreop': nombreopInput.value,
+                    'nombre': nombreInput.value,
+                    'email': emailInput.value,
                 };
 
                 // Hacer una solicitud AJAX para modificar el cliente
-                fetch(`/modificar_proveedor/${clienteSeleccionadoId}/`, {
+                fetch(`/modificar_operadora/${clienteSeleccionadoId}/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -444,23 +341,28 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        // Enviar la respuesta del servidor en la consola
+                        // Manejar la respuesta del servidor, por ejemplo, mostrar un mensaje de éxito
                         console.log(data);
                         window.location.reload();
                     })
                     .catch(error => console.error('Error:', error));
             } else {
-                console.error('No se ha seleccionado un proveedor para modificar 2.');}
+                console.error('No se ha seleccionado una operadora para modificar.');
+            }
+        }
+         else{
+            console.error('No se ha seleccionado una operadora para modificar.')
+        }
     });
 
-
+    
     //Procedimineto para borrado
    const removeButtons = document.querySelectorAll('.removeC');
     removeButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
             event.preventDefault();
 
-            const proveedorId = button.getAttribute('data-proveedor-id');
+            const operadoraClave = button.getAttribute('data-cliente-id');
 
             // Mostrar la confirmación con SweetAlert
             Swal.fire({
@@ -475,14 +377,16 @@
             }).then(function (result) {
                 if (result.isConfirmed) {
                     // Configurar el valor del campo de entrada del formulario
-                    proveedorIdInput.value = proveedorId;
+                    operadoraClaveInput.value = operadoraClave;
 
                     // Enviar el formulario para eliminar el cliente
-                    eliminarProveedorForm.submit();
+                    eliminarOperadoraForm.submit();
                 }
             });
         });
     });
-});
-</script>
+
+    });
+    </script>
 {% endblock %}
+
