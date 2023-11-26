@@ -13,6 +13,13 @@ body{
     --white: white;
     --text-color-black: #24252A;
 }
+
+/* Color basados en clase */
+.btn-primary {
+    background-color: #FD6495;
+}
+
+
 .container-fluid{
     overflow: scroll;
 }

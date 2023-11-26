@@ -4,7 +4,18 @@ from clientes.models import Cliente
 
 class ClienteForm(forms.ModelForm):
     class Meta:
-        # Seleccionar los campos que querramos mostrar en el formulario
         model = Cliente
-        # fields = ['idcliente', 'nombrec', 'telefenoc', 'usuarioc', 'passwordc','edadc','localidad']
+        #Campos que no quieres que se muestren
+        exclude = ['idcliente']
+        # Campos que vas a mostrar
         fields = '__all__'
+        #Etiquetas de los cambios
+        labels = {
+            'nombrec': 'Nombre del cliente',
+            'telefenoc': 'Telefono del cliente',
+            'usuarioc': 'Usuario',
+            'passwordc': 'Contraseña',
+            'edadc': 'Edad del cliente',
+            'localidad': 'Localidad',
+
+        }

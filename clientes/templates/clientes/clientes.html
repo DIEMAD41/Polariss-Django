@@ -2,6 +2,22 @@
 {% load static %}
 
 
+{% block style %}
+    <style>
+        :root{
+    --white: white;
+    --color: #FD6495;
+    --color2: #FD649599;
+    --black1: #24252A;
+    }
+    h4{
+        font-size: 15px;
+    }
+
+    </style>
+{% endblock %}
+
+
 {% block content %}
     <div class="blur"></div>
     <div class="RegCli hiddenRC">
@@ -186,14 +202,13 @@
         </div>
     </div>
 
-    <!-- Ventana emergente de registro de clientes -->
-
+    <!-- Ventana principal de registro de clientes -->
     <div class="reservas">
         <!-- Lista de reservaciones -->
         <div class="recientes">
             <div class="titulo">
                 <h2>Lista de clientes </h2>
-                <a href="#" class="btn">Ver todos</a>
+                <a href="{% url 'clientes:cliente_list' %}"  class="btn btn-dark">Ver todos</a>
             </div>
             <table>
                 <thead>
