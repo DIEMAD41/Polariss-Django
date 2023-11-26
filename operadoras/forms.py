@@ -4,6 +4,11 @@ from .models import Operadoras
 class OperadoraForm(forms.ModelForm):
     class Meta:
         model = Operadoras
-        #Seleccionar los campos que queramos mostrar en el formulario
-        #fields = ['clave','nombre','descripcion','descuento','estado']
+        exclude = ['clave']
         fields = '__all__'
+        labels = {
+            'nombre': 'Nombre de la Operadora',
+            'email': 'Email de la operadora',
+
+        }
+

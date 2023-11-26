@@ -8,5 +8,5 @@ class Operadoras(models.Model):
     email = models.EmailField(blank=True, null=True)
     #imagen = models.ImageField()
 
-    def _str_(self):
+    def __str__(self):
         return self.nombre

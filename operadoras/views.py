@@ -3,9 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 import json
-
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from operadoras.forms import OperadoraForm
 from operadoras.models import Operadoras
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -79,3 +80,61 @@ def eliminar_operadora(request):
         clave.delete()
         messages.success(request, "Operadora Eliminada")
         return redirect('operadoras')
+
+
+#VISTAS BASADAS EN CLASES
+class OperadoraListView(ListView):
+
+    #1.nombre del template que va a utilizar
+    template_name = 'operadoras/operadoras_list.html'
+    #2. nombre del modelo
+    model = Operadoras
+    #3. Nombre del contexto
+    context_object_name = "operadoras"
+    #4. Paginacion
+    paginate_by = 10
+
+#Recuerda editar el form para personalizar los campos que vas a manejar
+class OperadoraCreateView(CreateView):
+    #1. Especificar al template que responde a la vista
+    template_name = 'operadoras/operadora_new.html'
+    #2. Especificar la forma
+    form_class = OperadoraForm
+    #3. Redireccionar
+    success_url = reverse_lazy('operadoras:operadoras_list')
+
+    #Sobreescribimos el metodo form_valid para mandar el mensaje de exito
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Operadora creada exitosamente.')
+        return response
+
+    #Este metedo se ejecuta cuando el form es valido usalo solo si tienes un campo que se llena automaticamente
+    def form_valid(self, form):
+        #Contenido del metodo
+        return super(OperadoraCreateView, self).form_valid(form)
+
+class OperadoraUpdateView(UpdateView):
+    template_name = 'operadoras/operadora_update.html'
+    # Si quieres editar todos los campos del form usa este codigo:
+    form_class = OperadoraForm
+    #Para editar solo campos especificos usa fields
+    #fields = ['nombrec','telefenoc','usuarioc','passwordc','edadc','localidad']
+    model = Operadoras
+    success_url = reverse_lazy('operadoras:operadoras_list')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Operadora modificada exitosamente.')
+        return response
+
+class OperadoraDeleteView(DeleteView):
+    model = Operadoras
+    template_name = 'operadoras/operadora_confirm_delete.html'
+    success_url = reverse_lazy('operadoras:operadoras_list')
+    context_object_name = 'operadora'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Operadora eliminada exitosamente.')
+        return response
