@@ -8,4 +8,10 @@ urlpatterns = [
     path('modificar_agente/<int:agente_id>/', views.modificar_agente, name='modificar_agente'),
     path('eliminar_agente/', views.eliminar_agente, name='eliminar_agente'),
     
+    #Basadas en clases urls
+    path('agentes-list', views.AgenteListView.as_view(), name='agentes_list'),
+    path('agentes-new', views.AgenteCreateView.as_view(), name='agentes_new'),
+    path('agentes-update/<pk>', views.AgenteUpdateView.as_view(), name='agentes_update'),
+    path('<pk>/eliminar', views.AgenteDeleteView.as_view(), name='eliminar_agente'),
+    
 ]
