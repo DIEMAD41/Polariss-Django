@@ -12,5 +12,5 @@ class Agentes(models.Model):
     localidadg = models.CharField(max_length=100)
     #imagen = models.ImageField()
 
-    def str(self):
+    def __str__(self):
         return self.nombreg
