@@ -8,6 +8,9 @@
         padding-top: 20px;
         color: var(--color);
     }
+        .container-fluid{
+        height: 100%;
+    }
     </style>
 {% endblock %}
 
@@ -26,8 +29,7 @@
             <div class="card-body">
                 {{ mensaje }}
                 <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form | crispy }}
+
 
                     <div class="d-flex justify-content-end">
                         <a href="{% url 'agentes:agentes_list' %}" class="btn btn-danger btn-icon-split">
@@ -45,6 +47,10 @@
                                         <span class="text">Modificar</span>
                        </button>
                     </div>
+
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
                 </form>
             </div>
         </div>

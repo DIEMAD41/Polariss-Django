@@ -7,7 +7,7 @@ from agentes.models import Agentes
 from django.contrib import messages
 import json
 from .forms import AgenteForm
-
+from .data import agentes as mis_agentes
 
 # Create your views here.
 def agentes(request):
@@ -91,20 +91,24 @@ def eliminar_agente(request):
 #VISTAS BASADAS EN CLASES
 class AgenteListView(ListView):
     # Este fragmento de codigo es para llenar datos de data.py en nuestra BD
+
+
+     # Cargar los agentes
     '''
-       # Cargar los clientes
-        print("Iniciar la carga de clientes")
-        for cliente in mis_clientes:
-            print("Grabando . . . ", cliente)
-            Cliente.objects.create(
-                nombrec=cliente[0],
-                telefenoc=cliente[1],
-                usuarioc=cliente[2],
-                passwordc=cliente[3],
-                edadc=cliente[4],
-                localidad=cliente[5]
-            )
+    print("Iniciar la carga de agentes")
+    for agente in mis_agentes:
+        print("Grabando . . . ", agente)
+        Agentes.objects.create(
+            nombreg=agente[1],
+            telefenog=agente[2],
+            usuariog=agente[3],
+            passwordg=agente[4],
+            saldo=agente[5],
+            edadg=agente[6],
+            localidadg = agente[7]
+        )
     '''
+
     #1.nombre del template que va a utilizar
     template_name = 'agentes/agentes_list.html'
     #2. nombre del modelo
@@ -122,6 +126,8 @@ class AgenteCreateView(CreateView):
     form_class = AgenteForm
     #3. Redireccionar
     success_url = reverse_lazy('agentes:agentes_list')
+
+
 
     #Sobreescribimos el metodo form_valid para mandar el mensaje de exito
     def form_valid(self, form):

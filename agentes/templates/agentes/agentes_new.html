@@ -7,6 +7,9 @@
         padding-top: 20px;
         color: var(--color);
     }
+    .container-fluid{
+        height: 100%;
+    }
     </style>
 {% endblock %}
 
@@ -23,12 +26,8 @@
 
             </div>
             <div class="card-body">
-                {{ mensaje }}
-                <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form | crispy }}
 
-                    <div class="d-flex justify-content-end">
+                 <div class="d-flex justify-content-end">
                         <a href="{% url 'agentes:agentes_list' %}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-times-circle"></i>
@@ -44,6 +43,13 @@
                                         <span class="text">Agregar</span>
                        </button>
                     </div>
+
+                {{ mensaje }}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+
                 </form>
             </div>
         </div>
