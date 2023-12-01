@@ -7,7 +7,7 @@ from proveedores.forms import ProveedorForm
 from proveedores.models import Proveedor
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-#from .data import proveedores as mis_proveedores
+from .data import proveedores as mis_proveedores
 
 
 # Create your views here.
@@ -81,18 +81,6 @@ def eliminar_proveedor(request):
 #VISTAS BASADAS EN CLASES
 class ProveedorListView(ListView):
     # Este fragmento de codigo es para llenar datos de data.py en nuestra BD
-    '''
-    # Cargar los proveedores
-    print("Iniciar la carga de proveedores")
-    for proveedor in mis_proveedores:
-        print("Grabando . . . ", proveedor)
-        Proveedor.objects.create(
-            nombreprov=proveedor[0],
-            telefenoprov=proveedor[1],
-            correoprov=proveedor[2],
-            nombreop=proveedor[3],
-        )
-    '''
     
     #1.nombre del template que va a utilizar
     template_name = 'proveedores/proveedores_list.html'

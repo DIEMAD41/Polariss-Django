@@ -88,20 +88,21 @@ def eliminar_cliente(request):
 #VISTAS BASADAS EN CLASES
 class ClienteListView(ListView):
     # Este fragmento de codigo es para llenar datos de data.py en nuestra BD
-    '''
+
        # Cargar los clientes
-        print("Iniciar la carga de clientes")
-        for cliente in mis_clientes:
-            print("Grabando . . . ", cliente)
-            Cliente.objects.create(
-                nombrec=cliente[0],
-                telefenoc=cliente[1],
-                usuarioc=cliente[2],
-                passwordc=cliente[3],
-                edadc=cliente[4],
-                localidad=cliente[5]
-            )
     '''
+    print("Iniciar la carga de clientes")
+    for cliente in mis_clientes:
+        print("Grabando . . . ", cliente)
+        Cliente.objects.create(
+            nombrec=cliente[0],
+            telefenoc=cliente[1],
+            usuarioc=cliente[2],
+            passwordc=cliente[3],
+            edadc=cliente[4],
+            localidad=cliente[5]
+        )
+'''
     #1.nombre del template que va a utilizar
     template_name = 'clientes/clientes_list.html'
     #2. nombre del modelo
