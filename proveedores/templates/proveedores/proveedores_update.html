@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block style %}
+    <style>
+    .text-primary{
+        padding-top: 20px;
+        color: var(--color);
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 font-weight-bold text-primary">Modificar Proveedor</h1>
+
+        <!-- DataTales Example -->
+        <div class="shadow mb-4">
+            <div class="card-header py-3">
+
+            </div>
+            <div class="card-body">
+                {{ mensaje }}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+                    <div class="d-flex justify-content-end">
+                        <a href="{% url 'proveedores:proveedor_list' %}" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-times-circle"></i>
+                                        </span>
+                                        <span class="text">Cancelar</span>
+                        </a>
+
+                        &nbsp;
+                       <button type="submit" class="btn btn-success">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </span>
+                                        <span class="text">Modificar</span>
+                       </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

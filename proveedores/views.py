@@ -5,6 +5,11 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from proveedores.forms import ProveedorForm
 from proveedores.models import Proveedor
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+#from .data import proveedores as mis_proveedores
+
+
 # Create your views here.
 def proveedores(request):
     proveedores = Proveedor.objects.all()
@@ -71,3 +76,76 @@ def eliminar_proveedor(request):
         proveedor.delete()
         messages.success(request, "Proveedor Eliminado")
         return redirect('proveedores')
+
+
+#VISTAS BASADAS EN CLASES
+class ProveedorListView(ListView):
+    # Este fragmento de codigo es para llenar datos de data.py en nuestra BD
+    '''
+    # Cargar los proveedores
+    print("Iniciar la carga de proveedores")
+    for proveedor in mis_proveedores:
+        print("Grabando . . . ", proveedor)
+        Proveedor.objects.create(
+            nombreprov=proveedor[0],
+            telefenoprov=proveedor[1],
+            correoprov=proveedor[2],
+            nombreop=proveedor[3],
+        )
+    '''
+    
+    #1.nombre del template que va a utilizar
+    template_name = 'proveedores/proveedores_list.html'
+    #2. nombre del modelo
+    model = Proveedor
+    #3. Nombre del contexto
+    context_object_name = "proveedores"
+    #4. Paginacion
+    paginate_by = 10
+
+#Recuerda editar el form para personalizar los campos que vas a manejar
+class ProveedorCreateView(CreateView):
+    #1. Especificar al template que responde a la vista
+    template_name = 'proveedores/proveedores_new.html'
+    #2. Especificar la forma
+    form_class = ProveedorForm
+    #3. Redireccionar
+    success_url = reverse_lazy('proveedores:proveedor_list')
+
+    #Sobreescribimos el metodo form_valid para mandar el mensaje de exito
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Proveedor creado exitosamente.')
+        return response
+
+    #Este metedo se ejecuta cuando el form es valido usalo solo si tienes un campo que se llena automaticamente
+'''
+    def form_valid(self, form):
+        #Contenido del metodo
+        return super(ProveedorCreateView, self).form_valid(form)
+'''
+
+class ProveedorUpdateView(UpdateView):
+    template_name = 'proveedores/proveedores_update.html'
+    # Si quieres editar todos los campos del form usa este codigo:
+    form_class = ProveedorForm
+    #Para editar solo campos especificos usa fields
+    #fields = ['nombrec','telefenoc','usuarioc','passwordc','edadc','localidad']
+    model = Proveedor
+    success_url = reverse_lazy('proveedores:proveedor_list')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Proveedor modificado exitosamente.')
+        return response
+
+class ProveedorDeleteView(DeleteView):
+    model = Proveedor
+    template_name = 'proveedores/proveedor_confirm_delete.html'
+    success_url = reverse_lazy('proveedores:proveedor_list')
+    context_object_name = 'proveedor'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Proveedor eliminado exitosamente.')
+        return response

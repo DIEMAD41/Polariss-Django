@@ -1,0 +1,153 @@
+{% extends 'base/base.html' %}
+
+
+{% block style %}
+    <style>
+    .btn-primary{
+        background-color: var(--color);
+        border-color: var(--color2);
+    }
+    .btn-primary:hover{
+        background-color: var(--color2);
+        border-color: var(--color2);
+    }
+
+    </style>
+{% endblock %}
+
+
+{% block javascript %}
+    <script>
+        function eliminarProducto(id){
+            Swal.fire({
+                'tittle':'Cava Jiquilpan',
+                'text' : 'Esta accion no se puede deshacer',
+                'icon':'question',
+                'showCancelButton':true,
+                'cancelButtonText':'No, Cancelar',
+                'confirmButtonText':'Si, Eliminar',
+                'reverseButtons':true,
+                'confirmButtonColor':'#E74A3B'
+            }).then(function (result){
+                if (result.isConfirmed){
+                    window.location.href="/clientes/categorias_list/"+id+"/"
+                }
+            })
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+
+        <!-- DataTales Example -->
+        <div class="shadow mb-4">
+            <div class="card-header py-3" >
+                {#                            <h6 class="m-0 font-weight-bold text-primary">Listado de categorias</h6>#}
+                <a href="{% url 'proveedores:proveedor_new' %}" class="btn btn-primary btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                    <span class="text">Nuevo Proveedor</span>
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <td class="text-center">ID</td>
+                            <td>Nombre</td>
+                            <td>Telefono</td>
+                            <td>Correo</td>
+                            <td>Operadora</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for proveedor in proveedores %}
+                        <tr>
+                            <td class="text-center">{{ proveedor.idprov }}</td>
+                            <td>{{ proveedor.nombreprov }}</td>
+                            <td>{{ proveedor.telefenoprov }}</td>
+                            <td>{{ proveedor.correoprov }}</td>
+                            <td>{{ proveedor.nombreop }}</td>
+
+                                <td class="text-center">
+                                    <a href="{% url 'proveedores:proveedor_update' proveedor.idprov %}" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{% url 'proveedores:eliminar_proveedor' proveedor.idprov %}" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            <!-- PAGINACION -->
+            <div class="row">
+        <div class="col-lg-12">
+            {% if page_obj.has_other_pages %}
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1">
+                                    Primero
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    Anterior
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for page_number in page_obj.paginator.page_range %}
+                            {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+                                {% if page_obj.number == page_number %}
+                                    <li class="page-item active">
+                                        <a class="page-link" href="?page={{ page_number }}">
+                                            {{ page_number }}
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_number }}">
+                                            {{ page_number }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    Siguiente
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                    Ultimo
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
