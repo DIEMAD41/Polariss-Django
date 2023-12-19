@@ -27,7 +27,14 @@
             </div>
             <div class="card-body">
 
-                 <div class="d-flex justify-content-end">
+
+
+                {{ mensaje }}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+                     <div class="d-flex justify-content-end">
                         <a href="{% url 'agentes:agentes_list' %}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-times-circle"></i>
@@ -43,12 +50,6 @@
                                         <span class="text">Agregar</span>
                        </button>
                     </div>
-
-                {{ mensaje }}
-                <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-
 
                 </form>
             </div>

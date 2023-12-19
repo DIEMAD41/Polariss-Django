@@ -7,7 +7,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from operadoras.forms import OperadoraForm
 from operadoras.models import Operadoras
 from django.urls import reverse_lazy
-
+from .data import operadoras as mis_operadoras
 
 # Create your views here.
 def operadoras(request):

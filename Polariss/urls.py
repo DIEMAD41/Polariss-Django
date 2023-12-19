@@ -32,6 +32,17 @@ urlpatterns = [
     path('agentes/', include(('agentes.urls', 'agentes'), namespace='agentes')),
     path('proveedores/',include(('proveedores.urls','proveedores'),namespace='proveedores')),
     path('operadoras/',include(('operadoras.urls','operadoras'),namespace='operadoras')),
+
+    #Reservas
+    path('',include('reservas.urls')),
+    path('reservas/',include(('reservas.urls','reservas'),namespace='reservas')),
+
+    #Paquetes
+    path('',include('paquetes.urls')),
+    path('paquetes/',include(('paquetes.urls','paquetes'),namespace='paquetes')),
+    #Paquete Api
+    path('', include('paquetes.urls')),
+
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

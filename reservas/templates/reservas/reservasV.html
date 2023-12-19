@@ -1,0 +1,193 @@
+{% extends 'base/base.html' %}
+
+
+{% block style %}
+    <style>
+        :root{
+    --white: white;
+    --color: #4EB5FD;
+    --color2: #4EB5FD99;
+    --black1: #24252A;
+    --tamañoOps: 90px;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="opsM">
+        <div class="dropdown">
+            <input type="text" class="textBox" placeholder="Operacion" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar('Agregar')"><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
+                <div onclick="mostrar('Modificar')"><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+                <div onclick="mostrar('Eliminar')"><ion-icon name="trash-outline"></ion-icon>Eliminar</div>
+                <div onclick="mostrar('Buscar')"><ion-icon name="search-circle-outline"></ion-icon>Buscar</div>
+                <div onclick="mostrar('Consulta')"><ion-icon name="help-circle-outline"></ion-icon>Consulta</div>
+            </div>
+        </div>
+        <div class="dropdown" id="d2">
+            <input type="text" class="textBox" id="tb2" placeholder="Servicio" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar2('Vuelo')"><ion-icon name="airplane-outline"></ion-icon>Vuelo</div>
+                <div onclick="mostrar2('Hotel')"><ion-icon name="bed-outline"></ion-icon>Hotel</div>
+                <div onclick="mostrar2('Transporte')"><ion-icon name="bus-outline"></ion-icon>Terrestre</div>
+                <div onclick="mostrar2('Maritimo')"><ion-icon name="boat-outline"></ion-icon>Maritimo</div>
+                <div onclick="mostrar2('Tour')"><ion-icon name="camera-outline"></ion-icon>Tour</div>
+            </div>
+        </div>
+        <button class="goB">GO</button>
+    </div>
+
+    <div class="reservas">
+        <!-- Lista de reservaciones -->
+        <div class="recientes">
+            <div class="titulo">
+                <h2>Reservaciones recientes </h2>
+                <a href="#" class="btn">Ver todas</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Cliente</td>
+                        <td>Origen</td>
+                        <td>Destino</td>
+                        <td>Fecha Ida</td>
+                        <td>Fecha Regreso</td>
+                        <td>Aerolínea</td>
+                        <td>Estado</td>
+                    </tr>
+                </thead>
+                <tbody class="TableClientes">
+
+                {% for vuelo in reservas  %}
+                    <tr>
+                        <td>{{ vuelo.clientes.first }}</td>
+                        <td>{{ vuelo.origenv }}</td>
+                        <td>{{ vuelo.destinov }}</td>
+                        <td>{{ vuelo.fsalida|date:"d/m/Y" }}</td>
+                        <td>{{ vuelo.fregreso|date:"d/m/Y" }}</td>
+                        <td>{{ vuelo.aerolinea }}</td>
+                        {% if vuelo.estado == 'P' %}
+                        <td><span class="status pago">En pago</span></td>
+                        {% elif vuelo.estado == 'NP' %}
+                        <td><span class="status apago">En pago</span></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Opciones de reservaciones -->
+        <div class="ops mini">
+            <div class="minimizar-ops">
+                <ion-icon name="close-outline"></ion-icon>
+            </div>
+            <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
+                <h2>Operaciones de Reservaciones </h2>
+            <div class="opciones">
+                <ul>
+                    <li class="list active2">
+                        <a href="{% url 'reservacionesV_list' %}">
+                            <span class="icon">
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                            </span>
+                            <span class="text">Agregar</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{% url 'reservacionesV_list' %}">
+                            <span class="icon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            <span class="text">Modificar</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{% url 'reservacionesV_list' %}">
+                            <span class="icon">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </span>
+                            <span class="text">Eliminar</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="{% url 'reservacionesV_list' %}">
+                            <span class="icon">
+                                <ion-icon name="search-circle-outline"></ion-icon>
+                            </span>
+                            <span class="text">Buscar</span>
+                        </a>
+                    </li>
+                        <li class="list">
+                            <a href="{% url 'reservacionesV_list' %}">
+                                <span class="icon">
+                                    <ion-icon name="help-circle-outline"></ion-icon>
+                                </span>
+                                <span class="text">Consulta</span>
+                            </a>
+                        </li>
+                    <div class="indicador"></div>
+                </ul>
+            </div>
+            <h2>Tipo de servicio</h2>
+            <div class="opciones2">
+                <ul>
+                    <li class="listR active2">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="airplane-outline"></ion-icon>
+                            </span>
+                            <span class="text">Vuelo</span>
+                        </a>
+                    </li>
+                    <li class="listR">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="bed-outline"></ion-icon>
+                            </span>
+                            <span class="text">Hotel</span>
+                        </a>
+                    </li>
+                    <li class="listR">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="car-sport-outline"></ion-icon>
+                            </span>
+                            <span class="text">Transporte</span>
+                        </a>
+                    </li>
+                    <li class="listR">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="boat-outline"></ion-icon>
+                            </span>
+                            <span class="text">Maritimo</span>
+                        </a>
+                    </li>
+                    <li class="listR">
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="camera-outline"></ion-icon>
+                            </span>
+                            <span class="text">Tour</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn">Realizar operacion</a>
+        </div>
+
+
+    </div>
+
+{% endblock content %}
+
+{% block javascript %}
+
+{% endblock %}

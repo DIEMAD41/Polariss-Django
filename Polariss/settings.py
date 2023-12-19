@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-r2*m#z6k%41_vf-j#m)bl)=t@xvro*6q-sxwc2bdd6#)s-27%q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+#SOLO PARA PRUEBAS CAMBIA AL USAR PROFESIONALEMNTE
+ALLOWED_HOSTS = ['*']
+
 #Activar el sistema de mensajeria de django entre ventanas
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
@@ -42,9 +45,12 @@ INSTALLED_APPS = [
     'clientes',
     'proveedores',
     'operadoras',
+    'reservas',
     'agentes',
+    'paquetes',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
@@ -133,6 +139,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
 MEDIA_URL = '/Imgs/'
 MEDIA_ROOT = BASE_DIR / 'static/Imgs'
 

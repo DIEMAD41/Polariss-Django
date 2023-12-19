@@ -1,0 +1,1808 @@
+﻿[
+  {
+    "iata": "ABC",
+    "nombre": "Aeropuerto de Albacete",
+    "sirve": "Albacete",
+    "region": "Castilla-La Mancha",
+    "pais": "España"
+  },
+  {
+    "iata": "AEP",
+    "nombre": "Aeroparque Jorge Newbery",
+    "sirve": "Buenos Aires",
+    "region": "Buenos Aires",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "AFA",
+    "nombre": "Aeropuerto Internacional Suboficial Ayudante Santiago Germano",
+    "sirve": "San Rafael",
+    "region": "Mendoza",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "AGP",
+    "nombre": "Aeropuerto de Málaga-Costa del Sol",
+    "sirve": "Málaga",
+    "region": "Andalucía",
+    "pais": "España"
+  },
+  {
+    "iata": "ALC",
+    "nombre": "Aeropuerto de Alicante-Elche Miguel Hernández",
+    "sirve": "Alicante",
+    "region": "Comunidad Valenciana",
+    "pais": "España"
+  },
+  {
+    "iata": "AMS",
+    "nombre": "Aeropuerto de Amsterdam-Schiphol",
+    "sirve": "Ámsterdam",
+    "region": "Holanda Septentrional",
+    "pais": "Países Bajos"
+  },
+  {
+    "iata": "ANF",
+    "nombre": "Aeropuerto Andrés Sabella",
+    "sirve": "Antofagasta",
+    "region": "Antofagasta",
+    "pais": "Chile"
+  },
+  {
+    "iata": "AOL",
+    "nombre": "Aeropuerto Internacional de Paso de los Libres",
+    "sirve": "Paso de los Libres",
+    "region": "Corrientes",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "ARI",
+    "nombre": "Aeropuerto Internacional Chacalluta",
+    "sirve": "Arica",
+    "region": "Arica y Parinacota",
+    "pais": "Chile"
+  },
+  {
+    "iata": "ARN",
+    "nombre": "Aeropuerto de Estocolmo-Arlanda",
+    "sirve": "Estocolmo",
+    "region": "Estocolmo",
+    "pais": "Suecia"
+  },
+  {
+    "iata": "ASU",
+    "nombre": "Aeropuerto Internacional Silvio Pettirossi",
+    "sirve": "Asunción",
+    "region": "Central",
+    "pais": "Paraguay"
+  },
+  {
+    "iata": "ATH",
+    "nombre": "Aeropuerto Internacional Eleftherios Venizelos",
+    "sirve": "Atenas",
+    "region": "Atica",
+    "pais": "Grecia"
+  },
+  {
+    "iata": "AUA",
+    "nombre": "Aeropuerto Internacional Reina Beatrix",
+    "sirve": "Oranjestad",
+    "region": "Aruba",
+    "pais": "Países Bajos"
+  },
+  {
+    "iata": "BBA",
+    "nombre": "Aeródromo Balmaceda",
+    "sirve": "Balmaceda",
+    "region": "Aysén",
+    "pais": "Chile"
+  },
+  {
+    "iata": "BCN",
+    "nombre": "Aeropuerto de Barcelona-El Prat",
+    "sirve": "Barcelona",
+    "region": "Cataluña",
+    "pais": "España"
+  },
+  {
+    "iata": "BHI",
+    "nombre": "Aeropuerto Comandante Espora",
+    "sirve": "Bahía Blanca",
+    "region": "Buenos Aires",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "BIN",
+    "nombre": "Aeropuerto de Bamiyan",
+    "sirve": "Bamiyan",
+    "region": "Provincia de Bamiyán",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "BIO",
+    "nombre": "Aeropuerto de Bilbao",
+    "sirve": "Bilbao",
+    "region": "Vizcaya",
+    "pais": "España"
+  },
+  {
+    "iata": "BOD",
+    "nombre": "Aeropuerto de Burdeos-Mérignac",
+    "sirve": "Burdeos",
+    "region": "Aquitania",
+    "pais": "Francia"
+  },
+  {
+    "iata": "BOG",
+    "nombre": "Aeropuerto Internacional El Dorado",
+    "sirve": "Bogotá",
+    "region": "Bogotá, D. C.",
+    "pais": "Colombia"
+  },
+  {
+    "iata": "BPM",
+    "nombre": "Base Aérea de Bagram",
+    "sirve": "Bagram",
+    "region": "Provincia de Parwan",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "BRC",
+    "nombre": "Aeropuerto Internacional Teniente Luis Candelaria",
+    "sirve": "San Carlos de Bariloche",
+    "region": "Río Negro",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "BSL",
+    "nombre": "Aeropuerto de Basilea-Mulhouse-Friburgo",
+    "sirve": "Basilea, Mulhouse, Friburgo",
+    "region": "Alsacia",
+    "pais": "Francia"
+  },
+  {
+    "iata": "BST",
+    "nombre": "Aeropuerto de Bost",
+    "sirve": "Lashkar Gah",
+    "region": "Provincia de Helmand",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "BUD",
+    "nombre": "Aeropuerto de Budapest-Ferenc Liszt",
+    "sirve": "Budapest",
+    "region": "Budapest",
+    "pais": "Hungría"
+  },
+  {
+    "iata": "COR",
+    "nombre": "Aeropuerto Internacional Ing. Ambrosio Taravella",
+    "sirve": "Córdoba",
+    "region": "Córdoba",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "CDT",
+    "nombre": "Aeropuerto de Castellon",
+    "sirve": "Castellón",
+    "region": "Comunidad Valenciana",
+    "pais": "España"
+  },
+  {
+    "iata": "CCC",
+    "nombre": "Aeropuerto Internacional de Jardines del Rey",
+    "sirve": "Cayo Coco",
+    "region": "Ciego de Ávila",
+    "pais": "Cuba"
+  },
+  {
+    "iata": "CCP",
+    "nombre": "Aeropuerto Carriel Sur",
+    "sirve": "Concepción",
+    "region": "Biobio",
+    "pais": "Chile"
+  },
+  {
+    "iata": "CCS",
+    "nombre": "Aeropuerto Internacional de Maiquetia Simón Bolivar",
+    "sirve": "Caracas",
+    "region": "Distrito Capital",
+    "pais": "Venezuela"
+  },
+  {
+    "iata": "CDG",
+    "nombre": "Aeropuerto de Paris-Charles de Gaulle",
+    "sirve": "París",
+    "region": "Isla de Francia",
+    "pais": "Francia"
+  },
+  {
+    "iata": "CGN",
+    "nombre": "Aeropuerto Internacional de Colonia/Bonn Konrad Adenauer",
+    "sirve": "Colonia, Bonn",
+    "region": "Renania del Norte-Westfalia",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "CLO",
+    "nombre": "Aeropuerto Internacional Bonilla Aragón",
+    "sirve": "Cali",
+    "region": "Valle del Cauca",
+    "pais": "Colombia"
+  },
+  {
+    "iata": "CLX",
+    "nombre": "Aeropuerto Clorinda",
+    "sirve": "Clorinda",
+    "region": "Formosa",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "CMN",
+    "nombre": "Aeropuerto Internacional Mohammed V",
+    "sirve": "Casablanca",
+    "region": "Settat",
+    "pais": "Marruecos"
+  },
+  {
+    "iata": "CNQ",
+    "nombre": "Aeropuerto Internacional Doctor Fernando Piragine Niveyro",
+    "sirve": "Cludad de Corrientes",
+    "region": "Corrientes",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "COC",
+    "nombre": "Aeropuerto Comodoro Pierrestegui",
+    "sirve": "Concordia",
+    "region": "Entre Ríos",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "CTC",
+    "nombre": "Aeropuerto Coronel Felipe Varela",
+    "sirve": "San Fernando del Valle de Catamarca",
+    "region": "Catamarca",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "CUE",
+    "nombre": "Aeropuerto Internacional Mariscal Lamar",
+    "sirve": "Cuenca",
+    "region": "Azuay",
+    "pais": "Ecuador"
+  },
+  {
+    "iata": "CUU",
+    "nombre": "Aeropuerto Internacional General Roberto Fierro Villalobos",
+    "sirve": "Chihuahua",
+    "region": "Chihuahua",
+    "pais": "México"
+  },
+  {
+    "iata": "CVU",
+    "nombre": "Aeropuerto de Corvo",
+    "sirve": "Isla de Corvo",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "CWB",
+    "nombre": "Aeropuerto Internacional Afonso Pena",
+    "sirve": "Curitiba",
+    "region": "Paraná",
+    "pais": "Brasil"
+  },
+  {
+    "iata": "DAY",
+    "nombre": "Aeropuerto Internacional James M. Cox-Dayton",
+    "sirve": "Dayton",
+    "region": "Ohio",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "DJE",
+    "nombre": "Aeropuerto Internacional de Yerba-Zarzis",
+    "sirve": "Yerba (Túnez)",
+    "region": "Medenine",
+    "pais": "Túnez"
+  },
+  {
+    "iata": "DME",
+    "nombre": "Aeropuerto Internacional de Moscú-Domodedovo",
+    "sirve": "Moscú",
+    "region": "Oblast de Moscú",
+    "pais": "Rusia"
+  },
+  {
+    "iata": "DOH",
+    "nombre": "Aeropuerto Internacional Hamad",
+    "sirve": "Doha",
+    "region": "Municipio de Doha",
+    "pais": "Catar"
+  },
+  {
+    "iata": "DXB",
+    "nombre": "Aeropuerto Internacional de Dubai",
+    "sirve": "Dubai",
+    "region": "Dubai",
+    "pais": "Emiratos Árabes Unidos"
+  },
+  {
+    "iata": "EAP",
+    "nombre": "Aeropuerto de Basilea-Mulhouse-Friburgo",
+    "sirve": "Basilea, Mulhouse, Friburgo",
+    "region": "Alsacia",
+    "pais": "Francia"
+  },
+  {
+    "iata": "EDI",
+    "nombre": "Aeropuerto de Edimburgo",
+    "sirve": "Edimburgo",
+    "region": "Escocia",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "EGE",
+    "nombre": "Aeropuerto Regional del Condado de Eagle",
+    "sirve": "Eagle-Vail",
+    "region": "Colorado",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "EIN",
+    "nombre": "Aeropuerto de Eindhoven",
+    "sirve": "Eindhoven",
+    "region": "Brabante Septentrional",
+    "pais": "Países Bajos"
+  },
+  {
+    "iata": "EPA",
+    "nombre": "Aeropuerto El Palomar",
+    "sirve": "Área metropolitana de Buenos Aires",
+    "region": "Buenos Aires",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "ESR",
+    "nombre": "Aeródromo Ricardo Garcia Posada",
+    "sirve": "El Salvador (Chile)",
+    "region": "Atacama",
+    "pais": "Chile"
+  },
+  {
+    "iata": "EZE",
+    "nombre": "Aeropuerto Internacional Ministro Pistarini",
+    "sirve": "Ezeiza",
+    "region": "Buenos Aires",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "ENO",
+    "nombre": "Aeropuerto Teniente Amin Ayub González",
+    "sirve": "Encarnacion (Paraguay)",
+    "region": "Itapúa",
+    "pais": "Paraguay"
+  },
+  {
+    "iata": "EOH",
+    "nombre": "Aeropuerto Enrique Olaya Herrera",
+    "sirve": "Medellín",
+    "region": "Antioquia",
+    "pais": "Colombia"
+  },
+  {
+    "iata": "FAO",
+    "nombre": "Aeropuerto de Faro",
+    "sirve": "Faro",
+    "region": "Algarve",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "FBD",
+    "nombre": "Aeropuerto de Fayzabad",
+    "sirve": "Fayzabad",
+    "region": "Badajshan",
+    "pais": " Afganistán"
+  },
+   {
+    "iata": "FCO",
+    "nombre": "Aeropuerto Internacional Leonardo da Vinci-Fiumicino",
+    "sirve": "Roma",
+    "region": "Lacio",
+    "pais": "Italia"
+  },
+  {
+    "iata": "FLR",
+    "nombre": "Aeropuerto Internacional de Florencia",
+    "sirve": "Florencia",
+    "region": "Toscana",
+    "pais": "Italia"
+  },
+    {
+    "iata": "FLW",
+    "nombre": "Aeropuerto de Flores",
+    "sirve": "Isla de Flores",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+      {
+    "iata": "FMA",
+    "nombre": "Aeropuerto Internacional de Formosa",
+    "sirve": "Ciudad de Formosa",
+    "region": "Formosa",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "FNC",
+    "nombre": "Aeropuerto Internacional Cristiano Ronaldo",
+    "sirve": "Funchal",
+    "region": "Madeira",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "FRA",
+    "nombre": "Aeropuerto Internacional de Frankfurt",
+    "sirve": "Frankfurt",
+    "region": "Hesse",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "FRU",
+    "nombre": "Aeropuerto de Fuerteventura",
+    "sirve": "Puerto del Rosario",
+    "region": "Fuerteventura",
+    "pais": "España"
+  },
+  {
+    "iata": "FUE",
+    "nombre": "Aeropuerto Internacional de Gran Canaria",
+    "sirve": "Las Palmas de Gran Canaria",
+    "region": "Gran Canaria",
+    "pais": "España"
+  },
+  {
+    "iata": "FUK",
+    "nombre": "Aeropuerto Internacional de Fukuoka",
+    "sirve": "Fukuoka",
+    "region": "Fukuoka",
+    "pais": "Japón"
+  },
+  {
+    "iata": "FWA",
+    "nombre": "Aeropuerto Internacional de Fort Lauderdale-Hollywood",
+    "sirve": "Fort Lauderdale",
+    "region": "Florida",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "FRS",
+    "nombre": "Aeropuerto Internacional Mundo Maya",
+    "sirve": "Santa Elena de la Cruz",
+    "region": "Petén",
+    "pais": "Guatemala"
+  },
+  {
+    "iata": "FOR",
+    "nombre": "Aeropuerto Internacional Pinto Martins",
+    "sirve": "Fortaleza",
+    "region": "Ceará",
+    "pais": "Brasil"
+  },
+  {
+    "iata": "FTE",
+    "nombre": "Aeropuerto Internacional Comandante Armando Tola",
+    "sirve": "El Calafate",
+    "region": "Santa Cruz",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "GDL",
+    "nombre": "Aeropuerto Internacional de Guadalajara",
+    "sirve": "Guadalajara, Jalisco",
+    "region": "Jalisco",
+    "pais": "México"
+  },
+  {
+    "iata": "GHU",
+    "nombre": "Aeropuerto de Gualeguaychú",
+    "sirve": "Gualeguaychú",
+    "region": "Entre Ríos",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "GIB",
+    "nombre": "Aeropuerto de Gibraltar",
+    "sirve": "Gibraltar",
+    "region": "Gibraltar",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "GPO",
+    "nombre": "Aeropuerto de General Pico",
+    "sirve": "General Pico",
+    "region": "La Pampa",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "GRU",
+    "nombre": "Aeropuerto Internacional de São Paulo-Guarulhos",
+    "sirve": "São Paulo",
+    "region": "São Paulo",
+    "pais": "Brasil"
+  },
+  {
+    "iata": "GRW",
+    "nombre": "Aeropuerto de Graciosa",
+    "sirve": "Isla Graciosa",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "GRX",
+    "nombre": "Aeropuerto de Granada",
+    "sirve": "Granada",
+    "region": "Andalucía",
+    "pais": "España"
+  },
+  {
+    "iata": "GUA",
+    "nombre": "Aeropuerto Internacional La Aurora",
+    "sirve": "Ciudad de Guatemala",
+    "region": "Guatemala",
+    "pais": "Guatemala"
+  },
+  {
+    "iata": "GYE",
+    "nombre": "Aeropuerto Internacional Jose Joaquin de Olmedo",
+    "sirve": "Guayaquil",
+    "region": "Guayas",
+    "pais": "Ecuador"
+  },
+  {
+    "iata": "HAJ",
+    "nombre": "Aeropuerto de Hannover",
+    "sirve": "Hannover",
+    "region": "Baja Sajonia",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "HAM",
+    "nombre": "Aeropuerto de Hamburgo",
+    "sirve": "Hamburgo",
+    "region": "Hamburgo",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "HAV",
+    "nombre": "Aeropuerto Internacional José Martí",
+    "sirve": "La Habana",
+    "region": "La Habana",
+    "pais": "Cuba"
+  },
+  {
+    "iata": "HBX",
+    "nombre": "Aeropuerto de Hubli",
+    "sirve": "Hubballi, Dharwad",
+    "region": "Karnataka",
+    "pais": "India"
+  },
+  {
+    "iata": "HEA",
+    "nombre": "Aeropuerto de Herat",
+    "sirve": "Herat",
+    "region": "Provincia de Herat",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "HEL",
+    "nombre": "Aeropuerto de Helsinki-Vantaa",
+    "sirve": "Helsinki",
+    "region": "Uusimaa",
+    "pais": "Finlandia"
+  },
+  {
+    "iata": "HGL",
+    "nombre": "Aeropuerto de Heligoland",
+    "sirve": "Heligoland",
+    "region": "Schleswig-Holstein",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "HHN",
+    "nombre": "Aeropuerto de Fráncfort-Hahn",
+    "sirve": "Fráncfort",
+    "region": "Renania del Norte-Westfalia",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "HIR",
+    "nombre": "Aeropuerto Internacional de Honiara",
+    "sirve": "Honiara",
+    "region": "Honiara",
+    "pais": "Islas Salomón"
+  },
+  {
+    "iata": "HKG",
+    "nombre": "Aeropuerto Internacional de Hong Kong",
+    "sirve": "Hong Kong",
+    "region": "Región Administrativa Especial de Hong Kong",
+    "pais": "China"
+  },
+  {
+    "iata": "HMO",
+    "nombre": "Aeropuerto Internacional General Ignacio Pesqueira García",
+    "sirve": "Hermosillo",
+    "region": "Sonora",
+    "pais": "México"
+  },
+  {
+    "iata": "HND",
+    "nombre": "Aeropuerto Internacional de Haneda",
+    "sirve": "Tokio",
+    "region": "Tokio",
+    "pais": "Japón"
+  },
+  {
+    "iata": "HOG",
+    "nombre": "Aeropuerto Internacional Frank País",
+    "sirve": "Holguín",
+    "region": "Holguín",
+    "pais": "Cuba"
+  },
+  {
+    "iata": "HOR",
+    "nombre": "Aeropuerto de Horta",
+    "sirve": "Isla de Faial",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "HNL",
+    "nombre": "Aeropuerto Internacional de Honolulu",
+    "sirve": "Honolulu",
+    "region": "Hawái",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "HOU",
+    "nombre": "Aeropuerto William P. Hobby",
+    "sirve": "Houston",
+    "region": "Texas",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "IBZ",
+    "nombre": "Aeropuerto de Ibiza",
+    "sirve": "Ibiza",
+    "region": "Islas Baleares",
+    "pais": "España"
+  },
+  {
+    "iata": "ICN",
+    "nombre": "Aeropuerto Internacional de Incheon",
+    "sirve": "Incheon, Seúl",
+    "region": "Ciudad Metropolitana de Incheon",
+    "pais": "Corea del Sur"
+  },
+  {
+    "iata": "IGR",
+    "nombre": "Aeropuerto Internacional de Puerto Iguazú",
+    "sirve": "Puerto Iguazú",
+    "region": "Provincia de Misiones",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "INV",
+    "nombre": "Aeropuerto de Inverness",
+    "sirve": "Inverness",
+    "region": "Escocia",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "IPC",
+    "nombre": "Aeropuerto Internacional Mataveri",
+    "sirve": "Isla de Pascua",
+    "region": "Valparaíso",
+    "pais": "Chile"
+  },
+  {
+    "iata": "IQQ",
+    "nombre": "Aeropuerto Internacional Diego Aracena",
+    "sirve": "Iquique",
+    "region": "Tarapacá",
+    "pais": "Chile"
+  },
+  {
+    "iata": "IRJ",
+    "nombre": "Aeropuerto Capitán Vicente Almandos Almonacid",
+    "sirve": "Ciudad de La Rioja",
+    "region": "La Rioja",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "IST",
+    "nombre": "Aeropuerto Internacional Atatürk",
+    "sirve": "Estambul",
+    "region": "Provincia de Estambul",
+    "pais": "Turquía"
+  },
+  {
+    "iata": "IVL",
+    "nombre": "Aeropuerto de Ivalo",
+    "sirve": "Ivalo",
+    "region": "Laponia Finlandesa",
+    "pais": "Finlandia"
+  },
+  {
+    "iata": "JAA",
+    "nombre": "Aeropuerto de Jalalabad",
+    "sirve": "Jalalabad",
+    "region": "Provincia de Nangar",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "JER",
+    "nombre": "Aeropuerto de Jersey",
+    "sirve": "Saint Helier",
+    "region": "Jersey",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "JFK",
+    "nombre": "Aeropuerto Internacional John F. Kennedy",
+    "sirve": "Nueva York",
+    "region": "Estado de Nueva York",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "JKL",
+    "nombre": "Aeropuerto Nacional de Kálimnos",
+    "sirve": "Pothia",
+    "region": "Egeo Meridional",
+    "pais": "Grecia"
+  },
+  {
+    "iata": "JSR",
+    "nombre": "Aeropuerto de Jessore",
+    "sirve": "Jessore",
+    "region": "Khulna",
+    "pais": "Bangladés"
+  },
+  {
+    "iata": "JUJ",
+    "nombre": "Aeropuerto Internacional Gobernador Horacio Guzmán",
+    "sirve": "San Salvador de Jujuy",
+    "region": "Provincia de Jujuy",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "KBL",
+    "nombre": "Aeropuerto Internacional de Kabul",
+    "sirve": "Kabul",
+    "region": "Provincia de Kabul",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "KDH",
+    "nombre": "Aeropuerto Internacional de Kandahar",
+    "sirve": "Kandahar",
+    "region": "Provincia de Kandahar",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "KEF",
+    "nombre": "Aeropuerto Internacional de Keflavík",
+    "sirve": "Reikiavik",
+    "region": "Höfuðborgarsvæðið",
+    "pais": "Islandia"
+  },
+  {
+    "iata": "KGD",
+    "nombre": "Aeropuerto de Kaliningrado-Jrabrovo",
+    "sirve": "Kaliningrado",
+    "region": "Óblast de Kaliningrado",
+    "pais": "Rusia"
+  },
+  {
+    "iata": "LAD",
+    "nombre": "Aeropuerto Internacional Quatro de Fevereiro",
+    "sirve": "Luanda",
+    "region": "Provincia de Luanda",
+    "pais": "Angola"
+  },
+  {
+    "iata": "LAS",
+    "nombre": "Aeropuerto Internacional Harry Reid",
+    "sirve": "Las Vegas",
+    "region": "Nevada",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "LAX",
+    "nombre": "Aeropuerto Internacional de Los Ángeles",
+    "sirve": "Los Ángeles",
+    "region": "California",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "LCE",
+    "nombre": "Aeropuerto Internacional Golosón",
+    "sirve": "La Ceiba",
+    "region": "Atlántida",
+    "pais": "Honduras"
+  },
+  {
+    "iata": "LEI",
+    "nombre": "Aeropuerto de Almería",
+    "sirve": "Almería",
+    "region": "Andalucía",
+    "pais": "España"
+  },
+  {
+    "iata": "LEU",
+    "nombre": "Aeropuerto de Andorra-La Seu",
+    "sirve": "Seo de Urgel, Andorra la Vella",
+    "region": "Cataluña",
+    "pais": "España"
+  },
+  {
+    "iata": "LGG",
+    "nombre": "Aeropuerto de Lieja",
+    "sirve": "Lieja",
+    "region": "Región Valona",
+    "pais": "Bélgica"
+  },
+  {
+    "iata": "LGS",
+    "nombre": "Aeropuerto Internacional Comodoro Ricardo Salomón",
+    "sirve": "Malargüe",
+    "region": "Provincia de Mendoza",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "LGW",
+    "nombre": "Aeropuerto de Gatwick",
+    "sirve": "Londres",
+    "region": "Inglaterra",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "LHR",
+    "nombre": "Aeropuerto de Heathrow",
+    "sirve": "Londres",
+    "region": "Inglaterra",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "LIM",
+    "nombre": "Aeropuerto Internacional Jorge Chávez",
+    "sirve": "Callao, Lima",
+    "region": "Callao",
+    "pais": "Perú"
+  },
+  {
+    "iata": "LIR",
+    "nombre": "Guanacaste Aeropuerto",
+    "sirve": "Guanacaste",
+    "region": "Guanacaste",
+    "pais": "Costa Rica"
+  },
+  {
+    "iata": "LIS",
+    "nombre": "Aeropuerto de Portela",
+    "sirve": "Lisboa",
+    "region": "Lisboa",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "LTN",
+    "nombre": "Aeropuerto de Londres-Luton",
+    "sirve": "Londres",
+    "region": "Inglaterra",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "LUQ",
+    "nombre": "Aeropuerto Brigadier Mayor César Raúl Ojeda",
+    "sirve": "Ciudad de San Luis",
+    "region": "Provincia de San Luis",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "MAD",
+    "nombre": "Aeropuerto Adolfo Suárez Madrid-Barajas",
+    "sirve": "Madrid",
+    "region": "Comunidad de Madrid",
+    "pais": "España"
+  },
+  {
+    "iata": "MCS",
+    "nombre": "Aeropuerto de Monte Caseros",
+    "sirve": "Monte Caseros",
+    "region": "Provincia de Corrientes",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "MDE",
+    "nombre": "Aeropuerto Internacional José María Cordova",
+    "sirve": "Rionegro, Medellín",
+    "region": "Antioquia",
+    "pais": "Colombia"
+  },
+  {
+    "iata": "MDQ",
+    "nombre": "Aeropuerto Internacional Astor Piazzolla",
+    "sirve": "Mar del Plata",
+    "region": "Provincia de Buenos Aires",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "MVD",
+    "nombre": "Aeropuerto Internacional de Carrasco",
+    "sirve": "Montevideo",
+    "region": "Montevideo",
+    "pais": "Uruguay"
+  },
+  {
+    "iata": "MDZ",
+    "nombre": "Aeropuerto Internacional Gobernador Francisco Gabrielli",
+    "sirve": "Ciudad de Mendoza",
+    "region": "Provincia de Mendoza",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "MEC",
+    "nombre": "Aeropuerto de Manta",
+    "sirve": "Manta",
+    "region": "Manabí",
+    "pais": "Ecuador"
+  },
+  {
+    "iata": "MGA",
+    "nombre": "Aeropuerto Internacional Augusto C. Sandino",
+    "sirve": "Managua",
+    "region": "Managua",
+    "pais": "Nicaragua"
+  },
+  {
+    "iata": "MTY",
+    "nombre": "Aeropuerto Internacional Mariano Escobedo",
+    "sirve": "Monterrey",
+    "region": "Nuevo León",
+    "pais": "México"
+  },
+  {
+    "iata": "MEX",
+    "nombre": "Aeropuerto Internacional Benito Juárez",
+    "sirve": "Ciudad de México",
+    "region": "México",
+    "pais": "México"
+  },
+  {
+    "iata": "MDX",
+    "nombre": "Aeropuerto del Iberá",
+    "sirve": "Mercedes",
+    "region": "Provincia de Corrientes",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "MFM",
+    "nombre": "Aeropuerto Internacional de Macao",
+    "sirve": "Ciudad de Macao",
+    "region": "Macao",
+    "pais": "China"
+  },
+  {
+    "iata": "MIA",
+    "nombre": "Aeropuerto Internacional de Miami",
+    "sirve": "Miami",
+    "region": "Florida",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "MKC",
+    "nombre": "Aeropuerto Urbano Charles B. Wheeler",
+    "sirve": "Kansas City",
+    "region": "Misuri",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "MLH",
+    "nombre": "Aeropuerto de Basilea-Mulhouse-Friburgo",
+    "sirve": "Basilea, Mulhouse, Friburgo",
+    "region": "Alsacia",
+    "pais": "Francia"
+  },
+  {
+    "iata": "MLN",
+    "nombre": "Aeropuerto de Melilla",
+    "sirve": "Melilla",
+    "region": "Melilla",
+    "pais": "España"
+  },
+  {
+    "iata": "MPN",
+    "nombre": "Base Aérea de Monte Agradable",
+    "sirve": "Isla Soledad",
+    "region": "Islas Malvinas",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "MUC",
+    "nombre": "Aeropuerto Internacional de Múnich-Franz Josef Strauss",
+    "sirve": "Munich",
+    "region": "Baviera",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "MXP",
+    "nombre": "Aeropuerto de Milán-Malpensa",
+    "sirve": "Milán",
+    "region": "Lombardía",
+    "pais": "Italia"
+  },
+   {
+    "iata": "MZR",
+    "nombre": "Aeropuerto de Mazar-e Sarif",
+    "sirve": "Mazar-e Sarif",
+    "region": "Provincia de Balj",
+    "pais": "Afganistán"
+  },
+  {
+    "iata": "MCO",
+    "nombre": "Orlando International Airport",
+    "sirve": "Orlando",
+    "region": "Florida",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "NAP",
+    "nombre": "Aeropuerto de Nápoles-Capodichino",
+    "sirve": "Nápoles",
+    "region": "Campania",
+    "pais": "Italia"
+  },
+  {
+    "iata": "NIC",
+    "nombre": "Aeropuerto de Nicosia",
+    "sirve": "Nicosia",
+    "region": "Distrito de Nicosia",
+    "pais": "Chipre"
+  },
+  {
+    "iata": "NLU",
+    "nombre": "Aeropuerto Internacional Felipe Ángeles",
+    "sirve": "Ciudad de México",
+    "region": "Ciudad de México",
+    "pais": "México"
+  },
+  {
+    "iata": "NLK",
+    "nombre": "Aeropuerto de la Isla Norfolk",
+    "sirve": "Kingston",
+    "region": "Isla Norfolk",
+    "pais": "Australia"
+  },
+  {
+    "iata": "OPO",
+    "nombre": "Aeropuerto de Francisco Sá Carneiro",
+    "sirve": "Oporto",
+    "region": "Región Norte",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "ORA",
+    "nombre": "Aero Club Orán",
+    "sirve": "San Ramón de la Nueva Orán",
+    "region": "Provincia de Salta",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "ORD",
+    "nombre": "Aeropuerto Internacional O'Hare",
+    "sirve": "Chicago",
+    "region": "Illinois",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "ORK",
+    "nombre": "Aeropuerto de Cork",
+    "sirve": "Cork",
+    "region": "Munster",
+    "pais": "Irlanda"
+  },
+  {
+    "iata": "ORY",
+    "nombre": "Aeropuerto de París-Orly",
+    "sirve": "París",
+    "region": "Isla de Francia",
+    "pais": "Francia"
+  },
+  {
+    "iata": "OYA",
+    "nombre": "Aeropuerto Dr. Diego Nicolás Díaz Colodrero",
+    "sirve": "Goya",
+    "region": "Provincia de Corrientes",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "PBR",
+    "nombre": "Aeropuerto Internacional La Tierra de Dios",
+    "sirve": "Puerto Barrios",
+    "region": "Izabal",
+    "pais": "Guatemala"
+  },
+  {
+    "iata": "PDP",
+    "nombre": "Aeropuerto Internacional de Punta del Este",
+    "sirve": "Maldonado y Punta del Este",
+    "region": "Maldonado",
+    "pais": "Uruguay"
+  },
+  {
+    "iata": "PDL",
+    "nombre": "Aeropuerto João Paulo II",
+    "sirve": "Isla de São Miguel",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "PHL",
+    "nombre": "Aeropuerto Internacional de Filadelfia",
+    "sirve": "Filadelfia",
+    "region": "Pensilvania",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "PIX",
+    "nombre": "Aeropuerto de Pico",
+    "sirve": "Isla del Pico",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "PJC",
+    "nombre": "Aeropuerto Doctor Fuster",
+    "sirve": "Pedro Juan Caballero (Paraguay)",
+    "region": "Departamento de Amambay",
+    "pais": "Paraguay"
+  },
+  {
+    "iata": "PNA",
+    "nombre": "Aeropuerto de Pamplona",
+    "sirve": "Noáin",
+    "region": "Navarra",
+    "pais": "España"
+  },
+  {
+    "iata": "PRA",
+    "nombre": "Aeropuerto General Justo José de Urquiza",
+    "sirve": "Paraná",
+    "region": "Entre Ríos",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "PRQ",
+    "nombre": "Aeropuerto de Presidencia Roque Sáenz Peña",
+    "sirve": "Presidencia Roque Sáenz Peña",
+    "region": "Chaco",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "PSY",
+    "nombre": "Aeropuerto de Puerto Argentino/Stanley",
+    "sirve": "Puerto Argentino/Stanley",
+    "region": "Islas Malvinas",
+    "pais": "Reino Unido"
+  },
+  {
+    "iata": "PTY",
+    "nombre": "Aeropuerto Internacional de Tocumen",
+    "sirve": "Ciudad de Panamá",
+    "region": "Provincia de Panamá",
+    "pais": "Panamá"
+  },
+  {
+    "iata": "PUJ",
+    "nombre": "Aeropuerto Internacional de Punta Cana",
+    "sirve": "Punta Cana",
+    "region": "La Altagracia",
+    "pais": "República Dominicana"
+  },
+  {
+    "iata": "PUQ",
+    "nombre": "Aeropuerto Internacional Presidente Carlos Ibáñez del Campo",
+    "sirve": "Punta Arenas",
+    "region": "Magallanes y Antártica Chilena",
+    "pais": "Chile"
+  },
+  {
+    "iata": "PXO",
+    "nombre": "Aeropuerto de Porto Santo",
+    "sirve": "Isla de Porto Santo",
+    "region": "Madeira",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "QGY",
+    "nombre": "Aeropuerto Internacional de Györ-Pér",
+    "sirve": "Györ",
+    "region": "Győr-Moson-Sopron",
+    "pais": "Hungría"
+  },
+  {
+    "iata": "QRC",
+    "nombre": "Aeródromo de la Independencia",
+    "sirve": "Rancagua",
+    "region": "O'Higgins",
+    "pais": "Chile"
+  },
+  {
+    "iata": "QSA",
+    "nombre": "Aeropuerto de Sabadell",
+    "sirve": "Sabadell",
+    "region": "Cataluña",
+    "pais": "España"
+  },
+  {
+    "iata": "RAK",
+    "nombre": "Aeropuerto de Marrakech-Menara",
+    "sirve": "Marrakech",
+    "region": "Marrakech-Safí",
+    "pais": "Marruecos"
+  },
+  {
+    "iata": "RBA",
+    "nombre": "Aeropuerto de Rabat-Salé",
+    "sirve": "Rabat",
+    "region": "Rabat-Salé-Kenitra",
+    "pais": "Marruecos"
+  },
+  {
+    "iata": "RES",
+    "nombre": "Aeropuerto Internacional de Resistencia",
+    "sirve": "Ciudad de Resistencia",
+    "region": "Chaco",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "REU",
+    "nombre": "Aeropuerto de Reus",
+    "sirve": "Reus, Tarragona",
+    "region": "Cataluña",
+    "pais": "España"
+  },
+  {
+    "iata": "REX",
+    "nombre": "Aeropuerto Internacional de Reynosa",
+    "sirve": "Reynosa",
+    "region": "Tamaulipas",
+    "pais": "México"
+  },
+  {
+    "iata": "RGA",
+    "nombre": "Aeropuerto Internacional Gob. Ramón Trejo Noel",
+    "sirve": "Río Grande",
+    "region": "Tierra del Fuego",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "RHD",
+    "nombre": "Aeropuerto Internacional Termas de Río Hondo",
+    "sirve": "Termas de Río Hondo",
+    "region": "Santiago del Estero",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "RLO",
+    "nombre": "Aeropuerto Internacional Valle del Conlara",
+    "sirve": "Merlo",
+    "region": "San Luis",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "RMU",
+    "nombre": "Aeropuerto Internacional de la Región de Murcia",
+    "sirve": "Región de Murcia",
+    "region": "Región de Murcia",
+    "pais": "España"
+  },
+  {
+    "iata": "ROS",
+    "nombre": "Aeropuerto Internacional Rosario Islas Malvinas",
+    "sirve": "Rosario",
+    "region": "Santa Fe",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "RRG",
+    "nombre": "Aeropuerto Sir Gaëtan Duval",
+    "sirve": "Rodrigues",
+    "region": "Rodrigues",
+    "pais": "Mauricio"
+  },
+  {
+    "iata": "RSA",
+    "nombre": "Aeropuerto de Santa Rosa",
+    "sirve": "Ciudad de Santa Rosa",
+    "region": "La Pampa",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "RTB",
+    "nombre": "Aeropuerto Internacional Juan Manuel Gálvez",
+    "sirve": "Roatán, Islas de la Bahía",
+    "region": "Honduras",
+    "pais": "Honduras"
+  },
+  {
+    "iata": "RUH",
+    "nombre": "Aeropuerto Internacional Rey Khalid",
+    "sirve": "Riad",
+    "region": "Riad",
+    "pais": "Arabia Saudita"
+  },
+  {
+    "iata": "SAL",
+    "nombre": "Aeropuerto Internacional de El Salvador San Óscar Arnulfo Romero y Galdámez",
+    "sirve": "San Salvador",
+    "region": "San Salvador",
+    "pais": "El Salvador"
+  },
+  {
+    "iata": "SAP",
+    "nombre": "Aeropuerto Internacional Ramon Villeda Morales",
+    "sirve": "San Pedro Sula",
+    "region": "Cortés",
+    "pais": "Honduras"
+  },
+  {
+    "iata": "SBZ",
+    "nombre": "Aeropuerto Internacional de Sibiu",
+    "sirve": "Sibiu",
+    "region": "Distrito de Sibiu",
+    "pais": "Rumania"
+  },
+  {
+    "iata": "SCU",
+    "nombre": "Aeropuerto Internacional Antonio Maceo y Grajales",
+    "sirve": "Santiago de Cuba",
+    "region": "Santiago de Cuba",
+    "pais": "Cuba"
+  },
+  {
+    "iata": "SCL",
+    "nombre": "Aeropuerto Internacional Arturo Merino Benítez",
+    "sirve": "Santiago de Chile",
+    "region": "Metropolitana de Santiago",
+    "pais": "Chile"
+  },
+  {
+    "iata": "SDE",
+    "nombre": "Aeropuerto Vicecomodoro Ángel de la Paz Aragonés",
+    "sirve": "Ciudad de Santiago del Estero",
+    "region": "Santiago del Estero",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "SDQ",
+    "nombre": "Aeropuerto Internacional José Francisco Peña Gómez",
+    "sirve": "Santo Domingo",
+    "region": "Santo Domingo",
+    "pais": "República Dominicana"
+  },
+  {
+    "iata": "SFM",
+    "nombre": "Aeropuerto Internacional de Sacramento",
+    "sirve": "Sacramento",
+    "region": "California",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "SFN",
+    "nombre": "Aeropuerto de Sauce Viejo",
+    "sirve": "Sauce Viejo",
+    "region": "Santa Fe",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "SFO",
+    "nombre": "Aeropuerto Interenacional de San Francisco",
+    "sirve": "San Francisco",
+    "region": "California",
+    "pais": "Estados Unidos"
+  },
+  {
+    "iata": "SIN",
+    "nombre": "Aeropuerto Internacional de Singapur-Changi",
+    "sirve": "Singapur",
+    "region": "Consejo del Sudeste",
+    "pais": "Singapur"
+  },
+  {
+    "iata": "SJO",
+    "nombre": "Aeropuerto Internacional Juan Santamaría",
+    "sirve": "San José",
+    "region": "GAM",
+    "pais": "Costa Rica"
+  },
+  {
+    "iata": "SJZ",
+    "nombre": "Aeropuerto de São Jorge",
+    "sirve": "Isla de São Jorge",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "SKG",
+    "nombre": "Aeropuerto Internacional Macedonia",
+    "sirve": "Tesalónica",
+    "region": "Macedonia Central",
+    "pais": "Grecia"
+  },
+  {
+    "iata": "SLA",
+    "nombre": "Aeropuerto Internacional de Salta Martín Miguel de Güemes",
+    "sirve": "Ciudad de Salta",
+    "region": "Salta",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "SLM",
+    "nombre": "Aeropuerto de Salamanca",
+    "sirve": "Salamanca",
+    "region": "Castilla y León",
+    "pais": "España"
+  },
+  {
+    "iata": "SMA",
+    "nombre": "Aeropuerto de Santa Maria",
+    "sirve": "Isla de Santa Maria",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "SNU",
+    "nombre": "Aeropuerto Internacional Abel Santamaría",
+    "sirve": "Santa Clara",
+    "region": "Villa Clara",
+    "pais": "Cuba"
+  },
+  {
+    "iata": "SUF",
+    "nombre": "Aeropuerto Internacional de Lamezia Terme",
+    "sirve": "Lamezia Terme",
+    "region": "Lamezia Terme",
+    "pais": "Italia"
+  },
+  {
+    "iata": "SVO",
+    "nombre": "Aeropuerto Internacional de Moscú-Sheremétievo",
+    "sirve": "Moscú",
+    "region": "Moscú",
+    "pais": "Rusia"
+  },
+  {
+    "iata": "SVQ",
+    "nombre": "Aeropuerto de Sevilla",
+    "sirve": "Sevilla",
+    "region": "Andalucía",
+    "pais": "España"
+  },
+  {
+    "iata": "SXB",
+    "nombre": "Aeropuerto de Estrasburgo",
+    "sirve": "Estrasburgo",
+    "region": "Alsacia",
+    "pais": "Francia"
+  },
+  {
+    "iata": "SYD",
+    "nombre": "Aeropuerto Internacional Kingsford Smith",
+    "sirve": "Sídney",
+    "region": "Nueva Gales del Sur",
+    "pais": "Australia"
+  },
+  {
+    "iata": "TER",
+    "nombre": "Aeropuerto de Lajes",
+    "sirve": "Isla Terceira",
+    "region": "Islas Azores",
+    "pais": "Portugal"
+  },
+  {
+    "iata": "TFN",
+    "nombre": "Aeropuerto de Tenerife Norte",
+    "sirve": "Tenerife",
+    "region": "Canarias",
+    "pais": "España"
+  },
+  {
+    "iata": "TFS",
+    "nombre": "Aeropuerto de Tenerife Sur",
+    "sirve": "Tenerife",
+    "region": "Canarias",
+    "pais": "España"
+  },
+  {
+    "iata": "TGD",
+    "nombre": "Aeropuerto de Podgorica",
+    "sirve": "Montenegro",
+    "region": "Montenegro",
+    "pais": "Montenegro"
+  },
+  {
+    "iata": "TGU",
+    "nombre": "Aeropuerto de Toncontín",
+    "sirve": "Tegucigalpa",
+    "region": "Francisco Morazán",
+    "pais": "Honduras"
+  },
+  {
+    "iata": "THF",
+    "nombre": "Aeropuerto de Berlín-Tempelhof",
+    "sirve": "Berlín",
+    "region": "Berlín",
+    "pais": "Alemania"
+  },
+  {
+    "iata": "TLS",
+    "nombre": "Aeropuerto de Toulouse Blagnac",
+    "sirve": "Toulouse",
+    "region": "Occitania",
+    "pais": "Francia"
+  },
+  {
+    "iata": "TLV",
+    "nombre": "Aeropuerto Internacional Ben Gurión",
+    "sirve": "Tel Aviv",
+    "region": "Distrito Central",
+    "pais": "Israel"
+  },
+  {
+    "iata": "TPE",
+    "nombre": "Aeropuerto Internacional de Taiwán Taoyuan",
+    "sirve": "Taipéi",
+    "region": "Taoyuan",
+    "pais": "Taiwán"
+  },
+  {
+    "iata": "TRS",
+    "nombre": "Aeropuerto de Trieste - Friuli Venezia Giulia",
+    "sirve": "Trieste",
+    "region": "Friul-Venecia Julia",
+    "pais": "Italia"
+  },
+  {
+    "iata": "TSE",
+    "nombre": "Aeropuerto Internacional de Astaná",
+    "sirve": "Astaná",
+    "region": "Provincia de Akmola",
+    "pais": "Kazajistán"
+  },
+  {
+    "iata": "TTG",
+    "nombre": "Aeropuerto General Enrique Mosconi/Tartagal",
+    "sirve": "Tartagal",
+    "region": "Provincia de Salta",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "TUR",
+    "nombre": "Aeropuerto de Turku",
+    "sirve": "Turku",
+    "region": "Finlandia del Sudoeste",
+    "pais": "Finlandia"
+  },
+  {
+    "iata": "UIO",
+    "nombre": "Aeropuerto Internacional Mariscal Sucre",
+    "sirve": "Tababela",
+    "region": "Pichincha",
+    "pais": "Ecuador"
+  },
+  {
+    "iata": "USH",
+    "nombre": "Aeropuerto Internacional Malvinas Argentinas",
+    "sirve": "Ushuaia",
+    "region": "Provincia de Tierra del Fuego",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "UZU",
+    "nombre": "Aeropuerto de Curuzú Cuatiá",
+    "sirve": "Curuzú Cuatiá",
+    "region": "Provincia de Corrientes",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "VCP",
+    "nombre": "Aeropuerto de Viracopos",
+    "sirve": "Sao Paulo",
+    "region": "São Paulo",
+    "pais": "Brasil"
+  },
+  {
+    "iata": "VDC",
+    "nombre": "Aeropuerto Vitória da Conquista Glauber Rocha",
+    "sirve": "Bahia",
+    "region": "Bahía",
+    "pais": "Brasil"
+  },
+  {
+    "iata": "VDM",
+    "nombre": "Aeropuerto Gobernador Edgardo Castello",
+    "sirve": "Viedma",
+    "region": "Provincia del Río Negro",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "VIE",
+    "nombre": "Aeropuerto de Viena-Schwechat",
+    "sirve": "Viena",
+    "region": "Viena",
+    "pais": "Austria"
+  },
+  {
+    "iata": "VKO",
+    "nombre": "Aeropuerto Internacional de Moscú-Vnúkovo",
+    "sirve": "Moscú",
+    "region": "Moscú",
+    "pais": "Rusia"
+  },
+  {
+    "iata": "VLC",
+    "nombre": "Aeropuerto de Valencia",
+    "sirve": "Manises",
+    "region": "Comunidad Valenciana",
+    "pais": "España"
+  },
+  {
+    "iata": "VGO",
+    "nombre": "Aeropuerto de Vigo",
+    "sirve": "Vigo",
+    "region": "Galicia",
+    "pais": "España"
+  },
+  {
+    "iata": "VLL",
+    "nombre": "Aeropuerto de Villanubla",
+    "sirve": "Valladolid",
+    "region": "Castilla y León",
+    "pais": "España"
+  },
+  {
+    "iata": "VME",
+    "nombre": "Aeropuerto de Villa Reynolds",
+    "sirve": "Villa Mercedes",
+    "region": "Provincia de San Luis",
+    "pais": "Argentina"
+  },
+  {
+    "iata": "VVI",
+    "nombre": "Aeropuerto Internacional Viru Viru",
+    "sirve": "Santa Cruz de la Sierra",
+    "region": "Santa Cruz",
+    "pais": "Bolivia"
+  },
+  {
+    "iata": "WLG",
+    "nombre": "Aeropuerto Internacional de Wellington",
+    "sirve": "Wellington",
+    "region": "Wellington",
+    "pais": "Nueva Zelanda"
+  },
+  {
+    "iata": "XRY",
+    "nombre": "Aeropuerto de Jerez",
+    "sirve": "Jerez",
+    "region": "Andalucía",
+    "pais": "España"
+  },
+  {
+    "iata": "XPL",
+    "nombre": "Aeropuerto Internacional de Comayagua",
+    "sirve": "Comayagua",
+    "region": "Comayagua",
+    "pais": "Honduras"
+  },
+  {
+    "iata": "YFB",
+    "nombre": "Aeropuerto de Iqaluit",
+    "sirve": "Iqaluit",
+    "region": "Nunavut",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YHU",
+    "nombre": "Aeropuerto de Montreal-Saint Hubert",
+    "sirve": "Montreal",
+    "region": "Quebec",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YHZ",
+    "nombre": "Aeropuerto Internacional de Halifax-Stanfield",
+    "sirve": "Halifax",
+    "region": "Nueva Escocia",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YOW",
+    "nombre": "Aeropuerto Internacional de Ottawa",
+    "sirve": "Ottawa",
+    "region": "Ontario",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YQB",
+    "nombre": "Aeropuerto Internacional Jean-Lesage de Quebec",
+    "sirve": "Quebec",
+    "region": "Quebec",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YRB",
+    "nombre": "Aeropuerto de Resolute Bay",
+    "sirve": "Resolute",
+    "region": "Nunavut",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YUL",
+    "nombre": "Aeropuerto Internacional Pierre Elliott Trudeau",
+    "sirve": "Montreal",
+    "region": "Quebec",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YVM",
+    "nombre": "Aeropuerto de Qikiqtarjuaq",
+    "sirve": "Qikiqtarjuaq",
+    "region": "Nunavut",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YVR",
+    "nombre": "Aeropuerto Internacional de Vancouver",
+    "sirve": "Vancouver",
+    "region": "Columbia Británica",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YWG",
+    "nombre": "Aeropuerto Internacional James Armstrong Richardson",
+    "sirve": "Winnipeg",
+    "region": "Manitoba",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YYY",
+    "nombre": "Aeropuerto de Mont-Joli",
+    "sirve": "Mont-Joli",
+    "region": "Quebec",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "YYZ",
+    "nombre": "Aeropuerto Internacional Toronto Pearson",
+    "sirve": "Toronto",
+    "region": "Ontario",
+    "pais": "Canadá"
+  },
+  {
+    "iata": "ZAG",
+    "nombre": "Aeropuerto de Zagreb-Pleso",
+    "sirve": "Zagreb",
+    "region": "Condado de Zagreb",
+    "pais": "Croacia"
+  },
+  {
+    "iata": "ZAZ",
+    "nombre": "Aeropuerto de Zaragoza",
+    "sirve": "Zaragoza",
+    "region": "Aragón",
+    "pais": "España"
+  }
+]

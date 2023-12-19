@@ -47,6 +47,15 @@ function ActivarClase2(){
 list2.forEach((item) =>
 item.addEventListener('mouseover', ActivarClase2));
 
+let listR=document.querySelectorAll(".listR");
+function ActivarClase2(){
+    listR.forEach((item) =>
+        item.classList.remove("active2"));
+        this.classList.add('active2');
+}
+listR.forEach((item) =>
+item.addEventListener('mouseover', ActivarClase2));
+
 //Operaciones; contraer menu para tablets
 const operaciones=document.querySelector(".mini");
 const botonops=document.querySelector(".btn-expand");

@@ -228,7 +228,7 @@ body{
     width: var(--tamañoOps);
     height: var(--tamañoOps);
     border-radius: 10px;
-    transition: 0.5px;
+    transition: 0.5s;
 }
 
 .opciones ul li:nth-child(1).active ~ .indicador

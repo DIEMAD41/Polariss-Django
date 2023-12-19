@@ -9,6 +9,5 @@ class OperadoraForm(forms.ModelForm):
         labels = {
             'nombre': 'Nombre de la Operadora',
             'email': 'Email de la operadora',
-
         }
 
