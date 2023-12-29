@@ -3,13 +3,6 @@
 
 {% block style %}
     <style>
-    :root{
-    --white: white;
-    --color: #4EB5FD;
-    --color2: #4EB5FD99;
-    --black1: #24252A;
-    }
-
     .btn-primary{
         background-color: var(--color);
         border-color: var(--color2);
@@ -37,7 +30,7 @@
                 'confirmButtonColor':'#E74A3B'
             }).then(function (result){
                 if (result.isConfirmed){
-                    window.location.href="/reservas/reservasV_list.html/"+id+"/"
+                    window.location.href="/clientes/categorias_list/"+id+"/"
                 }
             })
         }
@@ -48,15 +41,16 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+
         <!-- DataTales Example -->
         <div class="shadow mb-4">
             <div class="card-header py-3" >
-                {#                            <h6 class="m-0 font-weight-bold text-primary">Listado de categorias</h6>#}
-                <a href="{% url 'reservacionesV_new' %}" class="btn btn-primary btn-icon-split">
+                {#                            <h6 class="m-0 font-weight-bold text-primary">Listado de paquetes</h6>#}
+                <a href="{% url 'paquetes:paquetes_new' %}" class="btn btn-primary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
-                    <span class="text">Nueva reservacion de vuelo</span>
+                    <span class="text">Nuevo Paquete</span>
                 </a>
             </div>
             <div class="card-body">
@@ -64,41 +58,33 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                             <td>Cliente</td>
-                            <td>Origen</td>
-                            <td>Destino</td>
-                            <td>Fecha Ida</td>
-                            <td>Fecha Regreso</td>
-                            <td>Aerolínea</td>
-                            <td>Estado</td>
+                            <td class="text-center">ID</td>
+                            <td>Nombre</td>
+                            <td>Descripcion</td>
+                            <td>URL Imagen</td>
+                            <td>Costo X Persona</td>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for vuelo in reservas %}
+                        {% for paquete in paquetes %}
                         <tr>
-                             <td>{{ vuelo.clientes.first }}</td>
-                            <td>{{ vuelo.origenv }}</td>
-                            <td>{{ vuelo.destinov }}</td>
-                            <td>{{ vuelo.fsalida|date:"d/m/Y" }}</td>
-                            <td>{{ vuelo.fregreso|date:"d/m/Y" }}</td>
-                            <td>{{ vuelo.aerolinea }}</td>
-                            {% if vuelo.estado == 'P' %}
-                            <td class="text-center"><span class="status pago">En pago</span></td>
-                            {% elif vuelo.estado == 'NP' %}
-                            <td class="text-center"><span class="status apago">En pago</span></td>
-                            {% endif %}
+                            <td class="text-center">{{ paquete.idpaquete }}</td>
+                            <td>{{ paquete.nombrep }}</td>
+                            <td>{{ paquete.descripcion }}</td>
+                            <td>{{ paquete.urlimagen }}</td>
+                            <td>{{ paquete.costopersona }}</td>
 
                                 <td class="text-center">
-                                    <a href="{% url 'reservacionesV_update' vuelo.clavev %}" class="btn btn-success btn-circle btn-sm">
+                                    <a href="{% url 'paquetes:paquetes_update' paquete.idpaquete %}" class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="" class="btn btn-danger btn-circle btn-sm">
+                                    <a href="{% url 'paquetes:eliminar_paquetes' paquete.idpaquete %}" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
-
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>

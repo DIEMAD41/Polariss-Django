@@ -3,13 +3,6 @@
 
 {% block style %}
     <style>
-    :root{
-    --white: white;
-    --color: #4EB5FD;
-    --color2: #4EB5FD99;
-    --black1: #24252A;
-    }
-
     .btn-primary{
         background-color: var(--color);
         border-color: var(--color2);
@@ -18,6 +11,13 @@
         background-color: var(--color2);
         border-color: var(--color2);
     }
+
+         .container-fluid {
+            height: 100%; /* Ajusta la altura según tus necesidades */
+            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
+            border: 1px solid #ccc; /* Añade un borde para visualización */
+            padding: 10px; /* Añade un relleno opcional */
+        }
 
     </style>
 {% endblock %}
@@ -37,7 +37,7 @@
                 'confirmButtonColor':'#E74A3B'
             }).then(function (result){
                 if (result.isConfirmed){
-                    window.location.href="/reservas/reservasV_list.html/"+id+"/"
+                    window.location.href="/clientes/categorias_list/"+id+"/"
                 }
             })
         }
@@ -48,15 +48,16 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+
         <!-- DataTales Example -->
         <div class="shadow mb-4">
             <div class="card-header py-3" >
                 {#                            <h6 class="m-0 font-weight-bold text-primary">Listado de categorias</h6>#}
-                <a href="{% url 'reservacionesV_new' %}" class="btn btn-primary btn-icon-split">
+                <a href="{% url 'pagos_new' %}" class="btn btn-primary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-plus"></i>
                                         </span>
-                    <span class="text">Nueva reservacion de vuelo</span>
+                    <span class="text">Nuevo Pago</span>
                 </a>
             </div>
             <div class="card-body">
@@ -64,40 +65,31 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                             <td>Cliente</td>
-                            <td>Origen</td>
-                            <td>Destino</td>
-                            <td>Fecha Ida</td>
-                            <td>Fecha Regreso</td>
-                            <td>Aerolínea</td>
-                            <td>Estado</td>
+                            <td>Venta</td>
+                            <td>Fecha</td>
+                            <td>Metodo</td>
+                            <td>Monto</td>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for vuelo in reservas %}
+                        {% for pago in pagos %}
                         <tr>
-                             <td>{{ vuelo.clientes.first }}</td>
-                            <td>{{ vuelo.origenv }}</td>
-                            <td>{{ vuelo.destinov }}</td>
-                            <td>{{ vuelo.fsalida|date:"d/m/Y" }}</td>
-                            <td>{{ vuelo.fregreso|date:"d/m/Y" }}</td>
-                            <td>{{ vuelo.aerolinea }}</td>
-                            {% if vuelo.estado == 'P' %}
-                            <td class="text-center"><span class="status pago">En pago</span></td>
-                            {% elif vuelo.estado == 'NP' %}
-                            <td class="text-center"><span class="status apago">En pago</span></td>
-                            {% endif %}
+                            <td>{{ pago.venta }}</td>
+                            <td>{{ pago.fecha }}</td>
+                            <td>{{ pago.metodo }}</td>
+                            <td>{{ pago.monto }}</td>
 
-                                <td class="text-center">
-                                    <a href="{% url 'reservacionesV_update' vuelo.clavev %}" class="btn btn-success btn-circle btn-sm">
+                            <td class="text-center">
+                                    <a href="{% url 'pagos_update' pago.id %}" class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
+                            </td>
+                            <td class="text-center">
+                                <a href="{% url 'pagos_delete' pago.id %}" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+
 
                             </tr>
                         {% endfor %}

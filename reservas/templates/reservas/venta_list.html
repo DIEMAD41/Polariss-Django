@@ -19,6 +19,13 @@
         border-color: var(--color2);
     }
 
+         .container-fluid {
+            height: 100%; /* Ajusta la altura según tus necesidades */
+            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
+            border: 1px solid #ccc; /* Añade un borde para visualización */
+            padding: 10px; /* Añade un relleno opcional */
+        }
+
     </style>
 {% endblock %}
 
@@ -49,58 +56,73 @@
     <div class="container-fluid">
 
         <!-- DataTales Example -->
-        <div class="shadow mb-4">
-            <div class="card-header py-3" >
-                {#                            <h6 class="m-0 font-weight-bold text-primary">Listado de categorias</h6>#}
-                <a href="{% url 'reservacionesV_new' %}" class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                    <span class="text">Nueva reservacion de vuelo</span>
+       <div class="shadow mb-4">
+            <div class="card-header py-3">
+                <a href="{% url 'ventas_new' %}" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Nueva Venta</span>
                 </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                        <tr>
-                             <td>Cliente</td>
-                            <td>Origen</td>
-                            <td>Destino</td>
-                            <td>Fecha Ida</td>
-                            <td>Fecha Regreso</td>
-                            <td>Aerolínea</td>
-                            <td>Estado</td>
-                        </tr>
+                            <tr>
+                                <td>Reserva</td>
+                                <td>Clientes</td>
+                                <td>Total</td>
+                                 <td>Saldo</td>
+                                <td>Estado</td>
+                                <td>Fecha</td>
+                                <td>Tipo</td>
+                                <!-- Otros campos de tu modelo Venta -->
+                            </tr>
                         </thead>
                         <tbody>
-                        {% for vuelo in reservas %}
-                        <tr>
-                             <td>{{ vuelo.clientes.first }}</td>
-                            <td>{{ vuelo.origenv }}</td>
-                            <td>{{ vuelo.destinov }}</td>
-                            <td>{{ vuelo.fsalida|date:"d/m/Y" }}</td>
-                            <td>{{ vuelo.fregreso|date:"d/m/Y" }}</td>
-                            <td>{{ vuelo.aerolinea }}</td>
-                            {% if vuelo.estado == 'P' %}
-                            <td class="text-center"><span class="status pago">En pago</span></td>
-                            {% elif vuelo.estado == 'NP' %}
-                            <td class="text-center"><span class="status apago">En pago</span></td>
-                            {% endif %}
+                            {% for venta in ventas %}
+                                <tr>
+                                    <td>{{ venta.reservas.all|join:", " }}</td>
+                                     <td>
+                                        <select>
+                                            {% for reserva in venta.reservas.all %}
+                                                {% for cliente in reserva.clientes.all %}
+                                                    <option value="{{ cliente.idcliente }}">{{ cliente.nombrec }}</option>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>{{ venta.total }}</td>
+                                    <td>{{ venta.saldo }}</td>
 
-                                <td class="text-center">
-                                    <a href="{% url 'reservacionesV_update' vuelo.clavev %}" class="btn btn-success btn-circle btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
 
-                            </tr>
-                        {% endfor %}
+                                     {% if venta.estado == 'P' %}
+                                    <td class="text-center"><span class="status pago">Pagado</span></td>
+                                    {% elif venta.estado == 'NP' %}
+                                    <td class="text-center"><span class="status apago">En pago</span></td>
+                                    {% endif %}
+
+                                    <td>{{ venta.fechaV }}</td>
+                                    <td>{{ venta.tipo }}</td>
+                                    <!-- Otros campos de tu modelo Venta -->
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-success btn-circle btn-sm">
+                                            <i class="fas fa-cash-register"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href=" {% url 'ventas_update' venta.claveV%} " class="btn btn-warning btn-circle btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href=" {% url 'ventas_delete' venta.claveV%} " class="btn btn-danger btn-circle btn-sm">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

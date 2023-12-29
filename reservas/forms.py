@@ -1,7 +1,8 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Submit
 from django import forms
-from reservas.models import ReservaVuelo
+from reservas.models import ReservaVuelo, Venta, Pago
+
 
 class ReservaVueloForm(forms.ModelForm):
     class Meta:
@@ -30,3 +31,18 @@ class ReservaVueloForm(forms.ModelForm):
             # Otros campos...
             Submit('submit', 'Enviar', css_class='boton-personalizado')
         )
+
+
+
+class VentaForm(forms.ModelForm):
+    class Meta:
+        model = Venta
+        exclude = ['saldo']
+        fields = '__all__'
+
+
+class PagoForm(forms.ModelForm):
+    class Meta:
+        model = Pago
+        fields = '__all__'
+

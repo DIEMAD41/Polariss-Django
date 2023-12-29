@@ -1,0 +1,315 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block style %}
+    <style>
+        :root{
+    --white: white;
+    --color: #FF464F;
+    --color2: #FF464F99;
+    --black1: #24252A;
+    --tamañoOps: 90px;
+    }
+         h4{
+        font-size: 15px;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}python
+    <div class="blur"></div>
+    <div class="RegCli hiddenRC">
+        <ion-icon name="close-outline" class="closeRC"></ion-icon>
+        <span class="titulo-regcli">REGISTRAR UN AGENTE</span>
+        <div class="img-div">
+            <div class="img-borde">
+                <img src="{% static 'Imgs/art.jpg' %}" alt="Cliente" id="img1">
+            </div>
+            <form name="subida-imagenes" type="POST" enctype="multipart/formdata" class="form-img">
+                <input type="file" name="imagensubida" id="imagensubida" class="input-file dataC" accept="image/png, .jpeg, .jpg, image/gif">
+                <label for="imagensubida"><i class="fas fa-upload input-ico"></i></label>
+            </form>
+        </div>
+        <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
+
+        <form action="{% url 'agregar_agente' %}" method="post" class="forma">
+            {% csrf_token %}
+            <span>DATOS DEL AGENTE</span>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="nombreg" placeholder="Nombre">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-user iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="telefenog" placeholder="Teléfono">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-phone-alt iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="usuariog" placeholder="Usuario">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-envelope iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="password" name="passwordg" placeholder="Contraseña">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="number" name="saldo" placeholder="Saldo">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="number" name="edadg" placeholder="Edad">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+            <div class="Campo">
+                <input class="input dataC" type="text" name="localidadg" placeholder="Localidad">
+                <span class="sombra-focus"></span>
+                <i class="fas fa-globe-americas iconoRG"></i>
+            </div>
+
+              <div class="btn-div">
+                <button class="btn-reg " type="submit">
+                    Editar
+                </button>
+            </div>
+
+             <div class="btn-div">
+                <button class="btn-reg " type="submit">
+                     Registrar
+                </button>
+            </div>
+        </form>
+        <!-- Seccion Eliminar -->
+        <div class="recientes">
+            <div class="titulo">
+                <h2>Agentes registrados</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Telefono</td>
+                        <td>Usuario</td>
+                    </tr>
+                </thead>
+                <tbody class="TableClientes2">
+                        {% for agente in agentes %}
+                        <tr>
+                            <td>{{ agente.idagente }}</td>
+                            <td>{{ agente.nombreg }}</td>
+                            <td>{{ agente.telefenog }}</td>
+                            <td>{{ agente.usuariog }}</td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-circle btn-sm addC" data-agente-id="{{ agente.idagente }}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-circle btn-sm removeC" data-agente-id="{{ agente.idagente }}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <img src="{% static 'Imgs/delete.png' %}" alt="Borrar un cliente" class="">
+    </div>
+
+    <div class="opsM">
+        <div class="dropdown">
+            <input type="text" class="textBox" placeholder="Operacion" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar('Agregar')"><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
+                <div onclick="mostrar('Modificar')"><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+                <div onclick="mostrar('Eliminar')"><ion-icon name="trash-outline"></ion-icon>Eliminar</div>
+                <div onclick="mostrar('Buscar')"><ion-icon name="search-circle-outline"></ion-icon>Buscar</div>
+                <div onclick="mostrar('Consulta')"><ion-icon name="help-circle-outline"></ion-icon>Consulta</div>
+            </div>
+        </div>
+        <div class="dropdown" id="d2">
+            <input type="text" class="textBox" id="tb2" placeholder="Servicio" readonly>
+            <ion-icon name="chevron-down-outline" class="icon"></ion-icon>
+            <div class="opcciones">
+                <div onclick="mostrar2('Vuelo')"><ion-icon name="airplane-outline"></ion-icon>Vuelo</div>
+                <div onclick="mostrar2('Hotel')"><ion-icon name="bed-outline"></ion-icon>Hotel</div>
+                <div onclick="mostrar2('Transporte')"><ion-icon name="bus-outline"></ion-icon>Terrestre</div>
+                <div onclick="mostrar2('Maritimo')"><ion-icon name="boat-outline"></ion-icon>Maritimo</div>
+                <div onclick="mostrar2('Tour')"><ion-icon name="camera-outline"></ion-icon>Tour</div>
+            </div>
+        </div>
+        <button class="goB">GO</button>
+    </div>
+
+
+    <!-- ventana emergente de perfil clientes -->
+    <div class="card hide">
+        <ion-icon name="close-outline" class="close"></ion-icon>
+        <ion-icon name="ellipsis-horizontal-outline" class="submenuCard"></ion-icon>
+        <div class="submenuC">
+            <div class="opccionesC">
+                <div><ion-icon name="add-circle-outline"></ion-icon>Agregar</div>
+                <div><ion-icon name="brush-outline"></ion-icon>Modificar</div>
+            </div>
+        </div>
+        <div class="card-header">
+            <img src="{% static 'Imgs/us1.jpg' %}" alt="Profile Image" class="profile-img">
+        </div>
+        <div class="card-body">
+            <p class="name">Marisol Sanchez</p>
+            <a href="#" class="mail">marisolsnz@gmail.com</a>
+            <div class="content2">
+                <p class="texto"><span class="municipio">Sahuayo</span></p>
+                <ion-icon name="remove-outline"></ion-icon>
+                <p class="texto"><span class="edad">24 años</span></p>
+                <ion-icon name="remove-outline"></ion-icon>
+                <p class="texto"><span class="telefono">3531216500</span></p>
+            </div>
+            <p class="saldo">Saldo: 12,560</p>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="fas fa-phone-alt social-icon"></a>
+            <a href="#" class="far fa-envelope social-icon"></a>
+            <a href="#" class="fab fa-google social-icon"></a>
+            <a href="#" class="fab fa-facebook social-icon"></a>
+        </div>
+
+        <div class="card-footer">
+            <p class="count">AGENTES POLARISS</p>
+        </div>
+    </div>
+
+    <!-- Ventana emergente de registro de clientes -->
+
+    <div class="reservas">
+        <!-- Lista de reservaciones -->
+        <div class="recientes">
+            <div class="titulo">
+                <h2>Lista de paquetes </h2>
+                <a href="{% url 'paquetes:paquetes_list' %}"  class="btn btn-dark">Ver todos</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Nombre</td>
+                        <td>Descripcion</td>
+                        <td>URL Imagen</td>
+                        <td>Costo X Persona</td>
+                    </tr>
+                </thead>
+                <tbody class="TableClientes">
+                    {% for paquete in paquetes %}
+                        <tr>
+                            <td>{{ paquete.idpaquete }}</td>
+                            <td>{{ paquete.nombrep }}</td>
+                            <td>{{ paquete.descripcion }}</td>
+                            <td>{{ paquete.urlimagen }}</td>
+                            <td>{{ paquete.costopersona }}</td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Opciones de reservaciones -->
+        <div class="sidecontent">
+            <div class="ops mini">
+                <div class="minimizar-ops">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
+                <a href="#" class="btn-expand">Realizar una nueva reservacion</a>
+                    <h2>Operaciones de Agentes </h2>
+                <div class="opciones">
+                    <ul>
+                        <li class="list active2">
+                            <a href="{% url 'paquetes:paquetes_list' %}">
+                                <span class="icon">
+                                    <ion-icon name="person-add-outline"></ion-icon>
+                                </span>
+                                <span class="text">Agregar</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="{% url 'paquetes:paquetes_list' %}">
+                                <span class="icon">
+                                    <ion-icon name="create-outline"></ion-icon>
+                                </span>
+                                <span class="text">Modificar</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="{% url 'paquetes:paquetes_list' %}">
+                                <span class="icon">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </span>
+                                <span class="text">Eliminar</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="{% url 'paquetes:paquetes_list' %}">
+                                <span class="icon">
+                                    <ion-icon name="search-circle-outline"></ion-icon>
+                                </span>
+                                <span class="text">Buscar</span>
+                            </a>
+                        </li>
+                            <li class="list">
+                                <a href="{% url 'paquetes:paquetes_list' %}">
+                                    <span class="icon">
+                                        <ion-icon name="help-circle-outline"></ion-icon>
+                                    </span>
+                                    <span class="text">Consulta</span>
+                                </a>
+                            </li>
+                        <div class="indicador"></div>
+                    </ul>
+                </div>
+            </div>
+            <!-- CLIENTES RECIENTES -->
+            <div class="ops-right">
+                <div class="header">
+                    <h2>Clientes Recientes</h2>
+                </div>
+                <table>
+                    <tbody class="clientesRC">
+                         {% for agente in agentes %}
+
+                            <tr class="trC">
+                                <td width="60px" class="tdi"><div class="imbBx"><img src="{% static 'Imgs/us1.jpg' %}"></div></td>
+                                <td><h4>{{ agente.nombreg }}</h4>ID: &nbsp<span class="idT">{{ agente.idagente }}</span>
+                                    <div class="iconos">
+                                        <ion-icon class="profile" name="person-circle-outline"></ion-icon>
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <ion-icon name="call-outline"></ion-icon>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    <form action="{% url 'eliminar_agente' %}" method="post" id="eliminarAgenteForm">
+            {% csrf_token %}
+            <input type="hidden" name="agente_id" id="agenteIdInput">
+        </form>
+
+{% endblock %}
+
+{% block java %}
+    
+{% endblock %}
