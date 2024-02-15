@@ -1,0 +1,79 @@
+<!-- templates/gastos/gastos_home.html -->
+
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block style %}
+    <!-- Agrega aquí tus estilos específicos si es necesario -->
+    <style>
+
+         .container-fluid {
+            height: 100%; /* Ajusta la altura según tus necesidades */
+            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
+            border: 1px solid #ccc; /* Añade un borde para visualización */
+            padding: 10px; /* Añade un relleno opcional */
+        }
+    </style>
+
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Últimos  diez gastos más recientes -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        Últimos Diez Gastos
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for gasto in ultimos_diez_gastos %}
+                                <li class="list-group-item">
+                                    {{ gasto.descripcion }} - {{ gasto.monto }} - {{ gasto.fecha }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtro por mes -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        Filtro por Mes
+                    </div>
+                    <div class="card-body">
+                        <form method="get" action="{% url 'gastos_home' %}">
+                            <label for="mes">Seleccionar mes:</label>
+                            <input type="month" name="mes" id="mes" value="{{ mes_anio_seleccionado|date:'Y-m' }}" />
+                            <button type="submit">Actualizar</button>
+                        </form>
+                        <p>Total del mes seleccionado: {{ total_mes_seleccionado }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtro por año -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        Filtro por Año
+                    </div>
+                    <div class="card-body">
+                        <form method="get" action="{% url 'gastos_home' %}">
+                            <label for="anio">Seleccionar año:</label>
+                            <input type="number" name="anio" id="anio" value="{{ mes_anio_seleccionado|date:'Y' }}" />
+                            <button type="submit">Actualizar</button>
+                        </form>
+                        <p>Total del año seleccionado: {{ total_anio_seleccionado }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

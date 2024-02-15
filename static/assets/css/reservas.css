@@ -2,7 +2,7 @@
 body{
     font-family: "Poppins", sans-serif;
     display: flex;
-    justify-content: center;  
+    justify-content: center;
     padding-left: 10px;  
     box-sizing: border-box;
 }
@@ -14,6 +14,8 @@ body{
     --black1: #24252A;
     --tamañoOps: 90px;
 }
+
+
 
 .reservas{
     position: relative;
@@ -200,7 +202,7 @@ body{
 {
     font-size: 45px;
     transform: translateY(-6px);
-    color: white;   
+    color: white;
 }
 
 .opciones ul li a .text
@@ -320,7 +322,7 @@ body{
 {
     font-size: 80px;
     transform: translateY(10px);
-    color: white;   
+    color: white;
 }
 
 .opciones2 ul li a .text
@@ -356,7 +358,7 @@ body{
 
 @media (max-width: 1312px) {
     body{
-        padding-left: 0px; 
+        padding-left: 0px;
     }
 
     .btn-expand  {
@@ -448,7 +450,7 @@ body{
 /* Aqui voy */
 /* Resize del ops */
 @media (max-width: 842px) {
-   
+
     .opciones2 ul li
 {
     width: 90px;

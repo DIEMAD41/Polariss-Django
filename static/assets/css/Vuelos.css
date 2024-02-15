@@ -1,9 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root{
+    --colorR: #4EB5FD;
+    --colorR2: #4EB5FD99;
+    --black1: #24252A;
+}
+
+.O,.D,.Fs,.Fl,.P,.B{
+    border: 3px solid var(--colorR);
+    border-radius: 0.5em;
+}
+
+/*ESTILO NUEVOI DE RESDERVAS VUELO*/
+.text-primary{
+        padding-top: 20px;
+        color: var(--colorR);
+    }
+
+
+    /* Estilos para tipo de vuelo */
+    .div_tipoV input[type="radio"] {
+        -webkit-appearance: none;
+    }
+
+    .div_tipoV label {
+        height: 100%;
+        width: 140px;
+        margin: auto;
+        position: relative;
+        color: var(--colorR);
+        transition: 0.5s;
+        border: 5px solid var(--colorR);
+        border-radius: 0.5em;
+    }
+
+    .div_tipoV .fa {
+        font-size: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -80%);
+    }
+
+    .div_tipoV label>span {
+        font-size: 15px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 80%);
+    }
+
+    .div_tipoV input[type="radio"]:checked + label {
+        background-color: var(--colorR2);
+        color: #ffffff;
+        box-shadow: 0 15px 45px rgb(24, 249, 141, 0.2);
+    }
+
+    /* Estilos para clases de vuelo */
+    .form-check input[type="radio"] {
+        display: none;
+    }
+
+    .form-check label {
+        position: relative;
+        color: var(--colorR);
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8em;
+        border: 3px solid var(--colorR);
+        padding: 1em 2em;
+        border-radius: 0.5em;
+    }
+
+    .form-check label:before {
+        content: "";
+        height: 2em;
+        width: 2em;
+        border: 3px solid var(--colorR);
+        border-radius: 50%;
+    }
+
+    .form-check input[type="radio"]:checked + label:before {
+        height: 1em;
+        width: 1em;
+        border: 0.65em solid #ffffff;
+        background-color: var(--colorR);
+        transition: all 0.3s;
+    }
+
+    .form-check input[type="radio"]:checked + label {
+        background-color: var(--colorR);
+        color: #ffffff;
+        transition: all 0.3s;
+    }
+
+
 /*Toggle buttons*/
-
-
 .grid a{
     color: var(--black1);
 }
@@ -94,7 +191,6 @@
         height: calc(100% - 37px);
 
         border-radius: 10px;
-        border: solid 1px #535353;
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
     }
@@ -132,7 +228,6 @@
         background: white;
 
         border-radius: 10px;
-        border: #535353 solid 1px;
         box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
     }
 
@@ -149,8 +244,7 @@
 
         .Op:hover
         {
-            border: firebrick solid 1px;
-            box-shadow: 0px 2px 10px rgba(252, 0, 0, 0.50);
+            box-shadow: 0px 2px 10px rgba(var(--colorR2))
         }
 
             .Op ion-icon
@@ -209,7 +303,6 @@
         height: calc(100% - 37px);
 
         border-radius: 10px;
-        border: solid 1px #535353;
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
     }
@@ -221,7 +314,7 @@
     .P:hover,
     .cont:hover
     {
-        box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
+        box-shadow: 0px 5px 10px var(--colorR2);
     }
 
     .D.active:before,
@@ -280,7 +373,6 @@
         height: calc(100% - 32px);
 
         border-radius: 10px;
-        border: solid 1px #535353;
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
     }
@@ -339,7 +431,6 @@
         height: calc(100% - 32px);
 
         border-radius: 10px;
-        border: solid 1px #535353;
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
     }
@@ -358,7 +449,6 @@
         height: max-content;
 
         border-radius: 10px;
-        border: solid 1px #535353;
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
     }
@@ -381,7 +471,6 @@
         background: white;
 
         border-radius: 10px;
-        border: #535353 solid 1px;
         box-shadow: 0px 5px 10px rgba(252, 0, 0, 0.50);
     }
 
@@ -525,10 +614,9 @@
         width: 100%;
         height: 100%;
 
-        border: solid 1px #535353;
         border-radius: 100px;
 
-        background: #F54043;
+        background: var(--colorR);
         color: white;
 
         box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
@@ -538,6 +626,7 @@
         display: flex;
         text-align: center;
 
+        color: white;
         font-family: 'Poppins';
         font-size: 30px;
         font-weight: 300px;

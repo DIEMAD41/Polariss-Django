@@ -2,93 +2,12 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/Vuelos.css' %}">
+{%  endblock  %}
+
 {% block style %}
     <style>
-    .text-primary{
-        padding-top: 20px;
-        color: var(--color);
-    }
-
-
-    /* Estilos para tipo de vuelo */
-    .div_tipoV input[type="radio"] {
-        -webkit-appearance: none;
-    }
-
-    .div_tipoV label {
-        height: 100%;
-        width: 140px;
-        margin: auto;
-        position: relative;
-        color: #18f98d;
-        transition: 0.5s;
-        border: 5px solid var(--color);
-        border-radius: 0.5em;
-    }
-
-    .div_tipoV .fa {
-        font-size: 40px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -80%);
-    }
-
-    .div_tipoV label>span {
-        font-size: 15px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 80%);
-    }
-
-    .div_tipoV input[type="radio"]:checked + label {
-        background-color: #18f98d;
-        color: #ffffff;
-        box-shadow: 0 15px 45px rgb(24, 249, 141, 0.2);
-    }
-
-    /* Estilos para clases de vuelo */
-    .form-check input[type="radio"] {
-        display: none;
-    }
-
-    .form-check label {
-        position: relative;
-        color: var(--color);
-        font-family: "Poppins", sans-serif;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8em;
-        border: 3px solid var(--color);
-        padding: 1em 2em;
-        border-radius: 0.5em;
-    }
-
-    .form-check label:before {
-        content: "";
-        height: 2em;
-        width: 2em;
-        border: 3px solid var(--color);
-        border-radius: 50%;
-    }
-
-    .form-check input[type="radio"]:checked + label:before {
-        height: 1em;
-        width: 1em;
-        border: 0.65em solid #ffffff;
-        background-color: var(--color);
-        transition: all 0.3s;
-    }
-
-    .form-check input[type="radio"]:checked + label {
-        background-color: var(--color);
-        color: #ffffff;
-        transition: all 0.3s;
-    }
     </style>
 
 {% endblock %}
@@ -134,7 +53,6 @@
             </div>
 
         </div>
-
 
         <div class="O">
 

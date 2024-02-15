@@ -37,6 +37,10 @@ urlpatterns = [
     path('',include('reservas.urls')),
     path('reservas/',include(('reservas.urls','reservas'),namespace='reservas')),
 
+    # Gastos
+    path('', include('gastos.urls')),
+    path('gastos/', include(('gastos.urls', 'gastos'), namespace='gastos')),
+
     #Paquetes
     path('',include('paquetes.urls')),
     path('paquetes/',include(('paquetes.urls','paquetes'),namespace='paquetes')),

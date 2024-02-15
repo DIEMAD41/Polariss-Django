@@ -1,0 +1,212 @@
+{% extends 'base/base.html' %}
+
+
+{% block style %}
+    <style>
+    :root{
+    --white: white;
+    --color: #4EB5FD;
+    --color2: #4EB5FD99;
+    --black1: #24252A;
+    }
+
+    .btn-primary{
+        background-color: var(--color);
+        border-color: var(--color2);
+    }
+    .btn-primary:hover{
+        background-color: var(--color2);
+        border-color: var(--color2);
+    }
+
+         .container-fluid {
+            height: 100%; /* Ajusta la altura según tus necesidades */
+            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
+            border: 1px solid #ccc; /* Añade un borde para visualización */
+            padding: 10px; /* Añade un relleno opcional */
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block javascript %}
+    <script>
+        function eliminarProducto(id){
+            Swal.fire({
+                'tittle':'Cava Jiquilpan',
+                'text' : 'Esta accion no se puede deshacer',
+                'icon':'question',
+                'showCancelButton':true,
+                'cancelButtonText':'No, Cancelar',
+                'confirmButtonText':'Si, Eliminar',
+                'reverseButtons':true,
+                'confirmButtonColor':'#E74A3B'
+            }).then(function (result){
+                if (result.isConfirmed){
+                    window.location.href="/reservas/reservasV_list.html/"+id+"/"
+                }
+            })
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+     <!-- Filtro de Gastos -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">Filtrar Gastos</h6>
+            </div>
+            <div class="card-body">
+                <form method="get" class="form-inline">
+                    <div class="form-group mr-2">
+                        <label for="categoria">Categoría:</label>
+                        <select name="categoria" class="form-control">
+                            <option value="" selected>Todas</option>
+                            <!-- Agrega opciones de categoría según tus datos -->
+                            <option value="papeleria">Papeleria</option>
+                            <option value="mensuales">Mensual</option>
+                            <!-- ... -->
+                        </select>
+                    </div>
+                    <div class="form-group mr-2">
+                        <label for="fecha_inicio">Fecha inicio:</label>
+                        <input type="date" name="fecha_inicio" class="form-control">
+                    </div>
+                    <div class="form-group mr-2">
+                        <label for="fecha_fin">Fecha fin:</label>
+                        <input type="date" name="fecha_fin" class="form-control">
+                    </div>
+                    <div class="form-group mr-2">
+                        <label for="metodo_pago">Método de Pago:</label>
+                        <select name="metodo_pago" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <!-- Agrega opciones de método de pago según tus datos -->
+                            <option value="efectivo">Efectivo</option>
+                            <option value="tarjeta">Tarjeta</option>
+                            <!-- ... -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- DataTales Example -->
+       <div class="shadow mb-4">
+            <div class="card-header py-3">
+                <a href="{% url 'gastos_new' %}" class="btn btn-primary btn-icon-split">
+                    <span class="text">Agregar un gasto</span>
+                    &nbsp;
+                    <span class="icon text-white-50">
+                        <i class="fas fa-dollar-sign"></i>
+                    </span>
+
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Fecha</td>
+                                <td>Descripcion</td>
+                                <td>Categoria</td>
+                                <td>Monto</td>
+                                <td>Metodo de Pago</td>
+                                <td>Recibo</td>
+                                <!-- Otros campos de tu modelo Venta -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gasto in gastos %}
+                                <tr>
+                                    <td>{{ gasto.nombre }}</td>
+                                    <td>{{ gasto.fecha }}</td>
+                                    <td>{{ gasto.descripcion }}</td>
+                                    <td>{{ gasto.categoria }}</td>
+                                    <td>{{ gasto.monto }}</td>
+                                    <td>{{ gasto.metodo_pago }}</td>
+                                    <td>{{ gasto.recibo }}</td>
+
+
+                                    <td class="text-center">
+                                        <a href=" {% url 'gastos_update' gasto.id%} " class="btn btn-warning btn-circle btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href=" {% url 'gastos_delete' gasto.id%} " class="btn btn-danger btn-circle btn-sm">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            <!-- PAGINACION -->
+            <div class="row">
+        <div class="col-lg-12">
+            {% if page_obj.has_other_pages %}
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1">
+                                    Primero
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    Anterior
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for page_number in page_obj.paginator.page_range %}
+                            {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+                                {% if page_obj.number == page_number %}
+                                    <li class="page-item active">
+                                        <a class="page-link" href="?page={{ page_number }}">
+                                            {{ page_number }}
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_number }}">
+                                            {{ page_number }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    Siguiente
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                    Ultimo
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
