@@ -22,4 +22,6 @@ path('Pagos/new/', views.PagosCreateView.as_view(), name='pagos_new'),
 path('Pagos/<pk>/eliminar', views.PagoDeleteView.as_view(), name='pagos_delete'),
 path('Pagos/update/<pk>', views.PagoUpdateView.as_view(), name='pagos_update'),
 
+#URLS DETALLE VENTA
+
 ]

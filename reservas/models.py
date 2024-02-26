@@ -14,6 +14,7 @@ class ReservaVuelo(models.Model):
 
     ESTADO = (
         ("P", "Pagado"),
+        ("EP", "En Pago"),
         ("NP", "No pagado"),
     )
 

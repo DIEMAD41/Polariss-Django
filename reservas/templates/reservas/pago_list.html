@@ -19,6 +19,8 @@
             padding: 10px; /* Añade un relleno opcional */
         }
 
+         .ui-slider-range {background-color: #FF464F;}
+
     </style>
 {% endblock %}
 
@@ -48,6 +50,57 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <!-- Filtro para pagos -->
+        <div id="filtro-pagos" class="shadow mb-4" style="display: {% if get_params %}block{% else %}none{% endif %};">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">Filtrar Pagos</h6>
+            </div>
+            <div class="card-body">
+                {% if not pagos %}
+                    <div class="alert alert-warning" role="alert">
+                        No se encontraron resultados para los filtros seleccionados.
+                    </div>
+                {% endif %}
+                <form method="get" class="row">
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="venta">Venta:</label>
+                        <input type="text" name="venta" placeholder="Nombre de la Venta" value="{{ get_params.venta }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_min">Fecha mínima:</label>
+                        <input type="date" name="fecha_min" placeholder="Fecha mínima" value="{{ get_params.fecha_min }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_max">Fecha máxima:</label>
+                        <input type="date" name="fecha_max" placeholder="Fecha máxima" value="{{ get_params.fecha_max }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="metodo">Método:</label>
+                        <select name="metodo">
+                            <option value="">Seleccionar método</option>
+                            <option value="Efectivo" {% if get_params.metodo == 'Efectivo' %} selected {% endif %}>Efectivo</option>
+                            <option value="Tarjeta" {% if get_params.metodo == 'Tarjeta' %} selected {% endif %}>Tarjeta</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="monto">Monto del Pago:</label>
+                        <div id="monto_slider"></div>
+                        <input type="hidden" id="monto_min" name="monto_min" value="{{ get_params.monto_min }}">
+                        <input type="hidden" id="monto_max" name="monto_max" value="{{ get_params.monto_max }}">
+                        <div id="monto_range_value">$0 - $1000</div>
+                    </div>
+
+                    <div class="form-group col-sm-3 align-self-end"></div>
+                    <div class="form-group col-sm-3 align-self-end"></div>
+
+
+                    <div class="form-group col-sm-3 align-self-end">
+                        <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                        <a href="{% url 'pagos' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!-- DataTales Example -->
         <div class="shadow mb-4">
@@ -58,6 +111,13 @@
                                             <i class="fas fa-plus"></i>
                                         </span>
                     <span class="text">Nuevo Pago</span>
+                </a>
+                &nbsp
+                 <a href="#" class="btn btn-primary btn-icon-split" onclick="toggleFiltro()">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-filter"></i>
+                    </span>
+                    <span class="text">Filtrar Pagos</span>
                 </a>
             </div>
             <div class="card-body">
@@ -157,3 +217,37 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block java %}
+    <script>
+         // Función para alternar la visibilidad del filtro
+        function toggleFiltro() {
+        var filtro = document.getElementById('filtro-pagos');
+        if (filtro.style.display === 'none') {
+            filtro.style.display = 'block';
+        } else {
+            filtro.style.display = 'none';
+        }
+        }
+
+       $(function() {
+    $("#monto_slider").slider({
+        range: true,
+        min: 0,
+        max: 10000,
+        step: 10,
+        values: [{{ get_params.monto_min|default:0 }}, {{ get_params.monto_max|default:1000}}],
+        slide: function(event, ui) {
+            $("#monto_min").val(ui.values[0]);
+            $("#monto_max").val(ui.values[1]);
+            $("#monto_range_value").text("$" + ui.values[0] + " - $" + ui.values[1]);
+        }
+    });
+
+    // Actualizar el valor del rango al cargar la página
+    var montoMinInicial = $("#monto_slider").slider("values", 0);
+    var montoMaxInicial = $("#monto_slider").slider("values", 1);
+    $("#monto_range_value").text("$" + montoMinInicial + " - $" + montoMaxInicial);
+});
+    </script>
+{% endblock %}

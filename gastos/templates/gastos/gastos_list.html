@@ -56,44 +56,52 @@
     <div class="container-fluid">
 
      <!-- Filtro de Gastos -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h6 class="m-0 font-weight-bold text-primary">Filtrar Gastos</h6>
-            </div>
-            <div class="card-body">
-                <form method="get" class="form-inline">
-                    <div class="form-group mr-2">
-                        <label for="categoria">Categoría:</label>
-                        <select name="categoria" class="form-control">
-                            <option value="" selected>Todas</option>
-                            <!-- Agrega opciones de categoría según tus datos -->
-                            <option value="papeleria">Papeleria</option>
-                            <option value="mensuales">Mensual</option>
-                            <!-- ... -->
-                        </select>
-                    </div>
-                    <div class="form-group mr-2">
-                        <label for="fecha_inicio">Fecha inicio:</label>
-                        <input type="date" name="fecha_inicio" class="form-control">
-                    </div>
-                    <div class="form-group mr-2">
-                        <label for="fecha_fin">Fecha fin:</label>
-                        <input type="date" name="fecha_fin" class="form-control">
-                    </div>
-                    <div class="form-group mr-2">
-                        <label for="metodo_pago">Método de Pago:</label>
-                        <select name="metodo_pago" class="form-control">
-                            <option value="" selected>Todos</option>
-                            <!-- Agrega opciones de método de pago según tus datos -->
-                            <option value="efectivo">Efectivo</option>
-                            <option value="tarjeta">Tarjeta</option>
-                            <!-- ... -->
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                </form>
-            </div>
+    <div class="shadow mb-4">
+        <div class="card-header">
+            <h6 class="m-0 font-weight-bold text-primary">Filtrar Gastos</h6>
         </div>
+        <div class="card-body">
+            {% if not gastos %}
+            <div class="alert alert-warning" role="alert">
+                No se encontraron resultados para los filtros seleccionados.
+            </div>
+        {% endif %}
+            <form method="get" class="row">
+                <div class="form-group col-sm-3">
+                    <label for="categoria">Categoría:</label>
+                    <select name="categoria" class="form-control">
+                        <option value="" selected>Todas</option>
+                        <!-- Agrega opciones de categoría según tus datos -->
+                        <option value="papeleria">Papeleria</option>
+                        <option value="mensuales">Mensual</option>
+                        <!-- ... -->
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="fecha_inicio">Fecha inicio:</label>
+                    <input type="date" name="fecha_inicio" class="form-control">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="fecha_fin">Fecha fin:</label>
+                    <input type="date" name="fecha_fin" class="form-control">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="metodo_pago">Método de Pago:</label>
+                    <select name="metodo_pago" class="form-control">
+                        <option value="" selected>Todos</option>
+                        <!-- Agrega opciones de método de pago según tus datos -->
+                        <option value="efectivo">Efectivo</option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <!-- ... -->
+                    </select>
+                </div>
+                <div class="form-group col-sm-12">
+                    <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                </div>
+            </form>
+        </div>
+</div>
+
 
         <!-- DataTales Example -->
        <div class="shadow mb-4">

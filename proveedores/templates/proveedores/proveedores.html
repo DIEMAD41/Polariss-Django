@@ -10,10 +10,18 @@
     --black1: #24252A;
     --tamañoOps: 90px;
     }
+
+        .container-fluid {
+            height: 100%; /* Ajusta la altura según tus necesidades */
+            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
+            border: 1px solid #ccc; /* Añade un borde para visualización */
+            padding: 10px; /* Añade un relleno opcional */
+        }
     </style>
 {% endblock %}
 
 {% block content %}
+    <div class="container-fluid">
     <div class="blur"></div>
     <div class="RegCli hiddenRC">
         <ion-icon name="close-outline" class="closeRC"></ion-icon>
@@ -384,7 +392,7 @@
             {% csrf_token %}
            <input type="hidden" name="proveedor_id" id="proveedorIdInput">
     </form>
-
+    </div>
 {% endblock %}
 
 {% block java %}

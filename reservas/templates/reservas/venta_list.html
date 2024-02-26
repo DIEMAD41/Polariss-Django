@@ -26,6 +26,10 @@
             padding: 10px; /* Añade un relleno opcional */
         }
 
+         .ui-slider-range {
+    background-color: #FF464F;
+}
+
     </style>
 {% endblock %}
 
@@ -55,6 +59,91 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+<!-- Modal -->
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle de la Reserva: </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Filtro de ventas -->
+    <div id="filtro-ventas" class="shadow mb-4" style="display: {% if get_params %}block{% else %}none{% endif %};">
+    <div class="card-header">
+        <h6 class="m-0 font-weight-bold text-primary">Filtrar Ventas</h6>
+    </div>
+    <div class="card-body">
+        {% if not ventas %}
+            <div class="alert alert-warning" role="alert">
+                No se encontraron resultados para los filtros seleccionados.
+            </div>
+        {% endif %}
+        <form method="get" class="row">
+
+            <div class="form-group col-sm-3 mb-3">
+                <label for="cliente">Nombre del cliente:</label>
+                <input type="text" name="cliente" placeholder="Nombre" value="{{ get_params.cliente }}">
+            </div>
+
+            <div class="form-group col-sm-3 mb-3">
+                <label for="fecha_min">Fecha mínima:</label>
+                <input type="date" name="fecha_min" placeholder="Fecha mínima" value="{{ get_params.fecha_min }}">
+            </div>
+
+            <div class="form-group col-sm-3 mb-3">
+                <label for="fecha_max">Fecha máxima:</label>
+                <input type="date" name="fecha_max" placeholder="Fecha máxima" value="{{ get_params.fecha_max }}">
+            </div>
+
+            <div class="form-group col-sm-3 mb-3">
+                <label for="tipo">Tipo de venta:</label>
+                <select name="tipo">
+                    <option value="">Seleccionar tipo</option>
+                    <option value="Tarjeta" {% if get_params.tipo == 'Tarjeta' %} selected {% endif %}>Tarjeta</option>
+                    <option value="Efectivo" {% if get_params.tipo == 'Efectivo' %} selected {% endif %}>Efectivo</option>
+                </select>
+            </div>
+
+          <div class="form-group col-sm-6 mb-3">
+            <label for="tipo">Total de venta:</label>
+            <div id="total_slider"></div>
+            <input type="hidden" id="total_min" name="total_min" value="{{ get_params.total_min }}">
+            <input type="hidden" id="total_max" name="total_max" value="{{ get_params.total_max }}">
+            <div id="total_range_value">$0 - $1000</div>
+        </div>
+
+        <div class="form-group col-sm-6 mb-3">
+            <label for="tipo">Saldo de venta:</label>
+            <div id="saldo_slider"></div>
+            <input type="hidden" id="saldo_min" name="saldo_min" value="{{ get_params.saldo_min }}">
+            <input type="hidden" id="saldo_max" name="saldo_max" value="{{ get_params.saldo_max }}">
+            <div id="saldo_range_value">$0 - $1000</div>
+        </div>
+
+
+            <div class="form-group col-sm-3 align-self-end">
+                <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                <a href="{% url 'ventas' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
         <!-- DataTales Example -->
        <div class="shadow mb-4">
             <div class="card-header py-3">
@@ -63,6 +152,13 @@
                         <i class="fas fa-plus"></i>
                     </span>
                     <span class="text">Nueva Venta</span>
+                </a>
+                &nbsp
+                 <a href="#" class="btn btn-primary btn-icon-split" onclick="toggleFiltro()">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-filter"></i>
+                    </span>
+                    <span class="text">Filtrar ventas</span>
                 </a>
             </div>
             <div class="card-body">
@@ -83,16 +179,24 @@
                         <tbody>
                             {% for venta in ventas %}
                                 <tr>
+
                                     <td>{{ venta.reservas.all|join:", " }}</td>
-                                     <td>
-                                        <select>
-                                            {% for reserva in venta.reservas.all %}
+
+                                    <td>
+                                        <div class="position-relative">
+                                            <select class="form-control">
+                                                {% for reserva in venta.reservas.all %}
                                                 {% for cliente in reserva.clientes.all %}
                                                     <option value="{{ cliente.idcliente }}">{{ cliente.nombrec }}</option>
                                                 {% endfor %}
                                             {% endfor %}
-                                        </select>
+                                            </select>
+                                            <i class="fas fa-chevron-down position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%);"></i>
+                                        </div>
                                     </td>
+
+
+
                                     <td>{{ venta.total }}</td>
                                     <td>{{ venta.saldo }}</td>
 
@@ -105,12 +209,14 @@
 
                                     <td>{{ venta.fechaV }}</td>
                                     <td>{{ venta.tipo }}</td>
-                                    <!-- Otros campos de tu modelo Venta -->
+                                    <!-- Otros campos del modelo Venta -->
+
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-success btn-circle btn-sm">
+                                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#miModal">
                                             <i class="fas fa-cash-register"></i>
                                         </a>
                                     </td>
+
                                     <td class="text-center">
                                         <a href=" {% url 'ventas_update' venta.claveV%} " class="btn btn-warning btn-circle btn-sm">
                                             <i class="fas fa-edit"></i>
@@ -187,3 +293,74 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block java %}
+<script>
+
+function setupPage() {
+    // Configurar los sliders
+    $(function() {
+        $("#total_slider").slider({
+            range: true,
+            min: 0,
+            max: 100000,
+            step: 10,
+            values: [{{ get_params.total_min|default:0 }}, {{ get_params.total_max|default:10000 }}],
+            slide: function(event, ui) {
+                $("#total_min").val(ui.values[0]);
+                $("#total_max").val(ui.values[1]);
+                $("#total_range_value").text("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+
+        $("#saldo_slider").slider({
+            range: true,
+            min: 0,
+            max: 100000,
+            step: 10,
+            values: [{{ get_params.saldo_min|default:0 }}, {{ get_params.saldo_max|default:10000 }}],
+            slide: function(event, ui) {
+                $("#saldo_min").val(ui.values[0]);
+                $("#saldo_max").val(ui.values[1]);
+                $("#saldo_range_value").text("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+    });
+
+    // Establecer valores del filtro
+    var cliente = "{{ get_params.cliente }}";
+    var fecha_min = "{{ get_params.fecha_min }}";
+    var fecha_max = "{{ get_params.fecha_max }}";
+    var tipo = "{{ get_params.tipo }}";
+    var total_min = "{{ get_params.total_min|default:0 }}"; // Valor predeterminado del total mínimo
+    var total_max = "{{ get_params.total_max|default:10000 }}"; // Valor predeterminado del total máximo
+    var saldo_min = "{{ get_params.saldo_min|default:0 }}"; // Valor predeterminado del saldo mínimo
+    var saldo_max = "{{ get_params.saldo_max|default:10000 }}"; // Valor predeterminado del saldo máximo
+
+    document.querySelector('input[name="cliente"]').value = cliente;
+    document.querySelector('input[name="fecha_min"]').value = fecha_min;
+    document.querySelector('input[name="fecha_max"]').value = fecha_max;
+    document.querySelector('select[name="tipo"]').value = tipo;
+
+    // Establecer valores de los elementos de rango con valores predeterminados
+    document.getElementById("total_range_value").textContent = "$" + total_min + " - $" + total_max;
+    document.getElementById("saldo_range_value").textContent = "$" + saldo_min + " - $" + saldo_max;
+}
+
+// Función para alternar la visibilidad del filtro
+function toggleFiltro() {
+    var filtro = document.getElementById('filtro-ventas');
+    if (filtro.style.display === 'none') {
+        filtro.style.display = 'block';
+    } else {
+        filtro.style.display = 'none';
+    }
+}
+
+// Cuando se carga la página, configurar los sliders y establecer los valores del filtro
+window.onload = function() {
+    setupPage();
+};
+
+</script>
+{% endblock java %}

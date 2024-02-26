@@ -1,0 +1,20 @@
+PRIORIDAD
+Terminar el filtro de reservaciones (estado y aerolinea y ocultar los slider de total y saldo)
+Terminar el modal de ventas
+
+-Historial de clientes:
+Cuando se da clic a un cliente se abre una pagina del historial del cliente, con todas sus reservas, ventas y
+pagos.
+
+-Reservaciones de hoteles:
+Control de las reservas de hoteles, pagos, ventas, etc
+
+-Manejo de finazas
+Control de gastos e ingresos (Control de caja chica y caja grande)
+
+-Boton de manejo de filtrado
+Ocultar las opciones de filtrado o manteberlo visible
+
+-Pago: Completar filtrado
+Mostrar los clientes que hicieron el pago
+

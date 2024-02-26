@@ -19,6 +19,15 @@
         border-color: var(--color2);
     }
 
+     .container-fluid {
+            height: 100%; /* Ajusta la altura según tus necesidades */
+            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
+            border: 1px solid #ccc; /* Añade un borde para visualización */
+            padding: 10px; /* Añade un relleno opcional */
+        }
+
+     .ui-slider-range {background-color: #FF464F;}
+
     </style>
 {% endblock %}
 
@@ -45,8 +54,101 @@
 {% endblock %}
 
 {% block content %}
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
+
+         <!-- Filtro de ventas -->
+    <div id="filtro-reservas" class="shadow mb-4" style="display: {% if get_params %}block{% else %}none{% endif %};">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">Filtrar Reservaciones</h6>
+            </div>
+            <div class="card-body">
+                {% if not reservas %}
+                    <div class="alert alert-warning" role="alert">
+                        No se encontraron resultados para los filtros seleccionados.
+                    </div>
+                {% endif %}
+                <form method="get" class="row">
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="cliente">Nombre del cliente:</label>
+                        <input type="text" name="cliente" placeholder="Nombre" value="{{ get_params.cliente }}">
+                    </div>
+
+                  <div class="form-group col-sm-3 mb-3">
+                        <label for="origen">Origen:</label>
+                        <input type="text" name="origen" placeholder="Origen" value="{{ get_params.origen }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="destino">Destino:</label>
+                        <input type="text" name="destino" placeholder="Destino" value="{{ get_params.destino }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="aerolinea">Aerolinea:</label>
+                        <input type="text" name="aerolinea" placeholder="Aerolinea" value="{{ get_params.aerolinea }}">
+                    </div>
+
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_ida_min">Fecha Ida (min):</label>
+                        <input type="date" name="fecha_ida_min" placeholder="Fecha mínima" value="{{ get_params.fecha_ida_min }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_ida_max">Fecha Ida(max):</label>
+                        <input type="date" name="fecha_ida_max" placeholder="Fecha máxima" value="{{ get_params.fecha_ida_max }}">
+                    </div>
+
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_regreso_min">Fecha Regreso (min):</label>
+                        <input type="date" name="fecha_regreso_min" placeholder="Fecha mínima" value="{{ get_params.fecha_regreso_min }}">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_regreso_max">Fecha Regreso(max):</label>
+                        <input type="date" name="fecha_regreso_max" placeholder="Fecha máxima" value="{{ get_params.fecha_regreso_max }}">
+                    </div>
+
+
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="estado">Estado de reserva:</label>
+                        <select name="estado">
+                            <option value="">Seleccionar tipo</option>
+                            <option value="P" {% if get_params.estado == 'P' %} selected {% endif %}>Pagado</option>
+                            <option value="EP" {% if get_params.estado == 'EP' %} selected {% endif %}>En pago</option>
+                            <option value="NP" {% if get_params.estado == 'NP' %} selected {% endif %}>No pagado</option>
+                        </select>
+                    </div>
+
+                <!--
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="tipo">Total de reserva:</label>
+                        <div id="total_slider"></div>
+                        <input type="hidden" id="total_min" name="total_min" value="{{ get_params.total_min }}">
+                        <input type="hidden" id="total_max" name="total_max" value="{{ get_params.total_max }}">
+                        <div id="total_range_value">$0 - $1000</div>
+                    </div>
+                    <div class="form-group col-sm-6 mb-3">
+                        <label for="tipo">Saldo de reserva:</label>
+                        <div id="saldo_slider"></div>
+                        <input type="hidden" id="saldo_min" name="saldo_min" value="{{ get_params.saldo_min }}">
+                        <input type="hidden" id="saldo_max" name="saldo_max" value="{{ get_params.saldo_max }}">
+                        <div id="saldo_range_value">$0 - $1000</div>
+                    </div>
+                    -->
+
+                    <div class="form-group col-sm-3 mb-3">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                    </div>
+                    <div class="form-group col-sm-3 mb-3">
+                    </div>
+
+                    <div class="form-group col-sm-3 align-self-end">
+                        <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                        <a href="{% url 'reservacionesV_list' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
 
         <!-- DataTales Example -->
         <div class="shadow mb-4">
@@ -57,6 +159,13 @@
                                             <i class="fas fa-plus"></i>
                                         </span>
                     <span class="text">Nueva reservacion de vuelo</span>
+                </a>
+                 &nbsp
+                 <a href="#" class="btn btn-primary btn-icon-split" onclick="toggleFiltro()">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-filter"></i>
+                    </span>
+                    <span class="text">Filtrar Reservas</span>
                 </a>
             </div>
             <div class="card-body">
@@ -76,16 +185,28 @@
                         <tbody>
                         {% for vuelo in reservas %}
                         <tr>
-                             <td>{{ vuelo.clientes.first }}</td>
+                            <td>
+                                <div class="position-relative">
+                                    <select class="form-control">
+                                        {% for cliente in vuelo.clientes.all %}
+                                            <option value="{{ cliente.id }}">{{ cliente.nombrec }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <i class="fas fa-chevron-down position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%);"></i>
+                                </div>
+                            </td>
+
                             <td>{{ vuelo.origenv }}</td>
                             <td>{{ vuelo.destinov }}</td>
                             <td>{{ vuelo.fsalida|date:"d/m/Y" }}</td>
                             <td>{{ vuelo.fregreso|date:"d/m/Y" }}</td>
                             <td>{{ vuelo.aerolinea }}</td>
                             {% if vuelo.estado == 'P' %}
+                            <td class="text-center"><span class="status pago">Pagado</span></td>
+                            {% elif vuelo.estado == 'EP' %}
                             <td class="text-center"><span class="status pago">En pago</span></td>
                             {% elif vuelo.estado == 'NP' %}
-                            <td class="text-center"><span class="status apago">En pago</span></td>
+                            <td class="text-center"><span class="status apago">No pagado</span></td>
                             {% endif %}
 
                                 <td class="text-center">
@@ -165,3 +286,69 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block java %}
+    <script>
+     function setupReservacionesFilter() {
+            $(function () {
+                $("#total_slider").slider({
+                    range: true,
+                    min: 0,
+                    max: 100000,
+                    step: 10,
+                    values: [{{ get_params.total_min|default:0 }}, {{ get_params.total_max|default:10000 }}],
+                    slide: function (event, ui) {
+                        $("#total_min").val(ui.values[0]);
+                        $("#total_max").val(ui.values[1]);
+                        $("#total_range_value").text("$" + ui.values[0] + " - $" + ui.values[1]);
+                    }
+                });
+
+                $("#saldo_slider").slider({
+                    range: true,
+                    min: 0,
+                    max: 100000,
+                    step: 10,
+                    values: [{{ get_params.saldo_min|default:0 }}, {{ get_params.saldo_max|default:10000 }}],
+                    slide: function (event, ui) {
+                        $("#saldo_min").val(ui.values[0]);
+                        $("#saldo_max").val(ui.values[1]);
+                        $("#saldo_range_value").text("$" + ui.values[0] + " - $" + ui.values[1]);
+                    }
+                });
+            });
+
+            var cliente = "{{ get_params.cliente }}";
+            var fecha_min = "{{ get_params.fecha_min }}";
+            var fecha_max = "{{ get_params.fecha_max }}";
+            var tipo = "{{ get_params.tipo }}";
+            var total_min = "{{ get_params.total_min|default:0 }}";
+            var total_max = "{{ get_params.total_max|default:10000 }}";
+            var saldo_min = "{{ get_params.saldo_min|default:0 }}";
+            var saldo_max = "{{ get_params.saldo_max|default:10000 }}";
+
+            document.querySelector('input[name="cliente"]').value = cliente;
+            document.querySelector('input[name="fecha_min"]').value = fecha_min;
+            document.querySelector('input[name="fecha_max"]').value = fecha_max;
+            document.querySelector('select[name="tipo"]').value = tipo;
+
+            document.getElementById("total_range_value").textContent = "$" + total_min + " - $" + total_max;
+            document.getElementById("saldo_range_value").textContent = "$" + saldo_min + " - $" + saldo_max;
+        }
+
+        // Función para alternar la visibilidad del filtro
+    function toggleFiltro() {
+    var filtro = document.getElementById('filtro-reservas');
+    if (filtro.style.display === 'none') {
+        filtro.style.display = 'block';
+    } else {
+        filtro.style.display = 'none';
+    }
+}
+
+        window.onload = function () {
+            setupReservacionesFilter();
+        };
+
+    </script>
+{% endblock java %}

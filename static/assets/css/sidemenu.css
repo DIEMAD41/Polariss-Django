@@ -77,6 +77,11 @@ a {
   justify-content: space-between;
   overflow: scroll;
   margin: 18px 11.7px;/* editado */
+  flex-wrap: nowrap;
+}
+
+.nav a:hover{
+  color: white;
 }
 
 .nav::-webkit-scrollbar {

@@ -46,3 +46,4 @@ class PagoForm(forms.ModelForm):
         model = Pago
         fields = '__all__'
 
+

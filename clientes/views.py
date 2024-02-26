@@ -89,7 +89,7 @@ def eliminar_cliente(request):
 class ClienteListView(ListView):
     # Este fragmento de codigo es para llenar datos de data.py en nuestra BD
 
-       # Cargar los clientes
+    # Cargar los clientes
     '''
     print("Iniciar la carga de clientes")
     for cliente in mis_clientes:
@@ -111,6 +111,22 @@ class ClienteListView(ListView):
     context_object_name = "clientes"
     #4. Paginacion
     paginate_by = 10
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        localidad = self.request.GET.get('localidad')
+        edad = self.request.GET.get('edad')
+        nombre = self.request.GET.get('nombre')
+
+        if localidad:
+            queryset = queryset.filter(localidad__icontains=localidad)
+        if edad:
+            queryset = queryset.filter(edadc=edad)
+        if nombre:
+            queryset = queryset.filter(nombrec__icontains=nombre)
+
+        return queryset
 
 #Recuerda editar el form para personalizar los campos que vas a manejar
 class ClienteCreateView(CreateView):
