@@ -10,6 +10,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from Polariss import settings
 from reservas.models import ReservaVuelo, Venta, Pago
 from .forms import ReservaVueloForm, VentaForm, PagoForm
+from django.db.models import Prefetch
 
 
 #VISTAS BASADAS EN CLASES PARA RESERVACIONES DE VUELOS
@@ -130,7 +131,7 @@ class VentasVAllListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-
+        queryset = super().get_queryset().prefetch_related('pagos')  # Prefetch para obtener los pagos asociados
         cliente = self.request.GET.get('cliente')
         fecha_min = self.request.GET.get('fecha_min')
         fecha_max = self.request.GET.get('fecha_max')
@@ -254,7 +255,15 @@ class PagosListView(ListView):
 class PagosCreateView(CreateView):
     template_name = 'reservas/pago_new.html'
     form_class = PagoForm
-    success_url = reverse_lazy('pagos')
+    success_url = reverse_lazy('ventas')
+
+    def get_initial(self):
+        initial = super().get_initial()
+        venta_id = self.request.GET.get('venta')
+        if venta_id:
+            # Establece la venta inicial si se proporciona en los parámetros de la URL
+            initial['venta'] = venta_id
+        return initial
 
     def form_valid(self, form):
         # Llamada al form_valid de la clase base
@@ -276,6 +285,7 @@ class PagosCreateView(CreateView):
         messages.success(self.request, 'Pago creado exitosamente.')
 
         return response
+
 class PagoUpdateView(UpdateView):
     template_name = 'reservas/pago_update.html'
     # Si quieres editar todos los campos del form usa este codigo:

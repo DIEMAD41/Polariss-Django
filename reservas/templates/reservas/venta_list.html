@@ -59,26 +59,80 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-<!-- Modal -->
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detalle de la Reserva: </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+<!-- Agregar modales para cada venta -->
+{% for venta in ventas %}
+    <div class="modal fade " id="miModal{{ venta.claveV }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalle de la Venta: {{ venta.claveV }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Pagos:</h6>
+                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Método</th>
+                                <th>Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pago in venta.pagos.all %}
+                                <tr>
+                                <td>{{ pago.fecha }}</td>
+                                <td>{{ pago.metodo }}</td>
+                                <td>{{ pago.monto }}</td>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                <td class="text-center">
+                                    <a href="{% url 'pagos_update' pago.id %}" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{% url 'pagos_delete' pago.id %}" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                     </table>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Venta total:</th>
+                                    <th scope="col">Monto abonado:</th>
+                                    <th scope="col">Saldo restante:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$15000</td>
+                                    <td>$10000</td>
+                                    <td><p style="color: red">$5000</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary btn-agregar-pago" onclick="agregarPago('{{ venta.claveV }}')">Agregar Pago</button>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+{% endfor %}
 
     <!-- Filtro de ventas -->
     <div id="filtro-ventas" class="shadow mb-4" style="display: {% if get_params %}block{% else %}none{% endif %};">
@@ -212,7 +266,7 @@
                                     <!-- Otros campos del modelo Venta -->
 
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#miModal">
+                                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#miModal{{ venta.claveV }}">
                                             <i class="fas fa-cash-register"></i>
                                         </a>
                                     </td>
@@ -361,6 +415,12 @@ function toggleFiltro() {
 window.onload = function() {
     setupPage();
 };
+
+//Boton del modal para agregar pagos
+    function agregarPago(claveVenta) {
+        // Redirige a la página de creación de pagos con la clave de la venta como parámetro
+        window.location.href = "{% url 'pagos_new' %}?venta=" + claveVenta;
+    }
 
 </script>
 {% endblock java %}

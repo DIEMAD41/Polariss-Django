@@ -18,3 +18,5 @@ Ocultar las opciones de filtrado o manteberlo visible
 -Pago: Completar filtrado
 Mostrar los clientes que hicieron el pago
 
+-Plantilla para las reservaciones
+Mostrar la plantilla de los datos de reserva, liz hará una plantilla
