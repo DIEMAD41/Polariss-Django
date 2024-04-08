@@ -1,0 +1,11 @@
+<ul>
+  {% for cliente in clientes %}
+    <li>
+      <div class="d-flex p-2 cliente-div" style="">
+        <div class="p-2"><span><i class="fas fa-user"></i></span></div>
+        <div class="container-fluid p-2"><span>{{ cliente.nombrec }}</span></div>
+        <div class="p-2"><span><i class="fas fa-arrow-right"></i></span></div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

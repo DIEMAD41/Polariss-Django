@@ -19,16 +19,22 @@
         border-color: var(--color2);
     }
 
-         .container-fluid {
-            height: 100%; /* Ajusta la altura según tus necesidades */
-            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
-            border: 1px solid #ccc; /* Añade un borde para visualización */
-            padding: 10px; /* Añade un relleno opcional */
-        }
 
          .ui-slider-range {
     background-color: #FF464F;
 }
+
+        @keyframes aparecerDesaparecer {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Aplica la animación al filtro */
+        #filtro-ventas {
+            display: none;
+            animation: aparecerDesaparecer 0.5s ease-in-out;
+        }
+
 
     </style>
 {% endblock %}
@@ -57,295 +63,290 @@
 
 {% block content %}
     <!-- Begin Page Content -->
-    <div class="container-fluid">
 
-<!-- Agregar modales para cada venta -->
-{% for venta in ventas %}
-    <div class="modal fade " id="miModal{{ venta.claveV }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detalle de la Venta: {{ venta.claveV }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h6>Pagos:</h6>
-                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Método</th>
-                                <th>Monto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for pago in venta.pagos.all %}
-                                <tr>
-                                <td>{{ pago.fecha }}</td>
-                                <td>{{ pago.metodo }}</td>
-                                <td>{{ pago.monto }}</td>
+        <!-- Agregar modales para cada venta -->
+        {% for venta in ventas %}
+            <div class="modal fade " id="miModal{{ venta.claveV }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detalle de la Venta: {{ venta.claveV }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Pagos:</h6>
+                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Método</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for pago in venta.pagos.all %}
+                                        <tr>
+                                        <td>{{ pago.fecha }}</td>
+                                        <td>{{ pago.metodo }}</td>
+                                        <td>{{ pago.monto }}</td>
 
-                                <td class="text-center">
-                                    <a href="{% url 'pagos_update' pago.id %}" class="btn btn-success btn-circle btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="{% url 'pagos_delete' pago.id %}" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
+                                        <td class="text-center">
+                                            <a href="{% url 'pagos_update' pago.id %}" class="btn btn-success btn-circle btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{% url 'pagos_delete' pago.id %}" class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
 
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                     </table>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                             </table>
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Venta total:</th>
-                                    <th scope="col">Monto abonado:</th>
-                                    <th scope="col">Saldo restante:</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>$15000</td>
-                                    <td>$10000</td>
-                                    <td><p style="color: red">$5000</p></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Venta total:</th>
+                                            <th scope="col">Monto abonado:</th>
+                                            <th scope="col">Saldo restante:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>$15000</td>
+                                            <td>$10000</td>
+                                            <td><p style="color: red">$5000</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary btn-agregar-pago" onclick="agregarPago('{{ venta.claveV }}')">Agregar Pago</button>
+
+                        </div>
                     </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary btn-agregar-pago" onclick="agregarPago('{{ venta.claveV }}')">Agregar Pago</button>
-
                 </div>
             </div>
-        </div>
-    </div>
-{% endfor %}
+        {% endfor %}
 
-    <!-- Filtro de ventas -->
-    <div id="filtro-ventas" class="shadow mb-4" style="display: {% if get_params %}block{% else %}none{% endif %};">
-    <div class="card-header">
-        <h6 class="m-0 font-weight-bold text-primary">Filtrar Ventas</h6>
-    </div>
-    <div class="card-body">
-        {% if not ventas %}
-            <div class="alert alert-warning" role="alert">
-                No se encontraron resultados para los filtros seleccionados.
-            </div>
-        {% endif %}
-        <form method="get" class="row">
-
-            <div class="form-group col-sm-3 mb-3">
-                <label for="cliente">Nombre del cliente:</label>
-                <input type="text" name="cliente" placeholder="Nombre" value="{{ get_params.cliente }}">
-            </div>
-
-            <div class="form-group col-sm-3 mb-3">
-                <label for="fecha_min">Fecha mínima:</label>
-                <input type="date" name="fecha_min" placeholder="Fecha mínima" value="{{ get_params.fecha_min }}">
-            </div>
-
-            <div class="form-group col-sm-3 mb-3">
-                <label for="fecha_max">Fecha máxima:</label>
-                <input type="date" name="fecha_max" placeholder="Fecha máxima" value="{{ get_params.fecha_max }}">
-            </div>
-
-            <div class="form-group col-sm-3 mb-3">
-                <label for="tipo">Tipo de venta:</label>
-                <select name="tipo">
-                    <option value="">Seleccionar tipo</option>
-                    <option value="Tarjeta" {% if get_params.tipo == 'Tarjeta' %} selected {% endif %}>Tarjeta</option>
-                    <option value="Efectivo" {% if get_params.tipo == 'Efectivo' %} selected {% endif %}>Efectivo</option>
-                </select>
-            </div>
-
-          <div class="form-group col-sm-6 mb-3">
-            <label for="tipo">Total de venta:</label>
-            <div id="total_slider"></div>
-            <input type="hidden" id="total_min" name="total_min" value="{{ get_params.total_min }}">
-            <input type="hidden" id="total_max" name="total_max" value="{{ get_params.total_max }}">
-            <div id="total_range_value">$0 - $1000</div>
-        </div>
-
-        <div class="form-group col-sm-6 mb-3">
-            <label for="tipo">Saldo de venta:</label>
-            <div id="saldo_slider"></div>
-            <input type="hidden" id="saldo_min" name="saldo_min" value="{{ get_params.saldo_min }}">
-            <input type="hidden" id="saldo_max" name="saldo_max" value="{{ get_params.saldo_max }}">
-            <div id="saldo_range_value">$0 - $1000</div>
-        </div>
-
-
-            <div class="form-group col-sm-3 align-self-end">
-                <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
-                <a href="{% url 'ventas' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-
-        <!-- DataTales Example -->
-       <div class="shadow mb-4">
-            <div class="card-header py-3">
-                <a href="{% url 'ventas_new' %}" class="btn btn-primary btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Nueva Venta</span>
-                </a>
-                &nbsp
-                 <a href="#" class="btn btn-primary btn-icon-split" onclick="toggleFiltro()">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-filter"></i>
-                    </span>
-                    <span class="text">Filtrar ventas</span>
-                </a>
+            <!-- Filtro de ventas -->
+            <div id="filtro-ventas" class="container-fluid p-3 border mb-2" style="display: {% if get_params %}block{% else %}none{% endif %};">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">Filtrar Ventas</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <td>Reserva</td>
-                                <td>Clientes</td>
-                                <td>Total</td>
-                                 <td>Saldo</td>
-                                <td>Estado</td>
-                                <td>Fecha</td>
-                                <td>Tipo</td>
-                                <!-- Otros campos de tu modelo Venta -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for venta in ventas %}
-                                <tr>
+                {% if not ventas %}
+                    <div class="alert alert-warning" role="alert">
+                        No se encontraron resultados para los filtros seleccionados.
+                    </div>
+                {% endif %}
+                <form method="get" class="row">
 
-                                    <td>{{ venta.reservas.all|join:", " }}</td>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="cliente">Nombre del cliente:</label>
+                        <input type="text" name="cliente" placeholder="Nombre" value="{{ get_params.cliente }}">
+                    </div>
 
-                                    <td>
-                                        <div class="position-relative">
-                                            <select class="form-control">
-                                                {% for reserva in venta.reservas.all %}
-                                                {% for cliente in reserva.clientes.all %}
-                                                    <option value="{{ cliente.idcliente }}">{{ cliente.nombrec }}</option>
-                                                {% endfor %}
-                                            {% endfor %}
-                                            </select>
-                                            <i class="fas fa-chevron-down position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%);"></i>
-                                        </div>
-                                    </td>
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_min">Fecha mínima:</label>
+                        <input type="date" name="fecha_min" placeholder="Fecha mínima" value="{{ get_params.fecha_min }}">
+                    </div>
 
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="fecha_max">Fecha máxima:</label>
+                        <input type="date" name="fecha_max" placeholder="Fecha máxima" value="{{ get_params.fecha_max }}">
+                    </div>
 
+                    <div class="form-group col-sm-3 mb-3">
+                        <label for="tipo">Tipo de venta:</label>
+                        <select name="tipo">
+                            <option value="">Seleccionar tipo</option>
+                            <option value="Tarjeta" {% if get_params.tipo == 'Tarjeta' %} selected {% endif %}>Tarjeta</option>
+                            <option value="Efectivo" {% if get_params.tipo == 'Efectivo' %} selected {% endif %}>Efectivo</option>
+                        </select>
+                    </div>
 
-                                    <td>{{ venta.total }}</td>
-                                    <td>{{ venta.saldo }}</td>
-
-
-                                     {% if venta.estado == 'P' %}
-                                    <td class="text-center"><span class="status pago">Pagado</span></td>
-                                    {% elif venta.estado == 'NP' %}
-                                    <td class="text-center"><span class="status apago">En pago</span></td>
-                                    {% endif %}
-
-                                    <td>{{ venta.fechaV }}</td>
-                                    <td>{{ venta.tipo }}</td>
-                                    <!-- Otros campos del modelo Venta -->
-
-                                    <td class="text-center">
-                                        <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#miModal{{ venta.claveV }}">
-                                            <i class="fas fa-cash-register"></i>
-                                        </a>
-                                    </td>
-
-                                    <td class="text-center">
-                                        <a href=" {% url 'ventas_update' venta.claveV%} " class="btn btn-warning btn-circle btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href=" {% url 'ventas_delete' venta.claveV%} " class="btn btn-danger btn-circle btn-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                  <div class="form-group col-sm-6 mb-3">
+                    <label for="tipo">Total de venta:</label>
+                    <div id="total_slider"></div>
+                    <input type="hidden" id="total_min" name="total_min" value="{{ get_params.total_min }}">
+                    <input type="hidden" id="total_max" name="total_max" value="{{ get_params.total_max }}">
+                    <div id="total_range_value">$0 - $1000</div>
                 </div>
 
-            <!-- PAGINACION -->
-            <div class="row">
-        <div class="col-lg-12">
-            {% if page_obj.has_other_pages %}
-                <nav>
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page=1">
-                                    Primero
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                                    Anterior
-                                </a>
-                            </li>
-                        {% endif %}
+                <div class="form-group col-sm-6 mb-3">
+                    <label for="tipo">Saldo de venta:</label>
+                    <div id="saldo_slider"></div>
+                    <input type="hidden" id="saldo_min" name="saldo_min" value="{{ get_params.saldo_min }}">
+                    <input type="hidden" id="saldo_max" name="saldo_max" value="{{ get_params.saldo_max }}">
+                    <div id="saldo_range_value">$0 - $1000</div>
+                </div>
 
-                        {% for page_number in page_obj.paginator.page_range %}
-                            {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
-                                {% if page_obj.number == page_number %}
-                                    <li class="page-item active">
-                                        <a class="page-link" href="?page={{ page_number }}">
-                                            {{ page_number }}
+
+                    <div class="form-group col-sm-3 align-self-end">
+                        <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                        <a href="{% url 'ventas' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+                <!-- DataTales Example -->
+               <div class="container-fluid p-3 border mb-4">
+                    <div class="card-header py-3">
+                        <a href="{% url 'ventas_new' %}" class="btn btn-primary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            <span class="text">Nueva Venta</span>
+                        </a>
+                        &nbsp
+                         <a href="#" class="btn btn-primary btn-icon-split" onclick="toggleFiltro()">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-filter"></i>
+                            </span>
+                            <span class="text">Filtrar ventas</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <td>Reserva</td>
+                                        <td>Clientes</td>
+                                        <td>Total</td>
+                                         <td>Saldo</td>
+                                        <td class="text-center">Estado</td>
+                                        <td>Fecha</td>
+                                        <td>Tipo</td>
+                                        <!-- Otros campos de tu modelo Venta -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for venta in ventas %}
+                                        <tr>
+                                            <!-- Mostrar los nombres de las reservas -->
+                                            <td>
+                                                Reserva {{ venta.reserva.clavev }} - {{ venta.reserva.origenv }} a {{ venta.reserva.destinov }}
+                                            </td>
+
+                                            <!-- Mostrar los nombres de los clientes -->
+                                            <td>
+                                                {% for cliente in venta.reserva.clientes.all %}
+                                                    {{ cliente.nombrec }}{% if not forloop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </td>
+
+                                            <!-- Otros campos del modelo Venta -->
+                                            <td>{{ venta.total }}</td>
+                                            <td>{{ venta.saldo }}</td>
+
+
+                                            {% if venta.estado == 'P' %}
+                                            <td class="text-center"><span class="status pago">Pagado</span></td>
+                                            {% elif venta.estado == 'EP' %}
+                                            <td class="text-center"><span class="status pago">En pago</span></td>
+                                            {% elif venta.estado == 'NP' %}
+                                            <td class="text-center"><span class="status apago">No pagado</span></td>
+                                            {% endif %}
+
+                                            <td>{{ venta.fechaV }}</td>
+                                            <td>{{ venta.tipo }}</td>
+
+                                            <!-- Botones de acciones -->
+                                            <td class="text-center">
+                                                <!-- Botón para ver detalles de la venta -->
+                                                <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#miModal{{ venta.claveV }}">
+                                                    <i class="fas fa-cash-register"></i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href=" {% url 'ventas_update' venta.claveV%} " class="btn btn-warning btn-circle btn-sm">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href=" {% url 'ventas_delete' venta.claveV%} " class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    <!-- PAGINACION -->
+                    <div class="row">
+                <div class="col-lg-12">
+                    {% if page_obj.has_other_pages %}
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1">
+                                            Primero
                                         </a>
                                     </li>
-                                {% else %}
                                     <li class="page-item">
-                                        <a class="page-link" href="?page={{ page_number }}">
-                                            {{ page_number }}
+                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                            Anterior
                                         </a>
                                     </li>
                                 {% endif %}
-                            {% endif %}
-                        {% endfor %}
 
-                        {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                                    Siguiente
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
-                                    Ultimo
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            {% endif %}
-        </div>
-    </div>
+                                {% for page_number in page_obj.paginator.page_range %}
+                                    {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+                                        {% if page_obj.number == page_number %}
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?page={{ page_number }}">
+                                                    {{ page_number }}
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ page_number }}">
+                                                    {{ page_number }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
 
-
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                            Siguiente
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                            Ultimo
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-    </div>
+
+
+                    </div>
+                </div>
 {% endblock content %}
 
 {% block java %}
@@ -401,13 +402,17 @@ function setupPage() {
     document.getElementById("saldo_range_value").textContent = "$" + saldo_min + " - $" + saldo_max;
 }
 
-// Función para alternar la visibilidad del filtro
+// Función para alternar la visibilidad del filtro con animación
 function toggleFiltro() {
     var filtro = document.getElementById('filtro-ventas');
     if (filtro.style.display === 'none') {
         filtro.style.display = 'block';
     } else {
-        filtro.style.display = 'none';
+        filtro.style.animation = 'aparecerDesaparecer 0.5s ease-in-out reverse';
+        setTimeout(function() {
+            filtro.style.display = 'none';
+            filtro.style.animation = '';
+        }, 500); // El tiempo debe ser igual a la duración de la animación
     }
 }
 

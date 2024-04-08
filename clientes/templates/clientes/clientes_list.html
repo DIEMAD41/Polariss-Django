@@ -12,12 +12,6 @@
         border-color: var(--color2);
     }
 
-     .container-fluid {
-            height: 100%; /* Ajusta la altura según tus necesidades */
-            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
-            border: 1px solid #ccc; /* Añade un borde para visualización */
-            padding: 10px; /* Añade un relleno opcional */
-        }
     </style>
 {% endblock %}
 
@@ -45,151 +39,147 @@
 
 {% block content %}
     <!-- Begin Page Content -->
-    <div class="container-fluid">
 
-    <!-- Filtro de clientes -->
-<div class="shadow mb-4">
-    <div class="card-header">
-        <h6 class="m-0 font-weight-bold text-primary">Filtrar Clientes</h6>
-    </div>
-    <div class="card-body">
-        {% if not clientes %}
-            <div class="alert alert-warning" role="alert">
-                No se encontraron resultados para los filtros seleccionados.
-            </div>
-        {% endif %}
-        <form method="get" class="row">
-            <div class="form-group col-sm-3">
-                <label for="localidad">Localidad:</label>
-                <input type="text" name="localidad" class="form-control" value="{{ request.GET.localidad }}">
-            </div>
-            <div class="form-group col-sm-3">
-                <label for="edad">Edad:</label>
-                <input type="number" name="edad" class="form-control" value="{{ request.GET.edad }}">
-            </div>
-            <div class="form-group col-sm-3">
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" class="form-control" value="{{ request.GET.nombre }}">
-            </div>
-            <div class="form-group col-sm-3 align-self-end">
-                <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
-                <a href="{% url 'cliente_list' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-        <!-- DataTales Example -->
-        <div class="shadow mb-4">
-            <div class="card-header py-3" >
-                {#                            <h6 class="m-0 font-weight-bold text-primary">Listado de categorias</h6>#}
-                <a href="{% url 'clientes:cliente_new' %}" class="btn btn-primary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-plus"></i>
-                                        </span>
-                    <span class="text">Nuevo Cliente</span>
-                </a>
+            <!-- Filtro de clientes -->
+        <div class="container-fluid p-3 border mb-2">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">Filtrar Clientes</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <td class="text-center">ID</td>
-                            <td>Nombre</td>
-                            <td>Telefono</td>
-                            <td>Usuario</td>
-                            <td>Contraseña</td>
-                            <td>Edad</td>
-                            <td>Localidad</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for cliente in clientes %}
-                        <tr>
-                            <td class="text-center">{{ cliente.idcliente }}</td>
-                            <td>{{ cliente.nombrec }}</td>
-                            <td>{{ cliente.telefenoc }}</td>
-                            <td>{{ cliente.usuarioc }}</td>
-                            <td>{{ cliente.passwordc }}</td>
-                            <td>{{ cliente.edadc }}</td>
-                            <td>{{ cliente.localidad }}</td>
+                {% if not clientes %}
+                    <div class="alert alert-warning" role="alert">
+                        No se encontraron resultados para los filtros seleccionados.
+                    </div>
+                {% endif %}
+                <form method="get" class="row">
+                    <div class="form-group col-sm-3">
+                        <label for="localidad">Localidad:</label>
+                        <input type="text" name="localidad" class="form-control" value="{{ request.GET.localidad }}">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="edad">Edad:</label>
+                        <input type="number" name="edad" class="form-control" value="{{ request.GET.edad }}">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" class="form-control" value="{{ request.GET.nombre }}">
+                    </div>
+                    <div class="form-group col-sm-3 align-self-end">
+                        <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                        <a href="{% url 'cliente_list' %}" class="btn btn-secondary mt-2">Limpiar Filtros</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+                <!-- DataTales Example -->
+                <div class="container-fluid p-3 border  mb-4">
+                    <div class="card-header pb-3" >
+                        {#<h6 class="m-0 font-weight-bold text-primary">Listado de categorias</h6>#}
+                        <a href="{% url 'clientes:cliente_new' %}" class="btn btn-primary btn-icon-split">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-plus"></i>
+                                                </span>
+                            <span class="text">Nuevo Cliente</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <td class="text-center">ID</td>
+                                    <td>Nombre</td>
+                                    <td>Telefono</td>
+                                    <td>Usuario</td>
+                                    <td>Contraseña</td>
+                                    <td>Edad</td>
+                                    <td>Localidad</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for cliente in clientes %}
+                                <tr>
+                                    <td class="text-center">{{ cliente.idcliente }}</td>
+                                    <td>{{ cliente.nombrec }}</td>
+                                    <td>{{ cliente.telefenoc }}</td>
+                                    <td>{{ cliente.usuarioc }}</td>
+                                    <td>{{ cliente.passwordc }}</td>
+                                    <td>{{ cliente.edadc }}</td>
+                                    <td>{{ cliente.localidad }}</td>
 
-                                <td class="text-center">
-                                    <a href="{% url 'clientes:cliente_update' cliente.idcliente %}" class="btn btn-success btn-circle btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="{% url 'clientes:eliminar_cliente' cliente.idcliente %}" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                                        <td class="text-center">
+                                            <a href="{% url 'clientes:cliente_update' cliente.idcliente %}" class="btn btn-success btn-circle btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{% url 'clientes:eliminar_cliente' cliente.idcliente %}" class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
 
-            <!-- PAGINACION -->
-            <div class="row">
-        <div class="col-lg-12">
-            {% if page_obj.has_other_pages %}
-                <nav>
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page=1">
-                                    Primero
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                                    Anterior
-                                </a>
-                            </li>
-                        {% endif %}
-
-                        {% for page_number in page_obj.paginator.page_range %}
-                            {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
-                                {% if page_obj.number == page_number %}
-                                    <li class="page-item active">
-                                        <a class="page-link" href="?page={{ page_number }}">
-                                            {{ page_number }}
+                    <!-- PAGINACION -->
+                    <div class="row">
+                <div class="col-lg-12">
+                    {% if page_obj.has_other_pages %}
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1">
+                                            Primero
                                         </a>
                                     </li>
-                                {% else %}
                                     <li class="page-item">
-                                        <a class="page-link" href="?page={{ page_number }}">
-                                            {{ page_number }}
+                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                            Anterior
                                         </a>
                                     </li>
                                 {% endif %}
-                            {% endif %}
-                        {% endfor %}
 
-                        {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                                    Siguiente
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
-                                    Ultimo
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            {% endif %}
-        </div>
-    </div>
+                                {% for page_number in page_obj.paginator.page_range %}
+                                    {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+                                        {% if page_obj.number == page_number %}
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?page={{ page_number }}">
+                                                    {{ page_number }}
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ page_number }}">
+                                                    {{ page_number }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                            Siguiente
+                                        </a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                            Ultimo
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                </div>
+            </div>
 
 
             </div>
         </div>
-    </div>
 {% endblock content %}

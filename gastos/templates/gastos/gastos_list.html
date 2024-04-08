@@ -19,13 +19,6 @@
         border-color: var(--color2);
     }
 
-         .container-fluid {
-            height: 100%; /* Ajusta la altura según tus necesidades */
-            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
-            border: 1px solid #ccc; /* Añade un borde para visualización */
-            padding: 10px; /* Añade un relleno opcional */
-        }
-
     </style>
 {% endblock %}
 
@@ -53,168 +46,166 @@
 
 {% block content %}
     <!-- Begin Page Content -->
-    <div class="container-fluid">
 
-     <!-- Filtro de Gastos -->
-    <div class="shadow mb-4">
-        <div class="card-header">
-            <h6 class="m-0 font-weight-bold text-primary">Filtrar Gastos</h6>
-        </div>
-        <div class="card-body">
-            {% if not gastos %}
-            <div class="alert alert-warning" role="alert">
-                No se encontraron resultados para los filtros seleccionados.
-            </div>
-        {% endif %}
-            <form method="get" class="row">
-                <div class="form-group col-sm-3">
-                    <label for="categoria">Categoría:</label>
-                    <select name="categoria" class="form-control">
-                        <option value="" selected>Todas</option>
-                        <!-- Agrega opciones de categoría según tus datos -->
-                        <option value="papeleria">Papeleria</option>
-                        <option value="mensuales">Mensual</option>
-                        <!-- ... -->
-                    </select>
-                </div>
-                <div class="form-group col-sm-3">
-                    <label for="fecha_inicio">Fecha inicio:</label>
-                    <input type="date" name="fecha_inicio" class="form-control">
-                </div>
-                <div class="form-group col-sm-3">
-                    <label for="fecha_fin">Fecha fin:</label>
-                    <input type="date" name="fecha_fin" class="form-control">
-                </div>
-                <div class="form-group col-sm-3">
-                    <label for="metodo_pago">Método de Pago:</label>
-                    <select name="metodo_pago" class="form-control">
-                        <option value="" selected>Todos</option>
-                        <!-- Agrega opciones de método de pago según tus datos -->
-                        <option value="efectivo">Efectivo</option>
-                        <option value="tarjeta">Tarjeta</option>
-                        <!-- ... -->
-                    </select>
-                </div>
-                <div class="form-group col-sm-12">
-                    <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
-                </div>
-            </form>
-        </div>
-</div>
-
-
-        <!-- DataTales Example -->
-       <div class="shadow mb-4">
-            <div class="card-header py-3">
-                <a href="{% url 'gastos_new' %}" class="btn btn-primary btn-icon-split">
-                    <span class="text">Agregar un gasto</span>
-                    &nbsp;
-                    <span class="icon text-white-50">
-                        <i class="fas fa-dollar-sign"></i>
-                    </span>
-
-                </a>
+         <!-- Filtro de Gastos -->
+        <div class="container-fluid p-3 border mb-2">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">Filtrar Gastos</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <td>Nombre</td>
-                                <td>Fecha</td>
-                                <td>Descripcion</td>
-                                <td>Categoria</td>
-                                <td>Monto</td>
-                                <td>Metodo de Pago</td>
-                                <td>Recibo</td>
-                                <!-- Otros campos de tu modelo Venta -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for gasto in gastos %}
-                                <tr>
-                                    <td>{{ gasto.nombre }}</td>
-                                    <td>{{ gasto.fecha }}</td>
-                                    <td>{{ gasto.descripcion }}</td>
-                                    <td>{{ gasto.categoria }}</td>
-                                    <td>{{ gasto.monto }}</td>
-                                    <td>{{ gasto.metodo_pago }}</td>
-                                    <td>{{ gasto.recibo }}</td>
-
-
-                                    <td class="text-center">
-                                        <a href=" {% url 'gastos_update' gasto.id%} " class="btn btn-warning btn-circle btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href=" {% url 'gastos_delete' gasto.id%} " class="btn btn-danger btn-circle btn-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                {% if not gastos %}
+                <div class="alert alert-warning" role="alert">
+                    No se encontraron resultados para los filtros seleccionados.
                 </div>
-
-            <!-- PAGINACION -->
-            <div class="row">
-        <div class="col-lg-12">
-            {% if page_obj.has_other_pages %}
-                <nav>
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page=1">
-                                    Primero
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                                    Anterior
-                                </a>
-                            </li>
-                        {% endif %}
-
-                        {% for page_number in page_obj.paginator.page_range %}
-                            {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
-                                {% if page_obj.number == page_number %}
-                                    <li class="page-item active">
-                                        <a class="page-link" href="?page={{ page_number }}">
-                                            {{ page_number }}
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ page_number }}">
-                                            {{ page_number }}
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-
-                        {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                                    Siguiente
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
-                                    Ultimo
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
             {% endif %}
-        </div>
+                <form method="get" class="row">
+                    <div class="form-group col-sm-3">
+                        <label for="categoria">Categoría:</label>
+                        <select name="categoria" class="form-control">
+                            <option value="" selected>Todas</option>
+                            <!-- Agrega opciones de categoría según tus datos -->
+                            <option value="papeleria">Papeleria</option>
+                            <option value="mensuales">Mensual</option>
+                            <!-- ... -->
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="fecha_inicio">Fecha inicio:</label>
+                        <input type="date" name="fecha_inicio" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="fecha_fin">Fecha fin:</label>
+                        <input type="date" name="fecha_fin" class="form-control">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="metodo_pago">Método de Pago:</label>
+                        <select name="metodo_pago" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <!-- Agrega opciones de método de pago según tus datos -->
+                            <option value="efectivo">Efectivo</option>
+                            <option value="tarjeta">Tarjeta</option>
+                            <!-- ... -->
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <button type="submit" class="btn btn-primary mt-2">Filtrar</button>
+                    </div>
+                </form>
+            </div>
     </div>
 
 
+            <!-- DataTales Example -->
+           <div class="container-fluid p-3 border mb-4">
+                <div class="card-header py-3">
+                    <a href="{% url 'gastos_new' %}" class="btn btn-primary btn-icon-split">
+                        <span class="text">Agregar un gasto</span>
+                        &nbsp;
+                        <span class="icon text-white-50">
+                            <i class="fas fa-dollar-sign"></i>
+                        </span>
+
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <td>Nombre</td>
+                                    <td>Fecha</td>
+                                    <td>Descripcion</td>
+                                    <td>Categoria</td>
+                                    <td>Monto</td>
+                                    <td>Metodo de Pago</td>
+                                    <td>Recibo</td>
+                                    <!-- Otros campos de tu modelo Venta -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for gasto in gastos %}
+                                    <tr>
+                                        <td>{{ gasto.nombre }}</td>
+                                        <td>{{ gasto.fecha }}</td>
+                                        <td>{{ gasto.descripcion }}</td>
+                                        <td>{{ gasto.categoria }}</td>
+                                        <td>{{ gasto.monto }}</td>
+                                        <td>{{ gasto.metodo_pago }}</td>
+                                        <td>{{ gasto.recibo }}</td>
+
+
+                                        <td class="text-center">
+                                            <a href=" {% url 'gastos_update' gasto.id%} " class="btn btn-warning btn-circle btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href=" {% url 'gastos_delete' gasto.id%} " class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                <!-- PAGINACION -->
+                <div class="row">
+            <div class="col-lg-12">
+                {% if page_obj.has_other_pages %}
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=1">
+                                        Primero
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                        Anterior
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% for page_number in page_obj.paginator.page_range %}
+                                {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+                                    {% if page_obj.number == page_number %}
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?page={{ page_number }}">
+                                                {{ page_number }}
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_number }}">
+                                                {{ page_number }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                        Siguiente
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                        Ultimo
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
             </div>
         </div>
-    </div>
+
+
+                </div>
+            </div>
 {% endblock content %}

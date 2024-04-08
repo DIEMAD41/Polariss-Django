@@ -8,13 +8,14 @@ class ReservaVueloForm(forms.ModelForm):
     class Meta:
         model = ReservaVuelo
         #Campos que no quieres que se muestren
-        exclude = ['clavev','npasajerosv','tarifav','comisionv','clase','equipaje','estado']
+        exclude = ['clavev','estado']
         # Campos que vas a mostrar
         fields = '__all__'
         #Etiquetas de los cambios
         """
         labels = {
             'nombrec': 'Nombre del cliente',
+            'npasajerosv':'Numero de pasajeros',
             'telefenoc': 'Telefono del cliente',
             'usuarioc': 'Usuario',
             'passwordc': 'Contraseña',
@@ -37,13 +38,21 @@ class ReservaVueloForm(forms.ModelForm):
 class VentaForm(forms.ModelForm):
     class Meta:
         model = Venta
-        exclude = ['saldo']
+        exclude = ['saldo','total']
         fields = '__all__'
+        widgets={
+            'fechaV': forms.TextInput(attrs={'type': 'date'})
+        }
+
 
 
 class PagoForm(forms.ModelForm):
     class Meta:
         model = Pago
         fields = '__all__'
+        widgets = {
+            'fecha': forms.DateInput(attrs={'type': 'date'})
+        }
+
 
 

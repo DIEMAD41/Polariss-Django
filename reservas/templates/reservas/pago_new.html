@@ -10,85 +10,6 @@
     }
 
 
-    /* Estilos para tipo de vuelo */
-    .div_tipoV input[type="radio"] {
-        -webkit-appearance: none;
-    }
-
-    .div_tipoV label {
-        height: 100%;
-        width: 140px;
-        margin: auto;
-        position: relative;
-        color: #18f98d;
-        transition: 0.5s;
-        border: 5px solid var(--color);
-        border-radius: 0.5em;
-    }
-
-    .div_tipoV .fa {
-        font-size: 40px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -80%);
-    }
-
-    .div_tipoV label>span {
-        font-size: 15px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 80%);
-    }
-
-    .div_tipoV input[type="radio"]:checked + label {
-        background-color: #18f98d;
-        color: #ffffff;
-        box-shadow: 0 15px 45px rgb(24, 249, 141, 0.2);
-    }
-
-    /* Estilos para clases de vuelo */
-    .form-check input[type="radio"] {
-        display: none;
-    }
-
-    .form-check label {
-        position: relative;
-        color: var(--color);
-        font-family: "Poppins", sans-serif;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8em;
-        border: 3px solid var(--color);
-        padding: 1em 2em;
-        border-radius: 0.5em;
-    }
-
-    .form-check label:before {
-        content: "";
-        height: 2em;
-        width: 2em;
-        border: 3px solid var(--color);
-        border-radius: 50%;
-    }
-
-    .form-check input[type="radio"]:checked + label:before {
-        height: 1em;
-        width: 1em;
-        border: 0.65em solid #ffffff;
-        background-color: var(--color);
-        transition: all 0.3s;
-    }
-
-    .form-check input[type="radio"]:checked + label {
-        background-color: var(--color);
-        color: #ffffff;
-        transition: all 0.3s;
-    }
     </style>
 
 {% endblock %}
@@ -98,16 +19,15 @@
 <div class=" overflow-y-auto" style="height: 90vh ">
 
 
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 font-weight-bold text-primary">Nuevo Pago</h1>
+        <h1 class="h3 my-2 p-0 font-weight-bold text-primary">Nuevo Pago</h1>
+
 
         <!-- DataTales Example -->
-        <div class="shadow mb-4">
-            <div class="card-header py-3">
-
+        <div class="container-fluid p-3 border mb-4">
+            <div class="card-header">
+                <p class="font-weight-bold text-primary p-0">Agregue una nuevo pago:</p>
             </div>
             <div class="card-body">
                 {{ mensaje }}
@@ -134,8 +54,6 @@
                 </form>
             </div>
         </div>
-    </div>
-
 </div>
 
 

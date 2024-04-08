@@ -2,125 +2,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
-    --colorR: #4EB5FD;
+    --colorR: #F94144;
     --colorR2: #4EB5FD99;
     --black1: #24252A;
 }
 
-.O,.D,.Fs,.Fl,.P,.B{
-    border: 3px solid var(--colorR);
-    border-radius: 0.5em;
+
+/* Estilos para la animación toggle */
+.btn-check:checked + .btn-outline-danger {
+    transform: scale(1.05); /* Escala el elemento al ser seleccionado */
+    transition: transform 0.2s ease; /* Agrega una transición suave */
 }
 
-/*ESTILO NUEVOI DE RESDERVAS VUELO*/
-.text-primary{
-        padding-top: 20px;
-        color: var(--colorR);
-    }
-
-
-    /* Estilos para tipo de vuelo */
-    .div_tipoV input[type="radio"] {
-        -webkit-appearance: none;
-    }
-
-    .div_tipoV label {
-        height: 100%;
-        width: 140px;
-        margin: auto;
-        position: relative;
-        color: var(--colorR);
-        transition: 0.5s;
-        border: 5px solid var(--colorR);
-        border-radius: 0.5em;
-    }
-
-    .div_tipoV .fa {
-        font-size: 40px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -80%);
-    }
-
-    .div_tipoV label>span {
-        font-size: 15px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 80%);
-    }
-
-    .div_tipoV input[type="radio"]:checked + label {
-        background-color: var(--colorR2);
-        color: #ffffff;
-        box-shadow: 0 15px 45px rgb(24, 249, 141, 0.2);
-    }
-
-    /* Estilos para clases de vuelo */
-    .form-check input[type="radio"] {
-        display: none;
-    }
-
-    .form-check label {
-        position: relative;
-        color: var(--colorR);
-        font-family: "Poppins", sans-serif;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8em;
-        border: 3px solid var(--colorR);
-        padding: 1em 2em;
-        border-radius: 0.5em;
-    }
-
-    .form-check label:before {
-        content: "";
-        height: 2em;
-        width: 2em;
-        border: 3px solid var(--colorR);
-        border-radius: 50%;
-    }
-
-    .form-check input[type="radio"]:checked + label:before {
-        height: 1em;
-        width: 1em;
-        border: 0.65em solid #ffffff;
-        background-color: var(--colorR);
-        transition: all 0.3s;
-    }
-
-    .form-check input[type="radio"]:checked + label {
-        background-color: var(--colorR);
-        color: #ffffff;
-        transition: all 0.3s;
-    }
-
-
-/*Toggle buttons*/
-.grid a{
-    color: var(--black1);
+/*Estilos para divs de origen destino*/
+#origen-div,#destino-div{
+    background-color: white;
+    border: 2px solid var(--black1);
+    border-radius: 0px 0px 0.5em 0.5em;
+    margin-top: .25rem;
 }
 
-.grid
-{
-    position: relative;
-    display: grid;
-    column-gap: 46px;
-
-    grid-template-columns: calc(50% - 23px) calc(50% - 23px);
-    grid-template-rows:  101px 210px 118px 86px;
-    grid-template-areas: 'V V' 'O D' 'Fs Fl' 'P B';
-
-    margin-left: 10%;
-    margin-top: 84px;
-    width: 80%;
-    height: max-content;
-
+.i-g-t-personalizado {
 }
+
+.i-g-t-personalizado i{
+    color: var(--colorR);
+}
+
 
     .V
     {

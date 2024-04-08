@@ -5,8 +5,8 @@ urlpatterns = [
 path('ReservacionesVuelos/', views.ReservacionVListView.as_view(), name='reservacionesV'),
 path('ReservacionesVuelos/list/', views.ReservacionVAllListView.as_view(), name='reservacionesV_list'),
 path('ReservacionesVuelos/new/', views.ReservacionVCreateView.as_view(), name='reservacionesV_new'),
-path('update/<pk>', views.ReservacionUpdateView.as_view(), name='reservacionesV_update'),
-path('<pk>/eliminar', views.ReservacionDeleteView.as_view(), name='reservacionesV_delete'),
+path('ReservacionesVuelos/update/<pk>', views.ReservacionUpdateView.as_view(), name='reservacionesV_update'),
+path('ReservacionesVuelos/<int:pk>/eliminar', views.ReservacionDeleteView.as_view(), name='reservacionesV_delete'),
 
 
 #URLS DE VENTA
@@ -23,5 +23,6 @@ path('Pagos/<pk>/eliminar', views.PagoDeleteView.as_view(), name='pagos_delete')
 path('Pagos/update/<pk>', views.PagoUpdateView.as_view(), name='pagos_update'),
 
 #URLS DETALLE VENTA
+path('clientes_search/', views.clientes_search, name='clientes_search'),
 
 ]

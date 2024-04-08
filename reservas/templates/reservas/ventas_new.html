@@ -8,35 +8,81 @@
         color: var(--color);
     }
 
-         .container-fluid {
-            height: 100%; /* Ajusta la altura según tus necesidades */
-            overflow-y: auto; /* Esto hace que la div sea scrollable en el eje Y */
-            border: 1px solid #ccc; /* Añade un borde para visualización */
-            padding: 10px; /* Añade un relleno opcional */
-        }
+     .cliente-div:hover {
+        background-color: #f9ca3f;
+        transition: background-color 0.3s;
+             cursor: pointer;
+    }
+
+
     </style>
 {% endblock %}
 
 {% block content %}
 
     <!-- Begin Page Content -->
-    <div class="container-fluid">
-
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 font-weight-bold text-primary">Nueva Venta</h1>
+        <h1 class="h3 my-2 p-0 font-weight-bold text-primary">Nueva Venta</h1>
+
+        <!--Diseño de venta-->
+        <div class="container-fluid p-3 border mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group d-flex justify-content-center" >
+                              <input type="text" id="searchInput" placeholder="Buscar Reserva..." class="form-control">
+                              <span class="input-group-text i-g-t-personalizado">
+                                  <a href="{% url 'reservacionesV_new' %}" target="_blank" data-bs-toggle="tooltip" data-bs-title="Crear un nuevo cliente">
+                                    <i class="fa-solid fa-circle-plus"></i>
+                                  </a>
+                              </span>
+                        </div>
+
+                        <ul id="reservasList">
+                            {% for reserva in reservas %}
+                                <li>
+                                    <div class="d-flex p-2 cliente-div" style="" onclick="toggleReserva('{{ reserva.destino }}', '{{ reserva.clavev }}')">
+                                        <div class="p-2"><span><i class="fa-solid fa-calendar-days"></i></span></div>
+                                        <div class="container-fluid row p-2">
+                                            <span>Reserva: {{ reserva.clavev }}</span>
+                                            <div class="pt-2">
+                                                <i class="fa-solid fa-plane-departure"></i>&nbsp;
+                                                <span>{{ reserva.origenv }}</span>
+                                                &nbsp;&nbsp;
+                                                <i class="fa-solid fa-plane-arrival"></i>&nbsp;
+                                                <span>{{ reserva.destinov }}</span>
+                                            </div>
+                                            <div class="pt-2">
+                                                <i class="fa-solid fa-user"></i>
+                                                 <span>&nbsp;
+                                                    {% for cliente in reserva.clientes.all %}
+                                                        {{ cliente.nombrec }}
+                                                        {% if not forloop.last %}, {% endif %}
+                                                    {% endfor %}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="p-2"><span><i class="fas fa-arrow-right"></i></span></div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
 
         <!-- DataTales Example -->
-        <div class="shadow mb-4">
-            <div class="card-header py-3">
-
+        <div class="container-fluid p-3 border mb-4">
+            <div class="card-header">
+                <p class="font-weight-bold text-primary p-0">Agregue una nueva venta:</p>
             </div>
             <div class="card-body">
                 {{ mensaje }}
                 <form action="" method="post">
                     {% csrf_token %}
                     {{ form | crispy }}
-
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end mb-4">
                         <a href="{% url 'ventas' %}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-times-circle"></i>
@@ -55,9 +101,15 @@
                 </form>
             </div>
         </div>
-    </div>
+
+
+
+
+
 {% endblock %}
 
 {% block javascript %}
+    <script>
 
+    </script>
 {% endblock %}

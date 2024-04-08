@@ -4,152 +4,379 @@
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/Vuelos.css' %}">
+
 {%  endblock  %}
 
 {% block style %}
     <style>
-    </style>
 
+
+        .input-group .input-group-text {
+            width: 45px;
+            text-align: center;
+        }
+
+         .cliente-div:hover {
+        background-color: #f9ca3f;
+        transition: background-color 0.3s;
+             cursor: pointer;
+    }
+
+         .modal-body{
+             height: 40vh;
+             overflow: scroll;
+         }
+
+         .badge.text-bg-warning.text-wrap {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 8rem;
+            }
+    </style>
 {% endblock %}
 
 {% block content %}
-
-<div class=" overflow-y-auto" style="height: 90vh ">
-
-    <div class="grid" >
-
-        <div class="d-flex mb-2">
-            <!-- Radio buttons para tipo de vuelo -->
-            <div class="d-flex div_tipoV">
-                    <input type="radio" name="tipoVuelo" id="cardTipoVuelo">
-                    <label for="cardTipoVuelo">
-                        <i class="fa fa-globe" aria-hidden="true"></i>
-                        <span>Vuelo&nbsp;Redondo</span>
-                    </label>
-                    &nbsp;
-                    <input type="radio" name="tipoVuelo" id="cashTipoVuelo">
-                    <label for="cashTipoVuelo">
-                        <i class="fa fa-plane" aria-hidden="true"></i>
-                        <span>Vuelo&nbsp;Sencillo</span>
-                    </label>
-                </div>
-
-                <!-- Radio buttons para clases de vuelos -->
-            <div class="d-flex align-items-center">
-                 <div class="form-check">
-                    <input type="radio" name="claseVuelo" id="cardClaseVuelo" checked="checked" class="form-check-input" />
-                    <label for="cardClaseVuelo" class="form-check-label">Clase&nbsp;Economica</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="radio" name="claseVuelo" id="cashClaseVuelo" class="form-check-input" />
-                    <label for="cashClaseVuelo" class="form-check-label">Primera&nbsp;Clase</label>
-                </div>
-
-                <div class="form-check">
-                    <input type="radio" name="claseVuelo" id="otherClaseVuelo" class="form-check-input" />
-                    <label for="otherClaseVuelo" class="form-check-label">Clase&nbsp;Ejecutiva</label>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="O">
-
-            <input class="form-control"
-            list="GFGOptions" id="GFGDataList"
-            placeholder="Select option">
-                    <datalist id="GFGOptions">
-                     {% for city in cities_json|slice:":10" %}
-                        <option value="{{ city.region }}">
-                    {% endfor %}
-                </datalist>
-
-            <a class="t3">Selecciona tu Origen</a>
-            <a class="t4">Selecciona un Destino</a>
-            <div class="vacio1">
-
-            </div>
-        </div>
-        <div class="D">
-            <a class="t3">Seleccione un Destino</a>
-            <a class="t4">Selecciona un Destino</a>
-            <div class="vacio2">
-
-            </div>
-        </div>
-        <div class="Fs">
-            <a class="t5">salida</a>
-            <a class="t5">dd/mm/aa</a>
-            <ion-icon name="calendar-number-outline" class="icon1"></ion-icon>
-        </div>
-        <iframe src="calendario.html" name="iframeC" frameborder="0" id="calendarF" scrolling="no" class="frameC"></iframe>
-        <div class="Fl">
-            <a class="t5">Regreso</a>
-            <a class="t5">dd/mm/aa</a>
-            <ion-icon name="calendar-number-outline" class="icon1"></ion-icon>
-        </div>
-        <div class="P">
-            <a class="t5">Pasajeros</a>
-            <a class="t5">2 Adultos</a>
-            <ion-icon name="caret-forward-outline" class="icon2"></ion-icon>
-            <div class="vacio3">
-                <div class="Ad">
-                    <a class="achingarasumadre">Adultos</a>
-                    <div class="der">
-                        <ion-icon name="remove-circle-outline"></ion-icon>
-                        <a>2</a>
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="Niñ">
-                    <a class="achingarasumadre">Niños</a>
-                    <div class="der">
-                        <ion-icon name="remove-circle-outline"></ion-icon>
-                        <a>0</a>
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="Es">
-                    <a class="achingarasumadre">Estudiantes</a>
-                    <div class="der">
-                        <ion-icon name="remove-circle-outline"></ion-icon>
-                        <a>0</a>
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="Ma">
-                    <a class="achingarasumadre">Mascotas</a>
-                    <div class="der">
-                        <ion-icon name="remove-circle-outline"></ion-icon>
-                        <a>0</a>
-                        <ion-icon name="add-circle-outline"></ion-icon>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="B">
-            <a class="t6">Agregar Vuelos</a>
-        </div>
-    </div>
-
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container-fluid p-0 mb-5">
+        <div class="container-fluid border">
+         <form id="reserva-form">
+            <div class="row rounded-top-2 bg-danger p-2">
 
-        <!-- Page Heading -->
-        <h1 class="h3 mb-2 font-weight-bold text-primary">Nueva Reservacion de Vuelo</h1>
+                <div class="col-md-3 d-flex justify-content-evenly align-items-center" >
+                    <input type="radio" class="btn-check" name="tvuelo" id="redondo" autocomplete="off" checked>
+                    <label class="btn btn-outline-light border-3 d-inline-flex flex-column p-3 lh-sm" style="width: 40%" for="redondo">
+                        <i class="fa-solid fa-globe fa-2xl mb-4 mt-4"></i>
+                        REDONDO
+                    </label>
+
+                    <input type="radio" class="btn-check" name="tvuelo" id="sencillo" autocomplete="off">
+                    <label class="btn btn-outline-light border-3 d-inline-flex flex-column p-3 lh-sm" style="width: 40%" for="sencillo">
+                        <i class="fa-solid fa-plane-up fa-2xl mb-4 mt-4"></i>
+                        SENCILLO
+                    </label>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-center align-items-center"  >
+                        <h1 class="text-center text-light">&nbsp;RESERVA&nbsp;
+                            <img src="{% static 'Imgs/HexaVECTORLOGO.svg' %}"  alt="Polariss" style="height: auto; width: 20%">
+                            &nbsp;POLARISS
+                        </h1>
+                </div>
+
+                <div class="col-md-3 d-flex  justify-content-evenly align-items-center">
+                    <input type="radio" class="btn-check" name="clase_options" id="option1" autocomplete="off" value="CT" checked>
+                    <label class="btn btn-outline-light border-3 d-inline-flex flex-column p-3 lh-sm" style="width: 40%" for="option1">
+                        <i class="fa-solid fa-umbrella-beach fa-xl mb-4 mt-2"></i>
+                        CLASE TURISTA
+                    </label>
+
+                    <input type="radio" class="btn-check" name="clase_options" id="option2" autocomplete="off" value="PC">
+                    <label class="btn btn-outline-light border-3 d-inline-flex flex-column p-3 lh-sm" style="width: 40%" for="option2">
+                        <i class="fa-solid fa-suitcase fa-xl mb-4 mt-2"></i>
+                        PRIMERA CLASE
+                    </label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 align-items-start" >
+                    <label for="origen" class="form-label"></label>
+                    <div class="input-group d-flex justify-content-center" >
+                              <span class="input-group-text i-g-t-personalizado"><i class="fas fa-plane-departure"></i></span>
+                              <input class="form-control" list="datalistOptions" id="origen" placeholder="Origen...">
+                            <datalist id="datalistOptions">
+                              <option value="San Francisco">
+                              <option value="New York">
+                              <option value="Seattle">
+                              <option value="Los Angeles">
+                              <option value="Chicago">
+                            </datalist>
+                    </div>
+                    <div class="alert alert-warning alert-dismissible fade show visually-hidden m-0" id="validacion_origen" role="alert">
+                      <div>
+                          <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                          <span id="mensaje_validacion_origen"></span>
+                      </div>
+                      <div><button type="button" class="btn-close validacion" ></button></div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-4 mb-3" id="origen-div">
+                        <p class="fs-5">Selecione un origen...</p>
+                    </div>
+
+                </div>
+                <div class="col-md-6 align-items-start" >
+                    <label for="destino" class="form-label"></label>
+                    <div class="input-group d-flex justify-content-center" >
+                              <span class="input-group-text i-g-t-personalizado"><i class="fas fa-plane-arrival"></i></span>
+                              <input class="form-control" list="datalistOptions" id="destino" placeholder="Destino...">
+                            <datalist id="datalistOptions">
+                              <option value="San Francisco">
+                              <option value="New York">
+                              <option value="Seattle">
+                              <option value="Los Angeles">
+                              <option value="Chicago">
+                            </datalist>
+                    </div>
+
+                    <div class="alert alert-warning alert-dismissible fade show visually-hidden m-0" id="validacion_destino" role="alert">
+                      <div>
+                          <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                          <span id="mensaje_validacion_destino"></span>
+                      </div>
+                      <div><button type="button" class="btn-close validacion" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center p-4 mb-3" id="destino-div">
+                        <p class="fs-5">Selecione un destino...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 align-items-start" >
+                    <div class="input-group d-flex justify-content-center" >
+                              <span class="input-group-text i-g-t-personalizado"><i class="fas fa-location-arrow"></i></span>
+                              <input class="form-control" placeholder="Salida - Llegada" disabled>
+                              <span class="input-group-text"  id="date_range" name="date_range"><i class="fas fa-calendar"></i></span>
+                    </div>
+                    <div class="alert alert-warning alert-dismissible fade show visually-hidden m-0" id="validacion_fecha" role="alert">
+                      <div>
+                          <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                          <span id="mensaje_validacion_fecha"></span>
+                      </div>
+                      <div><button type="button" class="btn-close validacion" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-4 mb-3" id="origen-div">
+                        <p  id="fecha_vuelo">Fecha de Vuelo...</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 align-items-start" >
+                    <div class="input-group d-flex justify-content-center" >
+                              <span class="input-group-text i-g-t-personalizado"><i class="fas fa-users"></i></span>
+                              <input class="form-control" id="pasajeros_num" name="" placeholder="Número de pasajeros" disabled>
+                              <span class="input-group-text" id="pasajeros-toggle" style="cursor: pointer;"><i class="fas fa-plus-circle"></i></span>
+
+                    </div>
+                    <div class="alert alert-warning alert-dismissible fade show visually-hidden m-0" id="validacion_pasajeros" role="alert">
+                      <div>
+                          <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                          <span id="mensaje_validacion_pasajeros"></span>
+                      </div>
+                      <div><button type="button" class="btn-close validacion" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center p-4 mb-3" id="origen-div" style="overflow: scroll">
+                        <p><b  id="num_pasajeros">Pasajeros del vuelo</b></p>&nbsp;
+                        <p id="clientes-seleccionados">Aqui van los clientes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+
+
+
+
+                <div class="col-md-6 align-items-start" >
+
+                   <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
+                        <div class="form-floating" style="width: 30%;">
+                            <input type="text" class="form-control" id="precioInput" placeholder="">
+                            <div class="valid-feedback">
+                              Looks good!
+                            </div>
+                            <label for="precioInput">Precio</label>
+                            <div class="valid-tooltip">
+                              Looks good!
+                            </div>
+                        </div>
+
+                        <span class="input-group-text"><i class="fas fa-percent"></i></span>
+                        <div class="form-floating" style="width: 20%;">
+                            <input type="text" class="form-control" id="comisionInput" placeholder="" readonly>
+                            <label for="comisionInput">Comisión</label>
+                        </div>
+
+                        &nbsp;&nbsp;&nbsp;
+
+                        <span class="input-group-text"><i class="fas fa-cash-register"></i></span>
+                        <div class="form-floating" style="width: 30%;">
+                            <input type="text" class="form-control" id="precioTotalInput" placeholder="" readonly>
+                            <label for="precioTotalInput">Precio Total</label>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning alert-dismissible fade show visually-hidden m-0" id="validacion_precio" role="alert">
+                      <div>
+                          <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                          <span id="mensaje_validacion_precio"></span>
+                      </div>
+                      <div><button type="button" class="btn-close validacion" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 align-items-start" >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-suitcase-rolling fa-lg"></i></span>
+                        <div class="form-floating" style="width: 30%;">
+                            <select class="form-select" aria-label="Default select example">
+                              <option selected>Seleccione su equipaje</option>
+                              <option value="1">Equipaje de Mano</option>
+                              <option value="2">Equipaje Documentado</option>
+                            </select>
+                            <label for="precioInput">Equipaje</label>
+                        </div>
+                    </div>
+                            <div class="alert alert-warning alert-dismissible visually-hidden fade show m-0" id="validacion_equipaje" role="alert">
+                              <div>
+                                  <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                                  <span id="mensaje_validacion_equipaje"></span>
+                              </div>
+                              <div><button type="button" class="btn-close validacion" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                  <span class="input-group-text"><i class="fas fa-plane"></i></span>
+                                  <div class="form-floating is-valid">
+                                    <input class="form-control" list="datalistOptionsAerolinea" id="aerolinea" placeholder="Origen...">
+                                    <datalist id="datalistOptionsAerolinea">
+                                      <option value="Volaris">
+                                      <option value="Aeromexico">
+                                      <option value="VivaAerobus">
+                                      <option value="Interjet">
+                                    </datalist>
+                                    <label for="floatingInputGroup2">Aerolínea</label>
+                                  </div>
+
+                            </div>
+                            <div class="alert alert-warning alert-dismissible visually-hidden fade show m-0" id="validacion_aerolinea" role="alert">
+                              <div>
+                                  <i class="fa-solid fa-triangle-exclamation px-2"></i>
+                                  <span id="mensaje_validacion_aerolinea"></span>
+                              </div>
+                              <div><button type="button" class="btn-close validacion" data-bs-dismiss="alert" aria-label="Close"></button></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-3 pb-3">
+                <div class="col-md-6" >
+                    <button type="button" class="btn btn-primary p-3 w-100" id="agregarButton"><i class="fa-solid fa-plane-up fa-lg"></i>&nbsp;&nbsp;Registrar Reservacion</button>
+                </div>
+                <div class="col-md-6" >
+                    <button type="button" class="btn btn-danger p-3 w-100 px-3"><i class="fa-regular fa-circle-xmark fa-lg"></i>&nbsp;&nbsp;Cancelar Reservacion</button>
+                </div>
+            </div>
+         </form>
+        </div>
+
+        <!-- Modal Pasajeros-->
+        <div class="modal fade" id="pasajerosModal" tabindex="-1" aria-labelledby="pasajerosModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="pasajerosModalLabel">Seleccionar Pasajeros</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="pasajerosForm">
+                  <div class="mb-3">
+                    <label for="adultosInput" class="form-label">Adultos:</label>
+                   <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="adultosInput" name="adultos" min="0" value="1">
+                        <button class="btn btn-outline-danger disminuir" type="button" ><i class="fa-solid fa-circle-minus"></i></button>
+                        <button class="btn btn-outline-success aumentar" type="button"><i class="fa-solid fa-circle-plus"></i></button>
+                   </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="ninosInput" class="form-label">Niños:</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="ninosInput" name="ninos" min="0" value="0">
+                        <button class="btn btn-outline-danger disminuir" type="button"><i class="fa-solid fa-circle-minus"></i></button>
+                        <button class="btn btn-outline-success aumentar" type="button" ><i class="fa-solid fa-circle-plus"></i></button>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="bebesInput" class="form-label">Bebés:</label>
+                      <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="bebesInput" name="bebes" min="0" value="0">
+                        <button class="btn btn-outline-danger disminuir" type="button" id="disminuir"><i class="fa-solid fa-circle-minus"></i></button>
+                        <button class="btn btn-outline-success aumentar" type="button" id="aumentar"><i class="fa-solid fa-circle-plus"></i></button>
+                      </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="guardarPasajeros">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nuevo modal para mostrar clientes -->
+        <div class="modal fade" id="clientesModal" tabindex="-1" aria-labelledby="clientesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="clientesModalLabel">Seleccionar Cliente(s)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group d-flex justify-content-center" >
+                              <input type="text" id="searchInput" placeholder="Buscar Cliente..." class="form-control">
+                              <span class="input-group-text i-g-t-personalizado">
+                                  <a href="{% url 'clientes:cliente_new' %}" target="_blank" data-bs-toggle="tooltip" data-bs-title="Crear un nuevo cliente">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                  </a>
+                              </span>
+                        </div>
+
+                        <ul id="clientesList">
+                            {% for cliente in clientes %}
+                                <li>
+                                    <div class="d-flex p-2 cliente-div" style="" onclick="toggleClient('{{ cliente.nombrec }}', '{{ cliente.idcliente }}')">
+                                        <div class="p-2"><span><i class="fas fa-user"></i></span></div>
+                                        <div class="container-fluid p-2">
+                                            <span>{{ cliente.nombrec }}</span>
+                                        </div>
+                                        <div class="p-2"><span><i class="fas fa-arrow-right"></i></span></div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="modal-footer" id="modalFooter">
+
+
+                    </div>
+                    <div class="modal-footer" >
+                        <span id="seleccion-nclientes">(<span id="total-pasajeros-restantes">{{ totalPasajeros }}</span> clientes restantes)</span>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="guardarClientes">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <!-- DataTales Example -->
-        <div class="shadow mb-4">
+        <div class="shadow mb-4 visually-hidden">
             <div class="card-header py-3">
-
             </div>
             <div class="card-body">
                 {{ mensaje }}
-                <form action="" method="post">
+                <form id="formulario" action="" method="post">
                     {% csrf_token %}
                     {{ form | crispy }}
-
                     <div class="d-flex justify-content-end">
                         <a href="{% url 'reservacionesV_list' %}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
@@ -157,7 +384,6 @@
                                         </span>
                                         <span class="text">Cancelar</span>
                         </a>
-
                         &nbsp;
                        <button type="submit" class="btn btn-success">
                                         <span class="icon text-white-50">
@@ -169,16 +395,493 @@
                 </form>
             </div>
         </div>
+
+
     </div>
-
-</div>
-
-
-
 
 
 {% endblock %}
 
 {% block java %}
-    <script src="{% static 'assets/js/Vuelos.js' %}"></script>
+<script>
+var totalPasajeros = 0;
+
+$(function () {
+    moment.locale('es'); // Establecer el idioma en español
+
+    // Objeto con la correspondencia entre meses en inglés y español
+    var meses = {
+        "January": "Enero",
+        "February": "Febrero",
+        "March": "Marzo",
+        "April": "Abril",
+        "May": "Mayo",
+        "June": "Junio",
+        "July": "Julio",
+        "August": "Agosto",
+        "September": "Septiembre",
+        "October": "Octubre",
+        "November": "Noviembre",
+        "December": "Diciembre"
+    };
+
+    $('#date_range').daterangepicker({
+        "locale": {
+            "format": "DD [de] MMMM [del] YYYY",
+            "separator": " - ",
+            "applyLabel": "Guardar",
+            "cancelLabel": "Cancelar",
+            "fromLabel": "Desde",
+            "toLabel": "Hasta",
+            "customRangeLabel": "Personalizar",
+            "daysOfWeek": [
+                "Do",
+                "Lu",
+                "Ma",
+                "Mi",
+                "Ju",
+                "Vi",
+                "Sa"
+            ],
+            "monthNames": [
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+            ],
+            "firstDay": 1
+        },
+        "opens": "center"
+    }).on('apply.daterangepicker', function(ev, picker) {
+        var startDate = picker.startDate;
+        var endDate = picker.endDate;
+
+        // Obtener el nombre del mes en inglés para la fecha de inicio y fin
+        var startMonthEnglish = startDate.format('MMMM');
+        var endMonthEnglish = endDate.format('MMMM');
+
+        // Obtener el nombre del mes en español usando el objeto meses
+        var startMonthSpanish = meses[startMonthEnglish];
+        var endMonthSpanish = meses[endMonthEnglish];
+
+        // Formatear la fecha seleccionada con los nombres de los meses en español
+        var selectedRange = startDate.format('DD [de]') + ' ' + startMonthSpanish + ' ' + startDate.format('YYYY') +
+                            ' al ' +
+                            endDate.format('DD [de]') + ' ' + endMonthSpanish + ' ' + endDate.format('YYYY');
+        $('#fecha_vuelo').text(selectedRange);
+        $(this).val('');
+    });
+});
+
+
+$(document).ready(function() {
+    // Mostrar el modal al hacer clic en el botón "más"
+    $('#pasajeros-toggle').click(function() {
+        $('#pasajerosModal').modal('show');
+    });
+
+    // Guardar los valores de pasajeros cuando se hace clic en el botón "Guardar"
+    $('#guardarPasajeros').click(function() {
+
+    var adultos = parseInt($('#adultosInput').val(), 10);
+    var ninos = parseInt($('#ninosInput').val(), 10);
+    var bebes = parseInt($('#bebesInput').val(), 10);
+
+    // Verificar si los valores son números válidos
+    if (!isNaN(adultos) && !isNaN(ninos) && !isNaN(bebes)) {
+        // Calcular el total de pasajeros
+        totalPasajeros = adultos + ninos + bebes;
+    } else {
+        // Manejar el caso en el que alguno de los valores no sea un número válido
+        console.error('Alguno de los valores de pasajeros no es un número válido.');
+    }
+
+
+        var s_adultos = adultos > 1 || adultos < 1 ? " Adultos" : " Adulto"
+        var s_ninos = ninos > 1 || ninos < 1 ? " Niños" : " Niño"
+        var s_bebes = bebes > 1 || bebes < 1 ? " Bebes" : " Bebe"
+
+
+        var pasajerosString = adultos + s_adultos+" ";
+        if (ninos > 0 && bebes >0)
+            var pasajerosString = adultos + s_adultos+", " + ninos + s_ninos+", " + bebes + s_bebes+" ";
+        else
+             if (ninos > 0)
+                var pasajerosString = adultos +  s_adultos+", "  + ninos +  s_ninos+" ";
+             else
+                 if (bebes >0)
+                    var pasajerosString = adultos + s_adultos+", "  + bebes + s_bebes+" ";
+
+        $('#num_pasajeros').text(pasajerosString);
+
+        // Cerrar el modal
+        $('#pasajerosModal').modal('hide');
+        $('#clientesModal').modal('show');
+        seleccionNClientes = document.getElementById("total-pasajeros-restantes");
+        seleccionNClientes.textContent = totalPasajeros;
+    });
+});
+
+document.getElementById('precioInput').addEventListener('input', function() {
+        // Obtener el valor del precio ingresado por el usuario
+        var precio = parseFloat(this.value);
+
+        // Calcular la comisión según el rango de precios
+        var comision = 0;
+        if (precio >= 1 && precio < 2000) {
+            comision = 200;
+        } else if (precio >= 2000 && precio < 3000) {
+            comision = 290;
+        } else if (precio >= 3000 && precio < 4000) {
+            comision = 390;
+        } else if (precio >= 4000 && precio < 5000) {
+            comision = 550;
+        } else if (precio >= 5000 && precio < 6000) {
+            comision = 650;
+        } else if (precio >= 6000 && precio < 7000) {
+            comision = 750;
+        } else if (precio >= 7000 && precio < 8000) {
+            comision = 850;
+        } else if (precio >= 8000 && precio < 9000) {
+            comision = 950;
+        } else if (precio >= 9000 && precio < 10000) {
+            comision = 1100;
+        } else if (precio >= 10000 && precio < 13000) {
+            comision = 1400;
+        } else if (precio >= 13000 && precio < 15000) {
+            comision = 1750;
+        } else if (precio >= 15000) {
+            comision = precio * 0.14; // 14% del valor del boleto
+        }
+
+        // Calcular el precio total sumando el precio y la comisión
+        var precioTotal = precio + comision;
+
+        // Actualizar los valores de los inputs de comisión y precio total
+        document.getElementById('comisionInput').value = comision.toFixed(2);
+        document.getElementById('precioTotalInput').value = precioTotal.toFixed(2);
+    });
+
+    //Busqueda de clitentes
+    $(document).ready(function() {
+  $("#searchInput").on("keyup", function() {
+    var terminoBusqueda = $(this).val().toLowerCase();
+
+    $.ajax({
+      url: "{% url 'clientes_search' %}",  // Reemplace con su patrón de URL de búsqueda
+      type: "GET",
+      data: { search: terminoBusqueda },
+      success: function(response) {
+        $("#clientesList").html(response); // Actualiza el contenido del modal con resultados filtrados
+      },
+      error: function(xhr, status, error) {
+        console.error(error); // Maneje los errores apropiadamente
+      }
+    });
+  });
+});
+
+    var selectedClients = {}; // Objeto para almacenar clientes seleccionados (nombre: id)
+
+    // Función para agregar o eliminar clientes de la lista de seleccionados
+    function toggleClient(clientName, clientId) {
+        if (!(clientName in selectedClients)) {
+            if (Object.keys(selectedClients).length < totalPasajeros) { // Verificar límite de pasajeros
+                selectedClients[clientName] = clientId;
+            } else {
+                alert("Ya has seleccionado el número máximo de clientes.");
+            }
+        } else {
+            delete selectedClients[clientName];
+        }
+        updateModalFooter();
+        updateRemainingPassengers(); // Actualizar el número de pasajeros restantes
+    }
+
+    // Función para actualizar el número de pasajeros restantes
+function updateRemainingPassengers() {
+    var remainingPassengers = totalPasajeros - Object.keys(selectedClients).length;
+    seleccionNClientes = document.getElementById("total-pasajeros-restantes");
+    seleccionNClientes.textContent = remainingPassengers;
+}
+
+// Función para actualizar el modal-footer con los clientes seleccionados
+function updateModalFooter() {
+    var modalFooter = document.getElementById("modalFooter");
+    modalFooter.innerHTML = ''; // Limpiar el contenido existente
+
+    for (var clientName in selectedClients) {
+        if (selectedClients.hasOwnProperty(clientName)) {
+            var clientBadge = document.createElement("div");
+            clientBadge.className = "badge text-bg-warning text-wrap";
+            clientBadge.innerHTML = clientName + '&nbsp;<button type="button" class="btn-close" aria-label="Close" onclick="removeClient(\'' + clientName + '\')"></button>';
+            modalFooter.appendChild(clientBadge);
+            modalFooter.innerHTML += '&nbsp;';
+        }
+    }
+}
+
+// Función para eliminar un cliente de la lista de seleccionados
+function removeClient(clientName) {
+    if (selectedClients.hasOwnProperty(clientName)) {
+        delete selectedClients[clientName];
+        updateModalFooter();
+        updateRemainingPassengers(); // Actualizar el número de pasajeros restantes
+    }
+}
+
+        // Función para mostrar los clientes seleccionados en la etiqueta "clientes-seleccionados"
+    function mostrarClientesSeleccionados() {
+        var clientesSeleccionadosElement = document.getElementById("clientes-seleccionados");
+
+        // Limpiar el contenido existente
+        clientesSeleccionadosElement.innerHTML = "";
+
+        // Recorrer las claves del objeto selectedClients y agregarlos a la etiqueta "clientes-seleccionados"
+        for (var clientName in selectedClients) {
+            if (selectedClients.hasOwnProperty(clientName)) {
+                var clienteElement = document.createElement("span");
+                clienteElement.textContent = clientName;
+                clientesSeleccionadosElement.appendChild(clienteElement);
+
+                // Agregar coma y espacio si no es el último cliente
+                if (Object.keys(selectedClients).indexOf(clientName) < Object.keys(selectedClients).length - 1) {
+                    var commaElement = document.createElement("span");
+                    commaElement.textContent = ", ";
+                    clientesSeleccionadosElement.appendChild(commaElement);
+                }
+            }
+        }
+    }
+
+    // Llamar a la función mostrarClientesSeleccionados cuando se hace clic en el botón "Guardar" del modal
+    document.getElementById("guardarClientes").addEventListener("click", function() {
+        mostrarClientesSeleccionados();
+        $('#clientesModal').modal('hide');
+    });
+
+    //Registrar datos
+    $(document).ready(function() {
+    // Evento de clic en el botón "Registar"
+     var fechaSalida; // Variable para almacenar la fecha de salida
+     var fechaRegreso; // Variable para almacenar la fecha de regreso
+
+    // Evento de aplicar rango de fechas
+    $('#date_range').on('apply.daterangepicker', function(ev, picker) {
+        fechaSalida = picker.startDate.format('DD/MM/YYYY');
+        fechaRegreso = picker.endDate.format('DD/MM/YYYY');
+    });
+
+    //Inicializar los tooltips para los botones
+         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+
+    // Evento de clic en el botón "Registrar"
+    $('#agregarButton').click(function() {
+
+
+        var destino = $('#destino').val();
+        var origen = $('#origen').val();
+        var npasajeros = totalPasajeros;
+        var tarifa = $('#precioInput').val();
+        var comision = $('#comisionInput').val();
+        var precio = $('#precioTotalInput').val();
+        var aerolinea = $('#aerolinea').val();
+        var clase = $('input[name="clase_options"]:checked').val();
+        var equipaje = $('.form-select option:selected').val();
+
+
+        var val=false
+        //Validacion
+        // Validar cada campo
+        if (origen.trim() === '') {
+            $('#validacion_origen').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_origen').textContent = 'Por favor selecciona un origen.';
+            val = true;
+        }
+        else $('#validacion_origen').addClass('visually-hidden');
+
+        if (destino.trim() === '') {
+            $('#validacion_destino').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_destino').textContent = 'Por favor selecciona un destino.';
+            val = true;
+        }
+        else $('#validacion_destino').addClass('visually-hidden');
+
+        if (fechaSalida === undefined || fechaRegreso === undefined) {
+            $('#validacion_fecha').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_fecha').textContent = 'Por favor selecciona las fechas.';
+            val = true;
+        }
+        else $('#validacion_fecha').addClass('visually-hidden');
+
+        if (npasajeros === 0) {
+            $('#validacion_pasajeros').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_pasajeros').textContent = 'Por favor selecciona al menos un pasajero.';
+            val = true;
+        }
+        else $('#validacion_pasajeros').addClass('visually-hidden');
+
+        if (precio.trim() === '') {
+            $('#validacion_precio').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_precio').textContent = 'Por favor establezca el precio.';
+            val = true;
+        }
+        else
+            if (isNaN(tarifa)){
+             $('#validacion_precio').removeClass('visually-hidden');
+             document.getElementById('mensaje_validacion_precio').textContent = 'Ingrese un número valido.';
+             val = true;
+            }
+            else
+                $('#validacion_precio').addClass('visually-hidden');
+
+        if (aerolinea.trim() === "") {
+            $('#validacion_aerolinea').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_aerolinea').textContent = 'Por favor seleccione la aerolinea.';
+            val = true;
+        }
+        else $('#validacion_aerolinea').addClass('visually-hidden');
+
+        if (equipaje === "Seleccione su equipaje") {
+            $('#validacion_equipaje').removeClass('visually-hidden');
+            document.getElementById('mensaje_validacion_equipaje').textContent = 'Por favor seleccione el equipaje.';
+            val = true;
+        }
+        else $('#validacion_equipaje').addClass('visually-hidden');
+
+        if(val) return false;
+
+
+        
+
+
+
+
+        var clientesSeleccionados = [];
+        // Agregar los IDs de los clientes seleccionados al array clientesSeleccionados
+        for (var clientName in selectedClients) {
+            if (selectedClients.hasOwnProperty(clientName)) {
+                clientesSeleccionados.push(selectedClients[clientName]);
+            }
+        }
+
+        // Asignar valores de fechas al formulario o realizar cualquier otra acción necesaria
+        $('#id_destinov').val(destino);
+        $('#id_origenv').val(origen);
+        $('#id_fsalida').val(fechaSalida);
+        $('#id_fregreso').val(fechaRegreso);
+        $('#id_npasajerosv').val(npasajeros);
+            $('#id_tarifav').val(tarifa);
+        $('#id_comisionv').val(comision);
+        $('#id_precio').val(precio);
+        $('#id_aerolinea').val(aerolinea);
+        $('#id_clase').val(clase);
+        $('#id_equipaje').val(equipaje);
+        $('#id_clientes').val(clientesSeleccionados);
+
+        IrAVentas()
+    });
+});
+
+    function IrAVentas(){
+                Swal.fire({
+          title: "¿Desea agregar la venta?",
+          text: "O puede agregar solamente la reserva.",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si, ir a crearla!",
+          cancelButtonText : "Lo haré despues.",
+        }).then((result) => {
+              if (result.isConfirmed) {
+                  Swal.fire({
+                  title: "Agregadando la reserva :D",
+                  text: "La venta de la reserva se esta creando.",
+                  icon: "info",
+                  timer: 5000,
+                    didOpen: () => {Swal.showLoading();}
+                });
+            // Manejar el evento submit del formulario
+            $('#formulario').submit(function(event) {
+                // Evitar el comportamiento predeterminado del formulario
+                event.preventDefault();
+
+                // Realizar el envío del formulario
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: $(this).attr('method'),
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        // Redirigir después de que se complete la presentación del formulario
+                        window.open('/Ventas/new/', '_blank');
+                        window.location.href = '/ReservacionesVuelos/list/';
+                    },
+                    error: function(xhr, errmsg, err) {
+                        // Manejar errores si es necesario
+                        console.log(errmsg);
+                    }
+                });
+            });
+
+    // Disparar el evento submit manualmente
+    $('#formulario').submit();
+          }
+          else{
+              $('#formulario').submit();
+              Swal.fire({
+              title: "Agregadando la reserva :D",
+              text: "La venta de la reserva se esta creando.",
+              icon: "info",
+              timer: 5000,
+                didOpen: () => {Swal.showLoading();}
+            });
+          }
+        });
+    }
+
+    //Aumentar pasajeros con botones
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener todos los botones de clase "aumentar"
+        var aumentarButtons = document.querySelectorAll('.aumentar');
+
+        // Manejar clic en los botones de aumentar
+        aumentarButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Obtener el input asociado al botón
+                var input = button.parentNode.querySelector('input[type="number"]');
+
+                // Incrementar el valor del input
+                input.value = parseInt(input.value) + 1;
+            });
+        });
+
+        // Obtener todos los botones de clase "disminuir"
+        var disminuirButtons = document.querySelectorAll('.disminuir');
+
+        // Manejar clic en los botones de disminuir
+        disminuirButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Obtener el input asociado al botón
+                var input = button.parentNode.querySelector('input[type="number"]');
+
+                // Verificar si el valor es mayor que cero antes de decrementar
+                if (parseInt(input.value) > 0) {
+                    // Decrementar el valor del input
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+        });
+    });
+
+
+    //Controla los botones de exit de los alerts
+    $('button.btn-close.validacion').click(function() {
+        var padre = $(this).parent().parent();
+        padre.addClass('visually-hidden');
+    });
+</script>
 {% endblock %}
+
+

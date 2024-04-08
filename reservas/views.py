@@ -11,6 +11,7 @@ from Polariss import settings
 from reservas.models import ReservaVuelo, Venta, Pago
 from .forms import ReservaVueloForm, VentaForm, PagoForm
 from django.db.models import Prefetch
+from clientes.models import Cliente
 
 
 #VISTAS BASADAS EN CLASES PARA RESERVACIONES DE VUELOS
@@ -77,18 +78,11 @@ class ReservacionVAllListView(ListView):
 class ReservacionVCreateView(CreateView):
     template_name = 'reservas/reservasV_new.html'
     form_class = ReservaVueloForm
-    success_url = reverse_lazy('reservacionesV_list')
+    success_url = reverse_lazy('reservacionesV_new')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        json_path = os.path.join(settings.BASE_DIR, 'static/assets/js/cities.json')
-
-        with codecs.open(json_path, 'r', encoding='utf-8-sig') as json_file:  # Usa 'utf-8-sig'
-            data = json.load(json_file)
-
-        context['cities_json'] = json.dumps(data)
-
+        context['clientes'] = Cliente.objects.all()  # Obtener todos los clientes
         return context
 
     def form_valid(self, form):
@@ -96,6 +90,14 @@ class ReservacionVCreateView(CreateView):
         messages.success(self.request, 'Reserva creada exitosamente.')
         return response
 
+def clientes_search(request):
+  if request.method == 'GET':
+    termino_busqueda = request.GET.get('search', '')
+    clientes = Cliente.objects.filter(nombrec__icontains=termino_busqueda)  # Búsqueda insensible a mayúsculas/minúsculas
+    contexto = {'clientes': clientes}
+    return render(request, 'reservas/clientes_list.html', contexto)  # Plantilla para resultados filtrados
+  else:
+    return HttpResponseBadRequest('Método de solicitud inválido')
 
 class ReservacionUpdateView(UpdateView):
     template_name = 'reservas/reservasV_update.html'
@@ -114,13 +116,18 @@ class ReservacionUpdateView(UpdateView):
 class ReservacionDeleteView(DeleteView):
     model = ReservaVuelo
     template_name = 'reservas/reservaV_confirm_delete.html'
-    success_url = reverse_lazy('reservacionesV_delete')
     context_object_name = 'reserva'
 
     def form_valid(self, form):
         response = super().form_valid(form)
         messages.success(self.request, 'Reserva eliminada exitosamente.')
         return response
+
+
+    def get_success_url(self):
+        # Aquí obtenemos la URL de redireccionamiento después de eliminar la reserva
+        # Por ejemplo, podrías redirigir a la lista de todas las reservas
+        return reverse_lazy('reservacionesV_list')
 
 #VENTAS
 class VentasVAllListView(ListView):
@@ -176,9 +183,25 @@ class VentasCreateView(CreateView):
     #Sobreescribimos el metodo form_valid para mandar el mensaje de exito
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, 'Cliente creado exitosamente.')
+        messages.success(self.request, 'Venta creada exitosamente.')
         return response
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        try:
+            # Obtener la última reserva agregada si existe
+            ultima_reserva = ReservaVuelo.objects.latest('clavev')
+            # Predefinir el campo de reserva en el formulario con la última reserva
+            kwargs['initial']['reserva'] = ultima_reserva
+        except ReservaVuelo.DoesNotExist:
+            # Manejar el caso en el que no hay reservas en la base de datos
+            kwargs['initial']['reserva'] = None
+        return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reservas'] = ReservaVuelo.objects.all()  # Obtener todos las reservas
+        return context
 
 class VentasUpdateView(UpdateView):
     template_name = 'reservas/ventas_update.html'
@@ -252,26 +275,20 @@ class PagosListView(ListView):
         context['get_params'] = self.request.GET
         return context
 
+
+
 class PagosCreateView(CreateView):
     template_name = 'reservas/pago_new.html'
     form_class = PagoForm
     success_url = reverse_lazy('ventas')
 
-    def get_initial(self):
-        initial = super().get_initial()
-        venta_id = self.request.GET.get('venta')
-        if venta_id:
-            # Establece la venta inicial si se proporciona en los parámetros de la URL
-            initial['venta'] = venta_id
-        return initial
-
     def form_valid(self, form):
-        # Llamada al form_valid de la clase base
+        # Guarda primero el formulario para asegurarte de que se cree la instancia de Venta
         response = super().form_valid(form)
 
         # Obtener el objeto de venta asociado al pago
         venta = form.instance.venta
-        print("Saldo:",venta.saldo)
+        print("Saldo:", venta.saldo)
         print("Monto:", form.instance.monto)
         # Restar el monto del pago al saldo de la venta
         venta.saldo -= form.instance.monto
@@ -285,6 +302,8 @@ class PagosCreateView(CreateView):
         messages.success(self.request, 'Pago creado exitosamente.')
 
         return response
+
+
 
 class PagoUpdateView(UpdateView):
     template_name = 'reservas/pago_update.html'
