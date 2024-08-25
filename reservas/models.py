@@ -41,6 +41,7 @@ class ReservaVuelo(models.Model):
 class Venta(models.Model):
     ESTADO_VENTA = (
         ("NP", "No pagado"),
+        ("EP", "En Pago"),
         ("P", "Pagado")
 
     )

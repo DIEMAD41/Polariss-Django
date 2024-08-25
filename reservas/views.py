@@ -101,17 +101,15 @@ def clientes_search(request):
 
 class ReservacionUpdateView(UpdateView):
     template_name = 'reservas/reservasV_update.html'
-    # Si quieres editar todos los campos del form usa este codigo:
     form_class = ReservaVueloForm
-    #Para editar solo campos especificos usa fields
-    #fields = ['nombrec','telefenoc','usuarioc','passwordc','edadc','localidad']
     model = ReservaVuelo
-    success_url = reverse_lazy('reservacionesV_update')
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, 'Reserva modificado exitosamente.')
+        messages.success(self.request, 'Reserva modificada exitosamente.')
         return response
+
+    success_url = reverse_lazy('reservacionesV_list')
 
 class ReservacionDeleteView(DeleteView):
     model = ReservaVuelo

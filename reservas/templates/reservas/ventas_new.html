@@ -3,17 +3,16 @@
 
 {% block style %}
     <style>
-    .text-primary{
+    .text-primary {
         padding-top: 20px;
         color: var(--color);
     }
 
-     .cliente-div:hover {
-        background-color: #f9ca3f;
+    .cliente-div:hover {
+        background-color: #F5F5F5;
         transition: background-color 0.3s;
-             cursor: pointer;
+        cursor: pointer;
     }
-
 
     </style>
 {% endblock %}
@@ -21,95 +20,201 @@
 {% block content %}
 
     <!-- Begin Page Content -->
-        <!-- Page Heading -->
-        <h1 class="h3 my-2 p-0 font-weight-bold text-primary">Nueva Venta</h1>
+    <!-- Page Heading -->
+    <h1 class="h3 my-2 p-0 font-weight-bold text-primary">Nueva Venta</h1>
 
-        <!--Diseño de venta-->
-        <div class="container-fluid p-3 border mb-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group d-flex justify-content-center" >
-                              <input type="text" id="searchInput" placeholder="Buscar Reserva..." class="form-control">
-                              <span class="input-group-text i-g-t-personalizado">
-                                  <a href="{% url 'reservacionesV_new' %}" target="_blank" data-bs-toggle="tooltip" data-bs-title="Crear un nuevo cliente">
-                                    <i class="fa-solid fa-circle-plus"></i>
-                                  </a>
-                              </span>
+    <!-- Diseño de venta -->
+    <div class="container-fluid p-3 border mb-4">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="input-group d-flex justify-content-center" >
+                    <input type="text" id="searchInput" placeholder="Buscar Reserva..." class="form-control w-50">
+                    <select class="form-select" id="inputGroupSelect01">
+                        <option selected>ID</option>
+                        <option value="1">Cliente</option>
+                        <option value="2">Destino</option>
+                        <option value="3">Origen</option>
+                    </select>
+                    <span class="input-group-text i-g-t-personalizado">
+                        <a href="{% url 'reservacionesV_new' %}" target="_blank" data-bs-toggle="tooltip" data-bs-title="Crear una nueva reserva">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </a>
+                    </span>
+                </div>
+
+                <ul id="reservasList">
+                    {% for reserva in reservas %}
+                        <li>
+                            <div class="cliente-div border rounded-2 mt-2" onclick="seleccionarReserva('{{ reserva.clavev }}', '{{ reserva.origenv }}', '{{ reserva.destinov }}')">
+                                <div class="d-flex rounded-top-2 justify-content-between bg-danger">
+                                    <div class="container-fluid d-flex align-items-center">
+                                        <div class="pe-2"><span class="text-light"><i class="fa-solid fa-calendar-days"></i></span></div>
+                                        <span class="text-light">Reserva: {{ reserva.clavev }}</span>
+                                    </div>
+                                    <div class="p-2"><span class="text-light"><i class="fas fa-arrow-right"></i></span></div>
+                                </div>
+
+                                <div class="container-fluid mb-2">
+                                    <div class="pt-3">
+                                        <i class="fa-solid fa-plane-departure"></i>&nbsp;
+                                        <span class="origen">{{ reserva.origenv }}</span>
+                                        &nbsp;&nbsp;
+                                        <i class="fa-solid fa-plane-arrival"></i>&nbsp;
+                                        <span class="destino">{{ reserva.destinov }}</span>
+                                    </div>
+                                    <div class="pt-3">
+                                        {% for cliente in reserva.clientes.all|slice:":2" %}
+                                            <i class="fa-solid fa-user"></i>
+                                            <span>&nbsp;{{ cliente.nombrec }}</span>
+                                            &nbsp;
+                                        {% endfor %}
+                                        {% if reserva.clientes.count > 2 %}
+                                            <button type="button" class="btn btn-danger"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-custom-class="custom-tooltip" data-bs-html="true"
+                                                    data-bs-title="
+                                                        {% for cliente in reserva.clientes.all|slice:"2:" %}
+                                                            <div>{{ cliente.nombrec }}</div>
+                                                        {% endfor %}
+                                                    ">
+                                                <i class="fa-solid fa-users me-2"></i>Ver más
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            <div class="col-md-7">
+                <div class="div-reserva-seleccionada border rounded-2 mt-2 h-75  mt-0" >
+                    <div class="d-flex rounded-top-2 justify-content-between bg-danger p-2">
+                        <div class="container-fluid d-flex align-items-center">
+                            <div class="pe-3"><span class="text-light"><i class="fa-xl fa-solid fa-calendar-days"></i></span></div>
+                            <span class="fs-4 text-light mt-1">Datos de la reserva seleccionada</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <span id="datos-reserva" class="fs-4 text-light mt-1">Datos de la reserva seleccionada</span>
+
+                        <div class="d-flex justify-content-evenly">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                            <i class="fa-4x fa-solid fa-plane-departure"></i>
+                            <span class="text-danger mt-1">FECHA</span>
+                            <span class="destino-seleccionado">Guadalajara</span>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <i class="fa-4x fa-solid  fa-plane-arrival"></i>
+                            <span class="text-danger mt-1">FECHA</span>
+                            <span class="destino-seleccionado">Seattle</span>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <i class="fa-4x fa-solid fa-calendar-days"></i>
+                            <span class="text-danger mt-1">FECHA</span>
+                            <span class="destino-seleccionado">29/04/2024</span>
+                        </div>
                         </div>
 
-                        <ul id="reservasList">
-                            {% for reserva in reservas %}
-                                <li>
-                                    <div class="d-flex p-2 cliente-div" style="" onclick="toggleReserva('{{ reserva.destino }}', '{{ reserva.clavev }}')">
-                                        <div class="p-2"><span><i class="fa-solid fa-calendar-days"></i></span></div>
-                                        <div class="container-fluid row p-2">
-                                            <span>Reserva: {{ reserva.clavev }}</span>
-                                            <div class="pt-2">
-                                                <i class="fa-solid fa-plane-departure"></i>&nbsp;
-                                                <span>{{ reserva.origenv }}</span>
-                                                &nbsp;&nbsp;
-                                                <i class="fa-solid fa-plane-arrival"></i>&nbsp;
-                                                <span>{{ reserva.destinov }}</span>
-                                            </div>
-                                            <div class="pt-2">
-                                                <i class="fa-solid fa-user"></i>
-                                                 <span>&nbsp;
-                                                    {% for cliente in reserva.clientes.all %}
-                                                        {{ cliente.nombrec }}
-                                                        {% if not forloop.last %}, {% endif %}
-                                                    {% endfor %}
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="p-2"><span><i class="fas fa-arrow-right"></i></span></div>
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                </div>
-                <div class="col-md-6">
-                </div>
-            </div>
-        </div>
+                        <div class="d-flex justify-content-evenly mt-4">
+                            <div class="d-flex flex-column justify-content-center align-items-center">
+                            <i class="fa-4x fa-solid fa-plane-departure"></i>
+                            <span class="text-danger mt-1">FECHA</span>
+                            <span class="destino-seleccionado">Guadalajara</span>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <i class="fa-4x fa-solid  fa-plane-arrival"></i>
+                            <span class="text-danger mt-1">FECHA</span>
+                            <span class="destino-seleccionado">Seattle</span>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <i class="fa-4x fa-solid fa-calendar-days"></i>
+                            <span class="text-danger mt-1">FECHA</span>
+                            <span class="destino-seleccionado">29/04/2024</span>
+                        </div>
+                        </div>
 
-        <!-- DataTales Example -->
-        <div class="container-fluid p-3 border mb-4">
-            <div class="card-header">
-                <p class="font-weight-bold text-primary p-0">Agregue una nueva venta:</p>
-            </div>
-            <div class="card-body">
-                {{ mensaje }}
-                <form action="" method="post">
-                    {% csrf_token %}
-                    {{ form | crispy }}
-                    <div class="d-flex justify-content-end mb-4">
-                        <a href="{% url 'ventas' %}" class="btn btn-danger btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-times-circle"></i>
-                                        </span>
-                                        <span class="text">Cancelar</span>
-                        </a>
-
-                        &nbsp;
-                       <button type="submit" class="btn btn-success">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-plus-circle"></i>
-                                        </span>
-                                        <span class="text">Agregar</span>
-                       </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
+    </div>
 
+    <!-- DataTales Example -->
+    <div class="container-fluid p-3 border mb-4">
+        <div class="card-header">
+            <p class="font-weight-bold text-primary p-0">Agregue una nueva venta:</p>
+        </div>
+        <div class="card-body">
+            {{ mensaje }}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-flex justify-content-end mb-4">
+                    <a href="{% url 'ventas' %}" class="btn btn-danger btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                        <span class="text">Cancelar</span>
+                    </a>
 
-
-
+                    &nbsp;
+                    <button type="submit" class="btn btn-success">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-plus-circle"></i>
+                        </span>
+                        <span class="text">Agregar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 {% endblock %}
 
-{% block javascript %}
+{% block java %}
+
     <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+        function filtrarReservas() {
+            var input, filter, ul, li, reserva, i, txtValue;
+            var campo = document.getElementById("inputGroupSelect01").value;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("reservasList");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                reserva = li[i];
+                if (campo === "1") {
+                    txtValue = reserva.querySelector(".cliente-div").textContent || reserva.querySelector(".cliente-div").innerText;
+                } else if (campo === "2") {
+                    var destinoElement = reserva.querySelector(".destino");
+                    txtValue = destinoElement ? destinoElement.textContent || destinoElement.innerText : '';
+                } else if (campo === "3") {
+                    var origenElement = reserva.querySelector(".origen");
+                    txtValue = origenElement ? origenElement.textContent || origenElement.innerText : '';
+                } else {
+                    txtValue = reserva.textContent || reserva.innerText;
+                }
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    reserva.style.display = "";
+                } else {
+                    reserva.style.display = "none";
+                }
+            }
+        }
+
+        document.getElementById("searchInput").addEventListener("keyup", filtrarReservas);
+        document.getElementById("inputGroupSelect01").addEventListener("change", filtrarReservas);
+
+        function seleccionarReserva(clave, origen, destino) {
+            const datosReserva = document.getElementById("datos-reserva");
+            datosReserva.textContent = `Datos de la reserva ${clave}: Origen - ${origen}, Destino - ${destino}`;
+        }
 
     </script>
+
 {% endblock %}

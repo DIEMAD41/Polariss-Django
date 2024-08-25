@@ -671,7 +671,7 @@ function removeClient(clientName) {
     });
 
     //Inicializar los tooltips para los botones
-         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
@@ -874,7 +874,6 @@ function removeClient(clientName) {
             });
         });
     });
-
 
     //Controla los botones de exit de los alerts
     $('button.btn-close.validacion').click(function() {
