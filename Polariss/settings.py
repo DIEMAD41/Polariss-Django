@@ -95,13 +95,9 @@ WSGI_APPLICATION = 'Polariss.wsgi.application'
 
 #importar pip install  psycopg2
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "kmsmczti",
-        "USER": "kmsmczti",
-        "PASSWORD": "8JZwX_rI3Aq5V9Xd_TvRDfDKYxo7ntFk",
-        "HOST": "bubble.db.elephantsql.com",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
